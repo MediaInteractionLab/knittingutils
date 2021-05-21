@@ -10,7 +10,6 @@ const knitout = require('knitout');
 
 let _name = undefined;
 let _wales = undefined;
-let _courses = undefined;
 let _left = undefined;
 let _right = undefined;
 
@@ -66,12 +65,13 @@ exports.createMachine = function(name, needles, gauge, numCarriers, defaultStitc
     };
 }
 
-exports.initKnit = function(name, wales, courses, left = 1) {
+exports.initKnit = function(name, wales, left = 1) {
     _name = name;
     _wales = wales;
-    _courses = courses;
     _left = left;
     _right = left + wales;
+
+    console.log("initing knit '" + name + "' with " + _wales + " wales (" + _left + " - " + _right + ")");
 }
 
 exports.writeHeader = function() {
@@ -321,4 +321,10 @@ exports.castOff = function(c, l = _left, r = _right, stitchNumber = _machine.sti
         this.drop(bed + l);
         this.rack(0);
     }
+}
+
+// browser-compatibility
+if(typeof(module) !== 'undefined'){
+	module.exports.LEFT = LEFT;
+    module.exports.RIGHT = RIGHT;
 }
