@@ -1,0 +1,11 @@
+{
+  "name": "knitwrap",
+  "version": "0.0.1",
+  "main": "knitwrap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roland Aigner",
+  "license": "MIT",
+  "description": "wrapper/convenience functions for generating knitout; depends on knitout npm package (duh)"
+}
