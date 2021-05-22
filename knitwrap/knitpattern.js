@@ -24,14 +24,19 @@ var KnitPattern = function() {
 
     this.maps = {};
 
-    /*
-        n   needle operations (knit, tuck, miss, xfer, etc.)
-        r   rack
-        s   set stitch setting
-        c   insert comment
+    /**
+     * supported operations
+     *  n   needle operations (knit, tuck, miss, xfer, etc.)
+     *  r   rack
+     *  s   set stitch setting
+     *  c   insert comment
     */
     this.commands = [];
 
+    /**
+     * 
+     * @param {object} yarn 
+     */
     this.prepare = function(yarn) {
         if(!(yarn.id in this.maps)) {
 
@@ -48,6 +53,11 @@ var KnitPattern = function() {
         };
     };
     
+    /**
+     * 
+     * @param {object} yarn 
+     * @param {Number} offset
+     */
     this.newCourse = function(yarn, offset = 0) {
         let createCourse = function(l) {
             return {
@@ -66,23 +76,34 @@ var KnitPattern = function() {
         this.maps[yarn.id].courses.push(createCourse(offset + 1));
     };
 
+    /**
+     * 
+     * @param {String} msg 
+     */
     this.comment = function(msg) {
         this.commands.push("c|" + msg);
     }
 
-    /*
-        . nop
-        k front knit
-        K back knit
-        b front+back knit
-        t front tuck
-        T back tuck
-        B front+back tuck
-        x front knit + back tuck
-        X back knit + front tuck
-        - front miss
-        _ back miss
-    */
+    /**
+     * 
+     * @param {Object} yarn 
+     * @param {String} repeat 
+     *      * needle operations:
+     *      . nop
+     *      k knit front
+     *      K knit back
+     *      b knit front+back
+     *      t tuck front
+     *      T tuck back
+     *      B tuck front + back
+     *      x tuck front + back
+     *      X knit back + tuck front
+     *      - explicit miss front
+     *      _ explicit miss back
+     * @param {Number} needleCount 
+     * @param {Number} repeatOffset 
+     * @returns 
+     */
     this.insert = function(yarn, repeat, needleCount, repeatOffset = 0) {
         if(!yarn.id) {
             console.error("ERROR: no valid yarn passed");
@@ -118,9 +139,8 @@ var KnitPattern = function() {
         let course = m.courses[len - 1];
         course.ops += ops;
 
-        //let r = course.leftPos + course.ops.length - 1;
-        m.leftPos = Math.min(m.leftPos, course.leftPos);//(m.leftPos < course.leftPos ? m.leftPos : course.leftPos);
-        m.rightPos = Math.max(m.rightPos, course.leftPos + course.ops.length - 1);// (m.rightPos > r ? m.rightPos : r);
+        m.leftPos = Math.min(m.leftPos, course.leftPos);
+        m.rightPos = Math.max(m.rightPos, course.leftPos + course.ops.length - 1);
 
         this.leftmost = Math.min(this.leftmost, m.leftPos);
         this.rightmost = Math.max(this.rightmost, m.rightPos);
@@ -130,6 +150,10 @@ var KnitPattern = function() {
         this.bringInArea.right = this.rightmost + 8;
     };
 
+    /**
+     * 
+     * @param {Number} offset 
+     */
     this.shift = function(offset) {
         for(var id in this.maps) {
             let m = this.maps[id];
@@ -167,16 +191,22 @@ var KnitPattern = function() {
         }
     }
 
+    /**
+     * 
+     * @param {Object} yarn 
+     */
     this.printMap = function(yarn) {
         let m = this.maps[yarn.id];
         if(m == undefined) {
             console.error("ERROR: no map for yarn " + yarn.id);
-            return;
+        } else {
+            printMapInternal(m);
         }
-
-        printMapInternal(m);
     }
 
+    /**
+     * 
+     */
     this.printAllMaps = function() {
         console.log("knit pattern range: " + this.leftmost + " - " + this.rightmost);
         for(var id in this.maps) {
@@ -184,12 +214,18 @@ var KnitPattern = function() {
         }
     }
 
+    /**
+     * 
+     */
     this.printOrder = function() {
         let s = '';
         this.commands.forEach(item => { s += item + ", "; });
         console.log("order (" + this.commands.length + "): " + s );
     }
 
+    /**
+     * 
+     */
     this.printSequence = function() {
 
         var maxIdLen = 0;
@@ -204,7 +240,6 @@ var KnitPattern = function() {
 
         var carrierCounter = 0;
 
-        //print in order
         this.commands.forEach(function(command, i) {
 
             let p0 = 0;
@@ -217,12 +252,6 @@ var KnitPattern = function() {
             
             let arg = command.substring(p0, p1);
             
-            /*
-            n   needle operations (knit, tuck, miss, xfer, etc.)
-            r   rack
-            s   set stitch setting
-            */
-
             switch (cmd) {
                 case 'n':
                     carrierCounter++;
@@ -260,22 +289,30 @@ var KnitPattern = function() {
         }, this);
     }
 
-    this.generate = function(outFileName, carrierIds, desc = "") {
+    /**
+     * 
+     * @param {String} outFileName 
+     * @param {Object} carrierIds 
+     * @param {String} desc 
+     * @param {Object} machine 
+     */
+    this.generate = function(outFileName, carrierIds, desc = "", position = "Keep", machine = undefined) {
 
-        const kw = require('./knitwrap.js');
+        const knitwrap = require('./knitwrap.js');
+        let kw = new knitwrap.KnitOutWrapper();
 
-        kw.createMachine('SWG061N2', 360, 15, 10);
+        const LEFT = knitwrap.LEFT;
+        const RIGHT = knitwrap.RIGHT;
 
-        let wales = this.rightmost - this.leftmost + 1;
-        kw.initKnit(desc, wales, this.leftmost);
-
-        kw.createKnitout();
+        //let wales = this.rightmost - this.leftmost + 1;
+        kw.initKnitout(machine, position);
+        kw.comment("description: " + desc);
 
         kw.rack(0);
 
-        let mapInfo = {};
+        let cInfo = {};
         for(var key in this.maps) {
-            mapInfo[key] = {
+            cInfo[key] = {
                 courseCntr: 0,
                 wasInUse: false,
                 wasKnit: false,
@@ -287,7 +324,6 @@ var KnitPattern = function() {
 
         let numActiveCarriers = 0;
 
-        //print in order
         this.commands.forEach(function(command) {
 
             let p0 = 0;
@@ -308,16 +344,16 @@ var KnitPattern = function() {
                         return;
                     }
 
-                    let mi = mapInfo[arg];
+                    let ci = cInfo[arg];
 
-                    let courseId = mi.courseCntr;
+                    let courseId = ci.courseCntr;
 
-                    let c = mi.carrier;
+                    let c = ci.carrier;
                     if(!c.isIn) {
                         kw.bringIn(c, this.bringInArea.left, this.bringInArea.right);
                         numActiveCarriers++;
 
-                        dropBringIn = mi;
+                        dropBringIn = ci;
 
                         c.isIn = true;
                     }
@@ -331,68 +367,55 @@ var KnitPattern = function() {
                         let r = l + course.ops.length - 1;
                         let center = (l + r) / 2;
 
-                        dir = (c.pos < center ? kw.RIGHT : kw.LEFT);
-                        let start = (dir == kw.RIGHT ? l : r);
+                        dir = (c.pos < center ? RIGHT : LEFT);
+                        let start = (dir == RIGHT ? l : r);
                         let end = start + course.ops.length * dir;
                         let n = start;
                         let i = 0;
 
                         while(n != end) {
 
-                            /*
-                            . nop
-                            k front knit
-                            K back knit
-                            b front+back knit
-                            B front+back tuck
-                            t front tuck
-                            T back tuck
-                            x front knit + back tuck
-                            X back knit + front tuck
-                            - front miss
-                            _ back miss
-                            */
                             switch (course.ops[i]) {
                                 case '.':
                                     //nop --> do nothing
                                     break;
                                 case 'k':
                                     kw.knit(dir, 'f', n, c);
-                                    mi.wasKnit = true;
+                                    ci.wasKnit = true;
                                     break;
                                 case 'K':
                                     kw.knit(dir, 'b', n, c);
-                                    mi.wasKnit = true;
+                                    ci.wasKnit = true;
                                     break;
                                 case 'b':
                                     //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir == kw.LEFT) {
+                                    if(dir == LEFT) {
                                         kw.knit(dir, 'b', n, c);
                                         kw.knit(dir, 'f', n, c);
                                     } else {
                                         kw.knit(dir, 'f', n, c);
                                         kw.knit(dir, 'b', n, c);
                                     }
-                                    mi.wasKnit = true;
+                                    ci.wasKnit = true;
                                     break;
                                 case 'B':
                                     //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir == kw.LEFT) {
+                                    if(dir == LEFT) {
                                         kw.tuck(dir, 'b', n, c);
                                         kw.tuck(dir, 'f', n, c);
                                     } else {
                                         kw.tuck(dir, 'f', n, c);
                                         kw.tuck(dir, 'b', n, c);
                                     }
-                                    mi.wasTuck = true;
+                                    ci.wasTuck = true;
                                     break;
                                 case 't':
                                     kw.tuck(dir, 'f', n, c);
-                                    mi.wasTuck = true;
+                                    ci.wasTuck = true;
                                     break;
                                 case 'T':
                                     kw.tuck(dir, 'b', n, c);
-                                    mi.wasTuck = true;
+                                    ci.wasTuck = true;
                                     break;
                                 case '-':
                                     kw.miss(dir, 'f', n, c);
@@ -401,26 +424,26 @@ var KnitPattern = function() {
                                     kw.miss(dir, 'b', n, c);
                                     break;
                                 case 'x':
-                                    if(dir == kw.LEFT) {
+                                    if(dir == LEFT) {
                                         kw.tuck(dir, 'b', n, c);
                                         kw.knit(dir, 'f', n, c);
                                     } else {
                                         kw.knit(dir, 'f', n, c);
                                         kw.tuck(dir, 'b', n, c);
                                     }
-                                    mi.wasKnit = true;
-                                    mi.wasTuck = true;
+                                    ci.wasKnit = true;
+                                    ci.wasTuck = true;
                                     break;
                                 case 'X':
-                                    if(dir == kw.LEFT) {
+                                    if(dir == LEFT) {
                                         kw.knit(dir, 'b', n, c);
                                         kw.tuck(dir, 'f', n, c);
                                     } else {
                                         kw.tuck(dir, 'f', n, c);
                                         kw.knit(dir, 'b', n, c);
                                     }
-                                    mi.wasKnit = true;
-                                    mi.wasTuck = true;
+                                    ci.wasKnit = true;
+                                    ci.wasTuck = true;
                                     break;
                             }
 
@@ -429,10 +452,10 @@ var KnitPattern = function() {
                         }
                     }
                     
-                    mi.wasInUse = true;
-                    mi.courseCntr++;
+                    ci.wasInUse = true;
+                    ci.courseCntr++;
 
-                    if(mi.courseCntr == m.courses.length) {
+                    if(ci.courseCntr == m.courses.length) {
 
                         if(numActiveCarriers == 1) {
                             //TODO: replace this with leftmost and rightmost needles actually holding loops
@@ -445,7 +468,7 @@ var KnitPattern = function() {
                         c.isIn = false;
                     }
 
-                    if(dropBringIn && dir == kw.RIGHT) {
+                    if(dropBringIn && dir == RIGHT) {
                         if(dropBringIn.wasKnit || dropBringIn.wasTuck) {
                             kw.dropBringIn();
                             dropBringIn = null;
@@ -467,16 +490,16 @@ var KnitPattern = function() {
             }
         }, this);
 
-        for(var key in mapInfo) {
-            let mi = mapInfo[key];
-            if(mi.isCarrierIn) {
-                console.log("still remaining carrier: " + mi.carrier.desc);
-                kw.out(mi.carrier);
-                mapInfo[key].isCarrierIn = false;
+        for(var key in cInfo) {
+            let ci = cInfo[key];
+            if(ci.isCarrierIn) {
+                console.log("still remaining carrier: " + ci.carrier.desc);
+                kw.out(ci.carrier);
+                cInfo[key].isCarrierIn = false;
             }
         }
 
-        kw.writeKnitout(outFileName);
+        kw.write(outFileName);
 
         console.log("generated file '" + outFileName + "'");
     }

@@ -12,5 +12,8 @@
 *.k
 *.knitout
 
+# Shima DAT files
+*.dat
+
 # node modules
 node_modules/*

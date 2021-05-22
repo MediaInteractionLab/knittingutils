@@ -21,7 +21,7 @@ let courses = 76;
 
 function generateKnit(){
 
-    let kp = require("./knitwrap/knitpattern.js");
+    const kp = require("./knitwrap/knitpattern.js");
     let knitPattern = new kp.KnitPattern();
 
     let buttonCourses = 16;
@@ -70,7 +70,6 @@ function generateKnit(){
         "Madeira0": 2,
         "Madeira1": 7
     };
-
 
     //lower margin
     knitPattern.comment("lower margin");
