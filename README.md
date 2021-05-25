@@ -14,7 +14,7 @@
 ## Todo
 
 - racking
-- plating
 - loop transfer
 - dropping loops
-- general code cleaning
+- setting custom stitch number
+- KnitPattern: come up with a good way to specify plated areas

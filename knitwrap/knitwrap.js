@@ -11,10 +11,20 @@ const RIGHT = 1;
 
 var KnitOutWrapper = function() {
 
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @returns String '-' for LEFT and '+' for RIGHT, undefined otherwise
+     */
     function getDirSign(dir) {
         return (dir === LEFT ? '-' : (dir === RIGHT ? '+' : undefined));
     }
 
+    /**
+     * 
+     * @param {Number} needles needle count of bed
+     * @returns 
+     */
     var createBed = function(needles) {
         let bed = {};
 
@@ -30,6 +40,10 @@ var KnitOutWrapper = function() {
         return bed;
     }
 
+    /**
+     * 
+     * @returns Shima N2 description
+     */
     var defaultShima = function() {
         return {
             name: 'SWG061N2',
@@ -47,6 +61,12 @@ var KnitOutWrapper = function() {
 
     this.bringInInfo = undefined;
 
+    /**
+     * 
+     * @param {String} name carrier identifier
+     * @param {Number} stitchNumber default stitch number when using this carrier
+     * @returns 
+     */
     this.makeCarrier = function(name, stitchNumber = undefined){
 
         if(stitchNumber === undefined)
@@ -63,6 +83,11 @@ var KnitOutWrapper = function() {
         return c;
     }
 
+    /**
+     * 
+     * @param {*} machineDesc machine description
+     * @param {String} position knitout pattern position, defaults to "Keep"
+     */
     this.initKnitout = function(machineDesc, position = "Keep") {
 
         if(machineDesc === undefined)
@@ -101,6 +126,10 @@ var KnitOutWrapper = function() {
         this.k.stitchNumber(this.machine.stitchNumber);
     }
 
+    /**
+     * 
+     * @param {*} c carrier object
+     */
     this.inhook = function(c) {
         this.k.inhook(c.name);
         c.pos = this.machine.width; //TODO: doublecheck if this is reasonable to set
@@ -108,25 +137,51 @@ var KnitOutWrapper = function() {
         c.isIn = true;
     }
     
+    /**
+     * 
+     * @param {*} c carrier object
+     */
     this.releasehook = function(c) {
         this.k.releasehook(c.name);
         //this.machine.hook = ...;  //TODO: unset yarn held by inserting hook(s?)
     }
     
+    /**
+     * 
+     * @param {*} c carrier object
+     */
     this.outhook = function(c) {
         this.k.outhook(c.name);
         c.isIn = false;
     }
     
+    /**
+     * 
+     * @param {String} bOld bed identifier of old position ('b' or 'f')
+     * @param {Number} nOld needle number of old position
+     * @param {String} bNew beed identifier of new position ('b' or 'f')
+     * @param {Number} nNew needle number of new position
+     */
     this.xfer = function(bOld, nOld, bNew, nNew) {
         this.k.xfer(bOld + nOld, bNew + nNew);
     }
     
+    /**
+     * 
+     * @param {Number} offset racking offset, specified in needle pitch
+     */
     this.rack = function(offset) {
         this.k.rack(offset);
         this.machine.racking = offset;
     }
     
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @param {String} b bed identifier ('b' or 'f')
+     * @param {Number} n needle number
+     * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
+     */
     this.tuck = function(dir, b, n, cs) {
         let str = '';
         if(Array.isArray(cs)) {
@@ -152,9 +207,9 @@ var KnitOutWrapper = function() {
     /**
      * 
      * @param {Number} dir use LEFT or RIGHT const values
-     * @param {String} b bed name ('b' or 'f')
+     * @param {String} b bed identifier ('b' or 'f')
      * @param {Number} n needle number
-     * @param {String} c carrier name
+     * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
      */
     this.knit = function(dir, b, n, cs) {
         let str = '';
@@ -178,6 +233,13 @@ var KnitOutWrapper = function() {
         this.k.knit(getDirSign(dir), b + n, str);
     }
     
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @param {String} b bed identifier ('b' or 'f')
+     * @param {Number} n needle number
+     * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
+     */
     this.miss = function(dir, b, n, cs) {
         let str = '';
         if(Array.isArray(cs)) {
@@ -200,14 +262,30 @@ var KnitOutWrapper = function() {
         this.k.miss(getDirSign(dir), b + n, str);
     }
     
+    /**
+     * 
+     * @param {String} b bed identifier ('b' or 'f')
+     * @param {Number} n needle number
+     */
     this.drop = function(b, n) {
         this.k.drop(b + n);
     }
     
+    /**
+     * 
+     * @param {Number} nr stitch number to set (index into machine specific LUT)
+     */
     this.setStitchNumber = function(nr) {
         this.k.stitchNumber(nr);
     }
 
+    /**
+     * 
+     * @param {*} c carrier object
+     * @param {Number} l needle number for leftmost bringin loop
+     * @param {Number} r needle number for rightmost bringin loop
+     * @returns 
+     */
     this.bringIn = function(c, l, r) {
 
         if(c.isIn) {
@@ -254,6 +332,10 @@ var KnitOutWrapper = function() {
         this.comment("bringin done");
     }
     
+    /**
+     * 
+     * @returns 
+     */
     this.dropBringIn = function() {
     
         if(typeof this.bringInInfo === 'undefined') {
@@ -268,6 +350,11 @@ var KnitOutWrapper = function() {
         this.bringInInfo = undefined;
     }
     
+    /**
+     * 
+     * @param {*} c carrier object
+     * @returns 
+     */
     this.out = function(c) {
         if(!c.isIn) {
             console.warn("WARNING: carrier " + c.name + " was not in use -- skipping...");
@@ -277,10 +364,18 @@ var KnitOutWrapper = function() {
         c.pos = Infinity;
     }
 
+    /**
+     * 
+     * @param {*} c carrier object
+     * @param {Number} l number of leftmost needle
+     * @param {Number} r number of rightmost needle
+     * @param {Boolean} frontBed specify if front bed is used
+     * @param {Number} stitchNumber stitch nuber to set (leave undefined keeps current stitch number)
+     */
     this.castOff = function(c, l, r, frontBed = true, stitchNumber = undefined) {
     
-        if(!stitchNumber)
-            this.setStitchNumber(this.machine.stitchNumber);
+        if(stitchNumber)
+            this.setStitchNumber(stitchNumber);
     
         let bed = frontBed ? "f" : "b";
         let oppBed = frontBed ? "b" : "f";
@@ -329,10 +424,18 @@ var KnitOutWrapper = function() {
         }
     }
 
+    /**
+     * 
+     * @param {String} text comment to write to file
+     */
     this.comment = function(text) {
         this.k.comment(text);
     }
     
+    /**
+     * 
+     * @param {String} fileName filename or path to file
+     */
     this.write = function(fileName) {
         this.k.write(fileName);
     }

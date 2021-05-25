@@ -39,7 +39,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {Object} yarn 
+     * @param {*} yarn 
      */
     this.prepare = function(yarn) {
         if(!(yarn.id in this.maps)) {
@@ -59,7 +59,7 @@ var KnitPattern = function() {
     
     /**
      * 
-     * @param {object} yarn 
+     * @param {*} yarn 
      * @param {Number} offset
      */
     this.newCourse = function(yarn, offset = 0) {
@@ -90,7 +90,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {Object} yarn 
+     * @param {*} yarn 
      * @param {String} repeat 
      *      * needle operations:
      *      . nop
@@ -176,6 +176,10 @@ var KnitPattern = function() {
         this.bringInArea.right = this.leftmost + 8;
     }
 
+    /**
+     * 
+     * @param {*} m 
+     */
     let printMapInternal = function(m) {
         if(isFinite(m.leftPos)) {
             console.log("--- map " + m.name + " (" + m.leftPos + " - " + m.rightPos + ") ---");
@@ -197,7 +201,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {Object} yarn 
+     * @param {*} yarn 
      */
     this.printMap = function(yarn) {
         let m = this.maps[yarn.id];
@@ -296,9 +300,9 @@ var KnitPattern = function() {
     /**
      * 
      * @param {String} outFileName 
-     * @param {Object} carrierMapping
+     * @param {*} carrierMapping
      * @param {String} desc 
-     * @param {Object} machine 
+     * @param {*} machine 
      */
     this.generate = function(outFileName, carrierMapping, desc = "", position = "Keep", machine = undefined) {
 
