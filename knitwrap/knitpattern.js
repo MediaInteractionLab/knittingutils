@@ -22,6 +22,13 @@ var createTransfer = function() {
     };
 }
 
+var createDrops = function() {
+    return {
+        left: 0,
+        ops: ''
+    }
+}
+
 var KnitPattern = function() {
 
     this.prevYarn = null;
@@ -34,11 +41,13 @@ var KnitPattern = function() {
     }
 
     this.maps = {};
+    this.drops = [];
     this.transfers = [];
 
     /**
      * supported operations
      *  n   needle operations (knit, tuck, miss, xfer, etc.)
+     *  d   drop loops
      *  x   needle transfer
      *  y   loop split
      *  r   rack
@@ -162,6 +171,37 @@ var KnitPattern = function() {
         this.bringInArea.right = this.rightmost + 8;
     }
 
+    /**
+     * 
+     * @param {Number} racking absolute racking value
+     */
+    this.rack = function(racking) {
+        //TODO: figure out what the deal with half-pitch, quater-pitch is
+        this.commands.push("r|" + racking);
+    }
+
+    /**
+     * 
+     * @param {String} repeat char-encoded drop pattern repeat
+     *      '.' nop
+     *      'd' drop front
+     *      'D' drop back
+     *      'a' drop all (front + back)
+     * @param {Number} needleCount 
+     * @param {Number} repeatOffset 
+     */
+    this.drop = function(repeat, needleCount, repeatOffset = 0) {
+        this.commands.push("d|" + this.drops.length);
+        let dr = createDrops();
+
+        dr.left = 1;
+        for(let i = 0; i < needleCount; i++) {
+            dr.ops += repeat[(i + repeatOffset) % repeat.length];
+        }
+
+        this.drops.push(dr);
+    }
+
     this.transfer = function(b0, n0, n1) {
         if(Array.isArray(n0) ^ Array.isArray(n1)) {
             throw new Error("either none or both arguments need to be arrays");
@@ -201,6 +241,10 @@ var KnitPattern = function() {
         }
         this.leftmost += offset;
         this.rightmost += offset;
+
+        this.drops.forEach(dr => {
+            dr.left += offset;
+        });
 
         this.transfers.forEach(tf => {
             tf.srcNeedles.forEach(n => {
@@ -279,6 +323,7 @@ var KnitPattern = function() {
         var maxIdLen = 0;
         var maxCourseLen = 0;
         var courseCntr = {};
+        var dropCntr = 0;
         var transferCntr = 0;
 
         for(var key in this.maps) {
@@ -288,6 +333,9 @@ var KnitPattern = function() {
         }
 
         var carrierCounter = 0;
+
+        let coul = String(maxCourseLen).length;
+        let coml = String(this.commands.length).length;
 
         this.commands.forEach(function(command) {
 
@@ -315,15 +363,18 @@ var KnitPattern = function() {
                     let course = m.courses[courseNr];
                     //course.leftPos;
 
-                    let coml = String(this.commands.length).length;
                     let il = String(carrierCounter).length;
-
-                    let coul = String(maxCourseLen).length;
                     let cl = String(courseNr + 1).length;
                     
                     console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - arg.length) + arg + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
 
                     courseCntr[arg]++;
+                    break;
+                case 'd': //drop
+                    let dr = this.drops[dropCntr];
+                    console.log('D: ' + ' '.repeat(coml + maxIdLen + coul + dr.left + 6) + dr.ops);
+
+                    dropCntr++;
                     break;
                 case 'x': //needle transfer
                     let str = (arg === 'b' ? "b -> f: " : (arg === 'f' ? "f -> b: " : "<invalid> "));
@@ -337,13 +388,12 @@ var KnitPattern = function() {
                     console.log('X: ' + str);
 
                     transferCntr++;
-
                     break;
                 case 'y': //loop split
                     //TODO
                     break;
                 case 'r': //rack
-                    //TODO
+                    console.log('R: ' + arg);
                     break;
                 case 's': //set stitch setting
                     //TODO
@@ -372,6 +422,7 @@ var KnitPattern = function() {
         const LEFT = knitwrap.LEFT;
         const RIGHT = knitwrap.RIGHT;
 
+        let dropCntr = 0;
         let transferCntr = 0;
 
         //let wales = this.rightmost - this.leftmost + 1;
@@ -519,6 +570,9 @@ var KnitPattern = function() {
                                     ci.wasKnit = true;
                                     ci.wasTuck = true;
                                     break;
+                                default:
+                                    console.warn("WARNING: unknown needle operation '" + course.ops[i] + "'");
+                                    break;
                             }
 
                             n += dir;
@@ -550,6 +604,35 @@ var KnitPattern = function() {
                     }
 
                     break;
+                case 'd': //drop
+                    let dr = this.drops[dropCntr];
+                    
+                    let n = dr.left;
+                    for(let i = 0; i < dr.ops.length; i++, n++) {
+
+                        switch (dr.ops[i]) {
+                            case '.':
+                                //nop --> do nothing
+                                break;
+                            case 'd':
+                                kw.drop('f', n);
+                                break;
+                            case 'D':
+                                kw.drop('b', n);
+                                break;
+                            case 'a':
+                                //TODO: not sure if order does matter when dropping?
+                                kw.drop('f', n);
+                                kw.drop('b', n);
+                                break;
+                            default:
+                                console.warn("WARNING: invalid drop operation '" + dr.ops[i] + "'");
+                                break;
+                        }
+                    }
+
+                    dropCntr++;
+                    break;
                 case 'x': //needle transfer
                     let tf = this.transfers[transferCntr];
                     for(let i = 0; i < tf.srcNeedles.length; i++) {
@@ -561,7 +644,7 @@ var KnitPattern = function() {
                     //TODO
                     break;
                 case 'r': //rack
-                    //TODO
+                    kw.rack(parseFloat(arg));
                     break;
                 case 's': //set stitch setting
                     //TODO
@@ -570,7 +653,7 @@ var KnitPattern = function() {
                     kw.comment(arg);
                     break;
                 default:
-                    console.error("ERROR: unrecognized command '" + c + "'" );
+                    console.error("ERROR: unrecognized command '" + cmd + "'" );
             }
         }, this);
 

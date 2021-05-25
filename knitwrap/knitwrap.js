@@ -171,7 +171,6 @@ var KnitOutWrapper = function() {
      * @param {Number} n1 needle number of new position
      */
     this.xfer = function(b0, n0, n1) {
-        //TODO: check if this is even valid with current racking
         this.k.xfer(b0 + n0, getOpposite(b0) + n1);
     }
     
