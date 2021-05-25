@@ -292,11 +292,11 @@ var KnitPattern = function() {
     /**
      * 
      * @param {String} outFileName 
-     * @param {Object} carrierIds 
+     * @param {Object} carrierMapping
      * @param {String} desc 
      * @param {Object} machine 
      */
-    this.generate = function(outFileName, carrierIds, desc = "", position = "Keep", machine = undefined) {
+    this.generate = function(outFileName, carrierMapping, desc = "", position = "Keep", machine = undefined) {
 
         const knitwrap = require('./knitwrap.js');
         let kw = new knitwrap.KnitOutWrapper();
@@ -312,12 +312,15 @@ var KnitPattern = function() {
 
         let cInfo = {};
         for(var key in this.maps) {
+            let cm = carrierMapping[key];
+            if(!cm)
+                throw new Error("mapping for carrier with name \'" + key + "' not found");
             cInfo[key] = {
                 courseCntr: 0,
                 wasInUse: false,
                 wasKnit: false,
                 wasTuck: false,
-                carrier: kw.makeCarrier(carrierIds[key], key)
+                carrier: kw.machine.carriers[cm.toString()]
             };
         }
         let dropBringIn = null;
@@ -349,6 +352,7 @@ var KnitPattern = function() {
                     let courseId = ci.courseCntr;
 
                     let c = ci.carrier;
+
                     if(!c.isIn) {
                         kw.bringIn(c, this.bringInArea.left, this.bringInArea.right);
                         numActiveCarriers++;

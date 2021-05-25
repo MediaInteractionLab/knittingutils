@@ -63,7 +63,7 @@ function generateKnit(){
     let yarnMadeira0 =   kp.makeYarn("Madeira0");
     let yarnMadeira1 =   kp.makeYarn("Madeira1");
 
-    let carrierIds = {
+    let carrierMapping = {
         "Cotton0":  3,
         "Cotton1":  4,
         "PE":       6,
@@ -216,7 +216,7 @@ function generateKnit(){
 
     knitPattern.printSequence();
 
-    knitPattern.generate(outFileName, carrierIds, "capacitive spacer button");
+    knitPattern.generate(outFileName, carrierMapping, "capacitive spacer button");
 }
 
 generateKnit();

@@ -24,7 +24,7 @@ function generateKnit(){
     let yarnCotton0 =    kp.makeYarn("Cotton0");
     let yarnCotton1 =    kp.makeYarn("Cotton1");
 
-    let carrierIds = {
+    let carrierMapping = {
         "Cotton0":  3,
         "Cotton1":  4
     };
@@ -44,7 +44,7 @@ function generateKnit(){
 
     knitPattern.printSequence();
 
-    knitPattern.generate(outFileName, carrierIds, "interlock fabric");
+    knitPattern.generate(outFileName, carrierMapping, "interlock fabric");
 }
 
 generateKnit();

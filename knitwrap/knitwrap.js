@@ -47,14 +47,33 @@ var KnitOutWrapper = function() {
 
     this.bringInInfo = undefined;
 
-    this.initKnitout = function(machineDesc, position) {
+    this.makeCarrier = function(name, stitchNumber = undefined){
+
+        if(stitchNumber == undefined)
+            stitchNumber = parseInt(name) + 10;
+    
+        let c = {
+            name:   name,
+            pos:    Infinity,
+            stitchNumber: stitchNumber,
+            courseCntr: 0,
+            isIn:   false
+        };
+    
+        return c;
+    }
+
+    this.initKnitout = function(machineDesc, position = "Keep") {
 
         if(machineDesc == undefined)
             machineDesc = defaultShima();
-    
+
         let cn = new Array(machineDesc.numCarriers);
-        for(let i = 0; i < machineDesc.numCarriers; i++)
+        let c = {};
+        for(let i = 0; i < machineDesc.numCarriers; i++) {
             cn[i] = (i + 1).toString();
+            c[cn[i]] = this.makeCarrier(cn[i]);
+        }
     
         this.machine = {
             name: machineDesc.name,
@@ -62,16 +81,16 @@ var KnitOutWrapper = function() {
             gauge: machineDesc.gauge,
             presser: machineDesc.presser,
             stitchNumber: machineDesc.defaultStitchNumber,
-            carrierNames: cn,
             racking: 0,
             beds: {
                 f: createBed(machineDesc.width),
                 b: createBed(machineDesc.width)
-            }
+            },
+            carriers: c
         };
 
         const knitout = require('knitout');
-        this.k = new knitout.Writer({ carriers: this.machine.carrierNames });
+        this.k = new knitout.Writer({ carriers: cn });
     
         this.k.addHeader('Machine', this.machine.name);
         this.k.addHeader('Width', this.machine.width.toString());
@@ -81,43 +100,17 @@ var KnitOutWrapper = function() {
         this.k.stitchNumber(this.machine.stitchNumber);
     }
 
-    this.makeCarrier = function(carrierID, carrierName, stitchNumber = undefined){
-
-        let desc = carrierID.toString();
-    
-        let found = this.machine.carrierNames.find(element => element == desc);
-        if(!found)
-            console.warn("WARNING: carrier with name '" + carrierName + "' not found in machine");
-    
-        if(stitchNumber == undefined)
-            stitchNumber = parseInt(carrierID) + 10;
-    
-        let c = {
-            ID:     carrierID,
-            desc:   desc,
-            name:   carrierName,
-            pos:    Infinity,
-            stitchNumber: stitchNumber,
-            courseCntr: 0,
-            isIn:   false
-        };
-    
-        this.comment("carrier #" + c.ID + " ('" + c.desc + "') \"" + c.name + "\" w/ default stitch number " + c.stitchNumber);
-    
-        return c;
-    }
-
     this.inhook = function(c) {
-        this.k.inhook(c.desc);
+        this.k.inhook(c.name);
         c.pos = this.machine.width; //TODO: doublecheck if this is reasonable to set
     }
     
     this.releasehook = function(c) {
-        this.k.releasehook(c.desc);
+        this.k.releasehook(c.name);
     }
     
     this.outhook = function(c) {
-        this.k.outhook(c.desc);
+        this.k.outhook(c.name);
     }
     
     this.xfer = function(nOld, nNew) {
@@ -130,7 +123,7 @@ var KnitOutWrapper = function() {
     }
     
     this.tuck = function(dir, b, n, c) {
-        this.k.tuck(getDirSign(dir), b + n, c.desc);
+        this.k.tuck(getDirSign(dir), b + n, c.name);
     
         //TODO: add racking value if back bed needle
         //TODO: figure out if 0.5 is a reasonable value to add
@@ -138,7 +131,7 @@ var KnitOutWrapper = function() {
     }
     
     this.knit = function(dir, b, n, c) {
-        this.k.knit(getDirSign(dir), b + n, c.desc);
+        this.k.knit(getDirSign(dir), b + n, c.name);
     
         //TODO: add racking value if back bed needle
         //TODO: figure out if 0.5 is a reasonable value to add
@@ -146,7 +139,7 @@ var KnitOutWrapper = function() {
     }
     
     this.miss = function(dir, b, n, c) {
-        this.k.miss(getDirSign(dir), b + n, c.desc);
+        this.k.miss(getDirSign(dir), b + n, c.name);
     
         //TODO: add racking value if back bed needle
         //TODO: figure out if 0.5 is a reasonable value to add
@@ -172,13 +165,13 @@ var KnitOutWrapper = function() {
     this.bringIn = function(c, l, r) {
 
         if(c.isIn) {
-            console.warn("WARNING: carrier " + c.desc + " already brought in -- skipping...");
+            console.warn("WARNING: carrier " + c.name + " already brought in -- skipping...");
             return;
         }
     
         this.comment("bringin carrier with name \"" + c.name + "\"");
     
-        this.comment("knitting bringin-dummy for carrier " + c.desc);
+        this.comment("knitting bringin-dummy for carrier " + c.name);
         this.inhook(c);
     
         let pos = Math.floor( r / 2 ) * 2;    
@@ -209,7 +202,7 @@ var KnitOutWrapper = function() {
         this.bringInInfo = {
             left:   l,
             right:  r,
-            cID:    c.ID
+            cName:  c.name
         };
     
         this.comment("bringin done");
@@ -221,7 +214,7 @@ var KnitOutWrapper = function() {
             return;
         }
     
-        this.comment("dropping bringin of carrier " + this.bringInInfo.cID + " needles " + this.bringInInfo.left + " -> " + this.bringInInfo.right);
+        this.comment("dropping bringin of carrier " + this.bringInInfo.cName + " needles " + this.bringInInfo.left + " -> " + this.bringInInfo.right);
     
         for(let i = this.bringInInfo.left; i <= this.bringInInfo.right; i++)
             this.drop("f" + i);
@@ -231,7 +224,7 @@ var KnitOutWrapper = function() {
     
     this.out = function(c) {
         if(!c.isIn) {
-            console.warn("WARNING: carrier " + c.desc + " was not in use -- skipping...");
+            console.warn("WARNING: carrier " + c.name + " was not in use -- skipping...");
             return;
         }
         this.outhook(c);
