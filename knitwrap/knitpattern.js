@@ -6,7 +6,11 @@ v2
 
 "use strict";
 
-
+/**
+ * 
+ * @param {String} id yarn descriptor
+ * @returns instance of yarn
+ */
 var makeYarn = function(id) {
     return { id:id };
 }
@@ -35,7 +39,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {object} yarn 
+     * @param {Object} yarn 
      */
     this.prepare = function(yarn) {
         if(!(yarn.id in this.maps)) {
@@ -112,7 +116,7 @@ var KnitPattern = function() {
 
         this.prepare(yarn);
 
-        if(yarn != this.prevYarn) {
+        if(yarn !== this.prevYarn) {
             this.newCourse(yarn);
         }
 
@@ -197,7 +201,7 @@ var KnitPattern = function() {
      */
     this.printMap = function(yarn) {
         let m = this.maps[yarn.id];
-        if(m == undefined) {
+        if(m === undefined) {
             console.error("ERROR: no map for yarn " + yarn.id);
         } else {
             printMapInternal(m);
@@ -372,12 +376,12 @@ var KnitPattern = function() {
                         let center = (l + r) / 2;
 
                         dir = (c.pos < center ? RIGHT : LEFT);
-                        let start = (dir == RIGHT ? l : r);
+                        let start = (dir === RIGHT ? l : r);
                         let end = start + course.ops.length * dir;
                         let n = start;
                         let i = 0;
 
-                        while(n != end) {
+                        while(n !== end) {
 
                             switch (course.ops[i]) {
                                 case '.':
@@ -393,7 +397,7 @@ var KnitPattern = function() {
                                     break;
                                 case 'b':
                                     //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir == LEFT) {
+                                    if(dir === LEFT) {
                                         kw.knit(dir, 'b', n, c);
                                         kw.knit(dir, 'f', n, c);
                                     } else {
@@ -404,7 +408,7 @@ var KnitPattern = function() {
                                     break;
                                 case 'B':
                                     //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir == LEFT) {
+                                    if(dir === LEFT) {
                                         kw.tuck(dir, 'b', n, c);
                                         kw.tuck(dir, 'f', n, c);
                                     } else {
@@ -428,7 +432,7 @@ var KnitPattern = function() {
                                     kw.miss(dir, 'b', n, c);
                                     break;
                                 case 'x':
-                                    if(dir == LEFT) {
+                                    if(dir === LEFT) {
                                         kw.tuck(dir, 'b', n, c);
                                         kw.knit(dir, 'f', n, c);
                                     } else {
@@ -439,7 +443,7 @@ var KnitPattern = function() {
                                     ci.wasTuck = true;
                                     break;
                                 case 'X':
-                                    if(dir == LEFT) {
+                                    if(dir === LEFT) {
                                         kw.knit(dir, 'b', n, c);
                                         kw.tuck(dir, 'f', n, c);
                                     } else {
@@ -459,9 +463,9 @@ var KnitPattern = function() {
                     ci.wasInUse = true;
                     ci.courseCntr++;
 
-                    if(ci.courseCntr == m.courses.length) {
+                    if(ci.courseCntr === m.courses.length) {
 
-                        if(numActiveCarriers == 1) {
+                        if(numActiveCarriers === 1) {
                             //TODO: replace this with leftmost and rightmost needles actually holding loops
                             kw.castOff(c, this.leftmost, this.rightmost);
                         }
@@ -472,7 +476,7 @@ var KnitPattern = function() {
                         c.isIn = false;
                     }
 
-                    if(dropBringIn && dir == RIGHT) {
+                    if(dropBringIn && dir === RIGHT) {
                         if(dropBringIn.wasKnit || dropBringIn.wasTuck) {
                             kw.dropBringIn();
                             dropBringIn = null;

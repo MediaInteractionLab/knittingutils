@@ -12,7 +12,7 @@ const RIGHT = 1;
 var KnitOutWrapper = function() {
 
     function getDirSign(dir) {
-        return (dir == LEFT ? '-' : (dir == RIGHT ? '+' : undefined));
+        return (dir === LEFT ? '-' : (dir === RIGHT ? '+' : undefined));
     }
 
     var createBed = function(needles) {
@@ -49,7 +49,7 @@ var KnitOutWrapper = function() {
 
     this.makeCarrier = function(name, stitchNumber = undefined){
 
-        if(stitchNumber == undefined)
+        if(stitchNumber === undefined)
             stitchNumber = parseInt(name) + 10;
     
         let c = {
@@ -65,7 +65,7 @@ var KnitOutWrapper = function() {
 
     this.initKnitout = function(machineDesc, position = "Keep") {
 
-        if(machineDesc == undefined)
+        if(machineDesc === undefined)
             machineDesc = defaultShima();
 
         let cn = new Array(machineDesc.numCarriers);
@@ -80,6 +80,7 @@ var KnitOutWrapper = function() {
             width: machineDesc.width,
             gauge: machineDesc.gauge,
             presser: machineDesc.presser,
+            //hook: undefined,  //TODO: set and unset yarn held by inserting hook(s?)
             stitchNumber: machineDesc.defaultStitchNumber,
             racking: 0,
             beds: {
@@ -103,18 +104,22 @@ var KnitOutWrapper = function() {
     this.inhook = function(c) {
         this.k.inhook(c.name);
         c.pos = this.machine.width; //TODO: doublecheck if this is reasonable to set
+        //this.machine.hook = ...;  //TODO: set yarn held by inserting hook(s?)
+        c.isIn = true;
     }
     
     this.releasehook = function(c) {
         this.k.releasehook(c.name);
+        //this.machine.hook = ...;  //TODO: unset yarn held by inserting hook(s?)
     }
     
     this.outhook = function(c) {
         this.k.outhook(c.name);
+        c.isIn = false;
     }
     
-    this.xfer = function(nOld, nNew) {
-        this.k.xfer(nOld, nNew);
+    this.xfer = function(bOld, nOld, bNew, nNew) {
+        this.k.xfer(bOld + nOld, bNew + nNew);
     }
     
     this.rack = function(offset) {
@@ -122,44 +127,85 @@ var KnitOutWrapper = function() {
         this.machine.racking = offset;
     }
     
-    this.tuck = function(dir, b, n, c) {
-        this.k.tuck(getDirSign(dir), b + n, c.name);
-    
-        //TODO: add racking value if back bed needle
-        //TODO: figure out if 0.5 is a reasonable value to add
-        c.pos = n + dir * 0.5; 
+    this.tuck = function(dir, b, n, cs) {
+        let str = '';
+        if(Array.isArray(cs)) {
+            cs.forEach(c => {
+                str += c.name + ' ';
+            
+                //TODO: add racking value if back bed needle
+                //TODO: figure out if 0.5 is a reasonable value to add
+                c.pos = n + dir * 0.5; 
+            });
+            str = str.trim();
+        } else {
+            str = cs.name;
+
+            //TODO: add racking value if back bed needle
+            //TODO: figure out if 0.5 is a reasonable value to add
+            cs.pos = n + dir * 0.5; 
+        }
+
+        this.k.tuck(getDirSign(dir), b + n, str);
     }
     
-    this.knit = function(dir, b, n, c) {
-        this.k.knit(getDirSign(dir), b + n, c.name);
-    
-        //TODO: add racking value if back bed needle
-        //TODO: figure out if 0.5 is a reasonable value to add
-        c.pos = n + dir * 0.5; 
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @param {String} b bed name ('b' or 'f')
+     * @param {Number} n needle number
+     * @param {String} c carrier name
+     */
+    this.knit = function(dir, b, n, cs) {
+        let str = '';
+        if(Array.isArray(cs)) {
+            cs.forEach(c => {
+                str += c.name + ' ';
+            
+                //TODO: add racking value if back bed needle
+                //TODO: figure out if 0.5 is a reasonable value to add
+                c.pos = n + dir * 0.5; 
+            });
+            str = str.trim();
+        } else {
+            str = cs.name;
+
+            //TODO: add racking value if back bed needle
+            //TODO: figure out if 0.5 is a reasonable value to add
+            cs.pos = n + dir * 0.5; 
+        }
+
+        this.k.knit(getDirSign(dir), b + n, str);
     }
     
-    this.miss = function(dir, b, n, c) {
-        this.k.miss(getDirSign(dir), b + n, c.name);
-    
-        //TODO: add racking value if back bed needle
-        //TODO: figure out if 0.5 is a reasonable value to add
-        c.pos = n + dir * 0.5; 
+    this.miss = function(dir, b, n, cs) {
+        let str = '';
+        if(Array.isArray(cs)) {
+            cs.forEach(c => {
+                str += c.name + ' ';
+            
+                //TODO: add racking value if back bed needle
+                //TODO: figure out if 0.5 is a reasonable value to add
+                c.pos = n + dir * 0.5; 
+            });
+            str = str.trim();
+        } else {
+            str = cs.name;
+
+            //TODO: add racking value if back bed needle
+            //TODO: figure out if 0.5 is a reasonable value to add
+            cs.pos = n + dir * 0.5; 
+        }
+
+        this.k.miss(getDirSign(dir), b + n, str);
     }
     
-    this.drop = function(n) {
-        this.k.drop(n);
+    this.drop = function(b, n) {
+        this.k.drop(b + n);
     }
     
     this.setStitchNumber = function(nr) {
         this.k.stitchNumber(nr);
-    }
-    
-    this.comment = function(text) {
-        this.k.comment(text);
-    }
-    
-    this.write = function(fileName) {
-        this.k.write(fileName);
     }
 
     this.bringIn = function(c, l, r) {
@@ -180,7 +226,7 @@ var KnitOutWrapper = function() {
             pos -= 2;
         }
     
-        if(pos + 2 == l) {
+        if(pos + 2 === l) {
             pos += 3;
         } else {
             pos = l;
@@ -217,7 +263,7 @@ var KnitOutWrapper = function() {
         this.comment("dropping bringin of carrier " + this.bringInInfo.cName + " needles " + this.bringInInfo.left + " -> " + this.bringInInfo.right);
     
         for(let i = this.bringInInfo.left; i <= this.bringInInfo.right; i++)
-            this.drop("f" + i);
+            this.drop("f", i);
     
         this.bringInInfo = undefined;
     }
@@ -228,7 +274,6 @@ var KnitOutWrapper = function() {
             return;
         }
         this.outhook(c);
-        //c.isIn = false;
         c.pos = Infinity;
     }
 
@@ -255,12 +300,12 @@ var KnitOutWrapper = function() {
                     this.knit(dir, bed, i, c);
                     this.miss(dir, bed, (i + 1), c);
                 }
-                this.xfer(bed + i, oppBed + i);
+                this.xfer(bed, i, oppBed, i);
                 this.rack(1);
-                this.xfer(oppBed + i, bed + (i + 1));
+                this.xfer(oppBed, i, bed, (i + 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, r, c);
-            this.drop(bed + r);
+            this.drop(bed, r);
             this.rack(0);
         } else {
             let dir = LEFT;
@@ -274,14 +319,22 @@ var KnitOutWrapper = function() {
                     this.knit(dir, bed, i, c);
                     this.miss(dir, bed, (i - 1), c);
                 }
-                this.xfer(bed + i, oppBed + i);
+                this.xfer(bed, i, oppBed, i);
                 this.rack(-1);
-                this.xfer(oppBed + i, bed + (i - 1));
+                this.xfer(oppBed, i, bed, (i - 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, l, c);
-            this.drop(bed + l);
+            this.drop(bed, l);
             this.rack(0);
         }
+    }
+
+    this.comment = function(text) {
+        this.k.comment(text);
+    }
+    
+    this.write = function(fileName) {
+        this.k.write(fileName);
     }
 }
 
