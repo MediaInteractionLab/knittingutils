@@ -15,6 +15,13 @@ var makeYarn = function(id) {
     return { id:id };
 }
 
+var createTransfer = function() {
+    return { 
+        srcNeedles: [],
+        dstNeedles: []
+    };
+}
+
 var KnitPattern = function() {
 
     this.prevYarn = null;
@@ -27,10 +34,13 @@ var KnitPattern = function() {
     }
 
     this.maps = {};
+    this.transfers = [];
 
     /**
      * supported operations
      *  n   needle operations (knit, tuck, miss, xfer, etc.)
+     *  x   needle transfer
+     *  y   loop split
      *  r   rack
      *  s   set stitch setting
      *  c   insert comment
@@ -55,12 +65,12 @@ var KnitPattern = function() {
 
             this.maps[yarn.id] = createMap();
         };
-    };
+    }
     
     /**
-     * 
-     * @param {*} yarn 
-     * @param {Number} offset
+     * creates new course, i.e. a 'newline' in the pattern description
+     * @param {*} yarn yarn instance
+     * @param {Number} offset optional course-directional offset relative to to needle #1
      */
     this.newCourse = function(yarn, offset = 0) {
         let createCourse = function(l) {
@@ -72,16 +82,14 @@ var KnitPattern = function() {
 
         this.prepare(yarn);
 
-        if(yarn) {
-            this.commands.push("n|" + yarn.id);
-            this.prevYarn = yarn;
-        }
+        this.commands.push("n|" + yarn.id);
+        this.prevYarn = yarn;
 
         this.maps[yarn.id].courses.push(createCourse(offset + 1));
-    };
+    }
 
     /**
-     * 
+     * insert comment into generated knitout
      * @param {String} msg 
      */
     this.comment = function(msg) {
@@ -89,21 +97,21 @@ var KnitPattern = function() {
     }
 
     /**
-     * 
-     * @param {*} yarn 
-     * @param {String} repeat 
+     * insert a specific pattern repeat into current course of specified yarn
+     * @param {*} yarn yarn instance
+     * @param {String} repeat char-encoded definition of pattern repeat
      *      * needle operations:
-     *      . nop
-     *      k knit front
-     *      K knit back
-     *      b knit front+back
-     *      t tuck front
-     *      T tuck back
-     *      B tuck front + back
-     *      x tuck front + back
-     *      X knit back + tuck front
-     *      - explicit miss front
-     *      _ explicit miss back
+     *      '.' nop
+     *      'k' knit front
+     *      'K' knit back
+     *      'b' knit front+back
+     *      't' tuck front
+     *      'T' tuck back
+     *      'B' tuck front + back
+     *      'x' tuck front + back
+     *      'X' knit back + tuck front
+     *      '-' explicit miss front
+     *      '_' explicit miss back
      * @param {Number} needleCount 
      * @param {Number} repeatOffset 
      * @returns 
@@ -152,7 +160,30 @@ var KnitPattern = function() {
         //TODO: remove hardcoded values here
         this.bringInArea.left = this.rightmost + 2;
         this.bringInArea.right = this.rightmost + 8;
-    };
+    }
+
+    this.transfer = function(b0, n0, n1) {
+        if(Array.isArray(n0) ^ Array.isArray(n1)) {
+            throw new Error("either none or both arguments need to be arrays");
+        }
+
+        let tf = createTransfer();
+        if(Array.isArray(n0)) {
+            if(n0.length !== n1.length) {
+                console.error("ERROR: needle count of 'n0' and 'n1' must match up");
+                return;
+            }
+
+            tf.srcNeedles = n0;
+            tf.dstNeedles = n1;
+        } else {
+            tf.srcNeedles.push(n0);
+            tf.dstNeedles.push(n1);
+        }
+
+        this.commands.push("x|" + b0);
+        this.transfers.push(tf);
+    }
 
     /**
      * 
@@ -170,6 +201,15 @@ var KnitPattern = function() {
         }
         this.leftmost += offset;
         this.rightmost += offset;
+
+        this.transfers.forEach(tf => {
+            tf.srcNeedles.forEach(n => {
+                n += offset;
+            });
+            tf.dstNeedles.forEach(n => {
+                n += offset;
+            });
+        });
 
         //TODO: remove hardcoded values here
         this.bringInArea.left = this.leftmost + 2;
@@ -239,6 +279,7 @@ var KnitPattern = function() {
         var maxIdLen = 0;
         var maxCourseLen = 0;
         var courseCntr = {};
+        var transferCntr = 0;
 
         for(var key in this.maps) {
             courseCntr[key] = 0;
@@ -248,7 +289,7 @@ var KnitPattern = function() {
 
         var carrierCounter = 0;
 
-        this.commands.forEach(function(command, i) {
+        this.commands.forEach(function(command) {
 
             let p0 = 0;
             let p1 = command.indexOf('|', p0);
@@ -261,7 +302,7 @@ var KnitPattern = function() {
             let arg = command.substring(p0, p1);
             
             switch (cmd) {
-                case 'n':
+                case 'n': //needle operations (knit, tuck, miss, etc.)
                     carrierCounter++;
 
                     let m = this.maps[arg];
@@ -269,26 +310,45 @@ var KnitPattern = function() {
                         console.error("ERROR: map '" + arg + "' not found in pattern" );
                         return;
                     }
-                    let courseId = courseCntr[arg];
+                    let courseNr = courseCntr[arg];
                     //m.leftPos;
-                    let course = m.courses[courseId];
+                    let course = m.courses[courseNr];
                     //course.leftPos;
 
                     let coml = String(this.commands.length).length;
                     let il = String(carrierCounter).length;
 
                     let coul = String(maxCourseLen).length;
-                    let cl = String(courseId + 1).length;
+                    let cl = String(courseNr + 1).length;
                     
-                    console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - arg.length) + arg + ' ' + ' '.repeat(coul - cl) + '(' + (courseId + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
+                    console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - arg.length) + arg + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
 
                     courseCntr[arg]++;
                     break;
-                case 'r':
+                case 'x': //needle transfer
+                    let str = (arg === 'b' ? "b -> f: " : (arg === 'f' ? "f -> b: " : "<invalid> "));
+
+                    let tf = this.transfers[transferCntr];
+                    let subs = [];
+                    for(let i = 0; i < tf.srcNeedles.length; i++) {
+                        subs.push(tf.srcNeedles[i] + " > " + tf.dstNeedles[i]);
+                    }
+                    str += subs.join(', ');
+                    console.log('X: ' + str);
+
+                    transferCntr++;
+
                     break;
-                case 's':
+                case 'y': //loop split
+                    //TODO
                     break;
-                case 'c':
+                case 'r': //rack
+                    //TODO
+                    break;
+                case 's': //set stitch setting
+                    //TODO
+                    break;
+                case 'c': //insert comment
                     console.log('C: "' + arg + '"');
                     break;
                 default:
@@ -311,6 +371,8 @@ var KnitPattern = function() {
 
         const LEFT = knitwrap.LEFT;
         const RIGHT = knitwrap.RIGHT;
+
+        let transferCntr = 0;
 
         //let wales = this.rightmost - this.leftmost + 1;
         kw.initKnitout(machine, position);
@@ -348,7 +410,7 @@ var KnitPattern = function() {
             let arg = command.substring(p0, p1);
 
             switch (cmd) {
-                case 'n':
+                case 'n': //needle operations (knit, tuck, miss, etc.)
                     let m = this.maps[arg];
                     if(!m) {
                         console.error("ERROR: map '" + arg + "' not found in pattern" );
@@ -357,7 +419,7 @@ var KnitPattern = function() {
 
                     let ci = cInfo[arg];
 
-                    let courseId = ci.courseCntr;
+                    let courseNr = ci.courseCntr;
 
                     let c = ci.carrier;
 
@@ -370,7 +432,7 @@ var KnitPattern = function() {
                         c.isIn = true;
                     }
 
-                    let course = m.courses[courseId];
+                    let course = m.courses[courseNr];
                     let dir = 0;
 
                     if(course.ops.length) {
@@ -488,13 +550,23 @@ var KnitPattern = function() {
                     }
 
                     break;
-                case 'r':
+                case 'x': //needle transfer
+                    let tf = this.transfers[transferCntr];
+                    for(let i = 0; i < tf.srcNeedles.length; i++) {
+                        kw.xfer(arg, tf.srcNeedles[i], tf.dstNeedles[i]);
+                    }
+                    transferCntr++;
+                    break;
+                case 'y': //loop split
                     //TODO
                     break;
-                case 's':
+                case 'r': //rack
                     //TODO
                     break;
-                case 'c':
+                case 's': //set stitch setting
+                    //TODO
+                    break;
+                case 'c': //insert comment
                     kw.comment(arg);
                     break;
                 default:

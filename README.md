@@ -13,8 +13,9 @@
 
 ## Todo
 
-- racking
-- loop transfer
-- dropping loops
-- setting custom stitch number
+- KnitWrap: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
+- KnitPattern: come up with good idea for how to specify plating
+- KnitPattern: racking
+- KnitPattern: dropping loops
+- KnitPattern: setting custom stitch number
 - KnitPattern: come up with a good way to specify plated areas

@@ -22,8 +22,17 @@ var KnitOutWrapper = function() {
 
     /**
      * 
+     * @param {String} b bed specifier (use 'b' or 'f')
+     * @returns String specifier of opposite bed ('f' or 'b'); returns undefined when b has invalid value
+     */
+    function getOpposite(b) {
+        return (b === 'b' ? 'f' : (b === 'f' ? 'b' : undefined));
+    }
+
+    /**
+     * 
      * @param {Number} needles needle count of bed
-     * @returns 
+     * @returns newly created bed object
      */
     var createBed = function(needles) {
         let bed = {};
@@ -157,13 +166,13 @@ var KnitOutWrapper = function() {
     
     /**
      * 
-     * @param {String} bOld bed identifier of old position ('b' or 'f')
-     * @param {Number} nOld needle number of old position
-     * @param {String} bNew beed identifier of new position ('b' or 'f')
-     * @param {Number} nNew needle number of new position
+     * @param {String} b0 bed identifier of old position ('b' or 'f')
+     * @param {Number} n0 needle number of old position
+     * @param {Number} n1 needle number of new position
      */
-    this.xfer = function(bOld, nOld, bNew, nNew) {
-        this.k.xfer(bOld + nOld, bNew + nNew);
+    this.xfer = function(b0, n0, n1) {
+        //TODO: check if this is even valid with current racking
+        this.k.xfer(b0 + n0, getOpposite(b0) + n1);
     }
     
     /**
@@ -269,6 +278,39 @@ var KnitOutWrapper = function() {
      */
     this.drop = function(b, n) {
         this.k.drop(b + n);
+    }
+
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @param {*} b0 
+     * @param {*} n0 
+     * @param {*} n1 
+     * @param {*} cs 
+     */
+    this.split = function(dir, b0, n0, n1, cs) {
+
+        let b1 = getOpposite(b0);
+
+        let str = '';
+        if(Array.isArray(cs)) {
+            cs.forEach(c => {
+                str += c.name + ' ';
+            
+                //TODO: add racking value if back bed needle
+                //TODO: figure out if 0.5 is a reasonable value to add
+                c.pos = n0 + dir * 0.5; 
+            });
+            str = str.trim();
+        } else {
+            str = cs.name;
+
+            //TODO: add racking value if back bed needle
+            //TODO: figure out if 0.5 is a reasonable value to add
+            cs.pos = n0 + dir * 0.5; 
+        }
+
+        this.k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
     }
     
     /**
@@ -395,9 +437,9 @@ var KnitOutWrapper = function() {
                     this.knit(dir, bed, i, c);
                     this.miss(dir, bed, (i + 1), c);
                 }
-                this.xfer(bed, i, oppBed, i);
+                this.xfer(bed, i, i);
                 this.rack(1);
-                this.xfer(oppBed, i, bed, (i + 1));
+                this.xfer(oppBed, i, (i + 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, r, c);
             this.drop(bed, r);
@@ -414,9 +456,9 @@ var KnitOutWrapper = function() {
                     this.knit(dir, bed, i, c);
                     this.miss(dir, bed, (i - 1), c);
                 }
-                this.xfer(bed, i, oppBed, i);
+                this.xfer(bed, i, i);
                 this.rack(-1);
-                this.xfer(oppBed, i, bed, (i - 1));
+                this.xfer(oppBed, i, (i - 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, l, c);
             this.drop(bed, l);
