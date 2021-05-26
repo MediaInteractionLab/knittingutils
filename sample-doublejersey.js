@@ -21,16 +21,14 @@ function generateKnit(){
     let kp = require("./knitwrap/knitpattern.js");
     let knitPattern = new kp.KnitPattern();
 
-    let yarnCotton =    kp.makeYarn("Polyester");
+    let yarnCotton =    kp.makeYarn("Cotton");
 
-    let courses = 150;
-    let wales = 50;
-
-    knitPattern.comment("basic twill");
-    for(let j = 0; j < courses; j++) {
+    knitPattern.comment("basic double jersey");
+    knitPattern.rack(0.25);
+    for(let j = 0; j < 40; j++) {
 
         knitPattern.newCourse(yarnCotton);
-        knitPattern.insert(yarnCotton, "-k", wales, j % 2);
+        knitPattern.insert(yarnCotton, "b", 50);
     }
 
     knitPattern.printAllMaps();
@@ -39,10 +37,10 @@ function generateKnit(){
     knitPattern.printSequence();
 
     let carrierMapping = {
-        "Polyester":  4
+        "Cotton":  3,
     };
 
-    knitPattern.generate(outFileName, carrierMapping, "twill fabric");
+    knitPattern.generate(outFileName, carrierMapping, "double jersey fabric");
 }
 
 generateKnit();
