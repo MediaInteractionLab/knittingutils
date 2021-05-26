@@ -76,15 +76,11 @@ var KnitOutWrapper = function() {
      * @param {Number} stitchNumber default stitch number when using this carrier
      * @returns 
      */
-    this.makeCarrier = function(name, stitchNumber = undefined){
+    this.makeCarrier = function(name){
 
-        if(stitchNumber === undefined)
-            stitchNumber = parseInt(name) + 10;
-    
         let c = {
             name:   name,
             pos:    Infinity,
-            stitchNumber: stitchNumber,
             courseCntr: 0,
             isIn:   false
         };
@@ -441,6 +437,8 @@ var KnitOutWrapper = function() {
                 this.xfer(oppBed, i, (i + 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, r, c);
+            for(let i = 0; i < 5; i++)
+                this.knit(cntr % 2 ? dir : invDir, bed, r, c);
             this.drop(bed, r);
             this.rack(0);
         } else {
@@ -460,6 +458,8 @@ var KnitOutWrapper = function() {
                 this.xfer(oppBed, i, (i - 1));
             }
             this.knit(cntr % 2 ? invDir : dir, bed, l, c);
+            for(let i = 0; i < 5; i++)
+                this.knit(cntr % 2 ? dir : invDir, bed, l, c);
             this.drop(bed, l);
             this.rack(0);
         }

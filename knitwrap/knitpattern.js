@@ -441,7 +441,8 @@ var KnitPattern = function() {
                 wasInUse: false,
                 wasKnit: false,
                 wasTuck: false,
-                carrier: kw.machine.carriers[cm.toString()]
+                carrier: kw.machine.carriers[cm.toString()],
+                stitchNumber: cm + 10
             };
         }
         let dropBringIn = null;
@@ -497,6 +498,8 @@ var KnitPattern = function() {
                         let end = start + course.ops.length * dir;
                         let n = start;
                         let i = (dir === RIGHT ? 0 : course.ops.length - 1);
+
+                        kw.setStitchNumber(ci.stitchNumber);
 
                         while(n !== end) {
 
