@@ -15,5 +15,6 @@
 # Shima DAT files
 *.dat
 
-# node modules
+# node
+package-lock.json
 node_modules/*
