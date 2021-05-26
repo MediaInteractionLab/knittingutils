@@ -496,7 +496,7 @@ var KnitPattern = function() {
                         let start = (dir === RIGHT ? l : r);
                         let end = start + course.ops.length * dir;
                         let n = start;
-                        let i = 0;
+                        let i = (dir === RIGHT ? 0 : course.ops.length - 1);
 
                         while(n !== end) {
 
@@ -576,7 +576,7 @@ var KnitPattern = function() {
                             }
 
                             n += dir;
-                            i++;
+                            i += dir;
                         }
                     }
                     
