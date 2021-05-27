@@ -623,9 +623,9 @@ var KnitPattern = function() {
                             //TODO: replace this with leftmost and rightmost needles actually holding loops
                             kw.castOff(c, this.leftmost, this.rightmost);
                         } else {
-                            kw.out(c);
+                            kw.outhook(c);
                         }
-                        
+
                         numActiveCarriers--;
 
                         c.isIn = false;
@@ -696,7 +696,7 @@ var KnitPattern = function() {
             let ci = cInfo[key];
             if(ci.isCarrierIn) {
                 console.log("still remaining carrier: " + ci.carrier.desc);
-                kw.out(ci.carrier);
+                kw.outhook(ci.carrier);
                 cInfo[key].isCarrierIn = false;
             }
         }

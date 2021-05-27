@@ -162,6 +162,11 @@ var KnitOutWrapper = function() {
      */
     this.outhook = function(c) {
 
+        if(!c.isIn) {
+            console.warn("WARNING: carrier " + c.name + " was not in use -- skipping...");
+            return;
+        }
+
         //apparently, racking needs to be 0 (quater-pitch also allowed?)
         // for outhook, otherwise KnitPaint generates an error -- set to 
         // 0, temporarily and restore afert outhook
@@ -172,6 +177,7 @@ var KnitOutWrapper = function() {
 
         this.k.outhook(c.name);
         c.isIn = false;
+        c.pos = Infinity;
 
         if(prevRacking !== undefined) {
             this.rack(prevRacking);
@@ -417,20 +423,6 @@ var KnitOutWrapper = function() {
     
         this.bringInInfo = undefined;
     }
-    
-    /**
-     * 
-     * @param {*} c carrier object
-     * @returns 
-     */
-    this.out = function(c) {
-        if(!c.isIn) {
-            console.warn("WARNING: carrier " + c.name + " was not in use -- skipping...");
-            return;
-        }
-        this.outhook(c);
-        c.pos = Infinity;
-    }
 
     /**
      * 
@@ -486,7 +478,7 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
 
-            this.out(c);
+            this.outhook(c);
             this.drop(bed, l - 1);
         } else {
             dir = LEFT;
@@ -513,7 +505,7 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
 
-            this.out(c);
+            this.outhook(c);
             this.drop(bed, r + 1);
         }
         this.rack(0);
