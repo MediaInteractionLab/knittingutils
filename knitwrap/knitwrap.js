@@ -460,6 +460,9 @@ var KnitOutWrapper = function() {
             for(let i = l; i <= r; i++) {
                 this.knit(dir, 'f', i, c);
             }
+
+            dir *= -1;
+            invDir *= -1;
     
             this.knit(dir, bed, r, c);
             for(let i = r; i >= l; i--, cntr++) {
@@ -487,6 +490,9 @@ var KnitOutWrapper = function() {
             for(let i = r; i >= l; i--) {
                 this.knit(dir, 'f', i, c);
             }
+
+            dir *= -1;
+            invDir *= -1;
 
             this.knit(dir, bed, l, c);
             for(let i = l; i <= r; i++, cntr++) {
