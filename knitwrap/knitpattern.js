@@ -700,6 +700,8 @@ var KnitPattern = function() {
             }
         }
 
+        kw.dropOff(this.leftmost, this.rightmost);
+
         kw.write(outFileName);
 
         console.log("generated file '" + outFileName + "'");

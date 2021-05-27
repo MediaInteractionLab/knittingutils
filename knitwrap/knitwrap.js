@@ -9,7 +9,7 @@ v2
 const LEFT = -1;
 const RIGHT = 1;
 
-const DROPOFF_MOVEMENTS = 3;
+const DROPOFF_MOVEMENTS = 6;
 
 var KnitOutWrapper = function() {
 
@@ -161,8 +161,21 @@ var KnitOutWrapper = function() {
      * @param {*} c carrier object
      */
     this.outhook = function(c) {
+
+        //apparently, racking needs to be 0 (quater-pitch also allowed?)
+        // for outhook, otherwise KnitPaint generates an error -- set to 
+        // 0, temporarily and restore afert outhook
+        let prevRacking = undefined;
+        if(this.machine.racking != 0) {
+            this.rack(0);
+        }
+
         this.k.outhook(c.name);
         c.isIn = false;
+
+        if(prevRacking !== undefined) {
+            this.rack(prevRacking);
+        }
     }
     
     /**
@@ -443,30 +456,20 @@ var KnitOutWrapper = function() {
         let dir = undefined;
         let invDir = undefined;
 
+        this.rack(0);
+        for(let i = l; i <= r; i++) {
+            this.xfer('b', i, i);
+        }
+
         if(c.pos < center) {
             dir = RIGHT;
             invDir = LEFT;
-    
-            for(let i = l; i <= r; i++, cntr++) {
-                this.rack(0);
-                if(cntr % 2)
-                    this.knit(invDir, bed, i, c);
-                else {
-                    this.knit(dir, bed, i, c);
-                    this.miss(dir, bed, (i + 1), c);
-                }
-                this.xfer(bed, i, i);
-                this.rack(1);
-                this.xfer(oppBed, i, (i + 1));
+
+            for(let i = l; i <= r; i++) {
+                this.knit(dir, 'f', i, c);
             }
-            this.knit(cntr % 2 ? invDir : dir, bed, r + 1, c);
-            for(let i = 0; i < 5; i++)
-                this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
-            this.drop(bed, r + 1);
-        } else {
-            dir = LEFT;
-            invDir = RIGHT;
     
+            this.knit(dir, bed, r, c);
             for(let i = r; i >= l; i--, cntr++) {
                 this.rack(0);
                 if(cntr % 2)
@@ -483,12 +486,43 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
             this.drop(bed, l - 1);
-        }
+        } else {
+            dir = LEFT;
+            invDir = RIGHT;
+    
+            for(let i = r; i >= l; i--) {
+                this.knit(dir, 'f', i, c);
+            }
 
+            this.knit(dir, bed, l, c);
+            for(let i = l; i <= r; i++, cntr++) {
+                this.rack(0);
+                if(cntr % 2)
+                    this.knit(invDir, bed, i, c);
+                else {
+                    this.knit(dir, bed, i, c);
+                    this.miss(dir, bed, (i + 1), c);
+                }
+                this.xfer(bed, i, i);
+                this.rack(1);
+                this.xfer(oppBed, i, (i + 1));
+            }
+            this.knit(cntr % 2 ? invDir : dir, bed, r + 1, c);
+            for(let i = 0; i < 5; i++)
+                this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
+            this.drop(bed, r + 1);
+        }
+        this.rack(0);
+    }
+
+    this.dropOff = function(l, r, movements = DROPOFF_MOVEMENTS) {
         this.rack(0.25);
-        this.comment(DROPOFF_MOVEMENTS + " empty carrier movements");
-        let d = invDir;
-        for(let j = 0; j < DROPOFF_MOVEMENTS; j++) {
+        this.comment(movements + " empty carrier movements");
+
+        //TODO: find out what best option would actually be, figure out current carriage position?
+        let d = LEFT; 
+
+        for(let j = 0; j < movements; j++) {
             if(d == RIGHT) {
                 for(let i = l; i <= r; i++) {
                     this.knit(d, 'f', i);
