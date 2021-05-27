@@ -47,6 +47,8 @@ var KnitOutWrapper = function() {
             bed.needleStatus[i] = undefined;
             bed.sliderStatus[i] = undefined;
         }
+        bed.leftmost = Infinity;
+        bed.rightmost = -Infinity;
 
         return bed;
     }
@@ -66,6 +68,8 @@ var KnitOutWrapper = function() {
         };
     }
 
+    this.leftmost = Infinity;
+    this.rightmost = -Infinity;
 
     this.machine = undefined;
     this.k = undefined;
@@ -229,6 +233,9 @@ var KnitOutWrapper = function() {
             cs.pos = n + dir * 0.5; 
         }
 
+        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
+        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
+
         this.k.tuck(getDirSign(dir), b + n, str);
     }
     
@@ -266,6 +273,9 @@ var KnitOutWrapper = function() {
             }
         }
 
+        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
+        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
+ 
         if(arg)
             this.k.knit(getDirSign(dir), b + n, arg);
         else
@@ -298,6 +308,9 @@ var KnitOutWrapper = function() {
             cs.pos = n + dir * 0.5; 
         }
 
+        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
+        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
+ 
         this.k.miss(getDirSign(dir), b + n, str);
     }
     
@@ -339,6 +352,9 @@ var KnitOutWrapper = function() {
             //TODO: figure out if 0.5 is a reasonable value to add
             cs.pos = n0 + dir * 0.5; 
         }
+
+        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n0, n1);
+        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n0, n1);
 
         this.k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
     }
@@ -481,6 +497,8 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
 
+            //NOTE: have to outhook *before* dropping, otherwise dropped textile hangs just on
+            // the yarn and pulls on the yarn carrier, causing the bindoff to unravel/break.
             this.outhook(c);
             this.drop(bed, l - 1);
         } else {
@@ -511,15 +529,29 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
 
+            //NOTE: have to outhook *before* dropping, otherwise dropped textile hangs just on
+            // the yarn and pulls on the yarn carrier, causing the bindoff to unravel/break.
             this.outhook(c);
             this.drop(bed, r + 1);
         }
         this.rack(0);
     }
 
+    /**
+     * Knits a number of rows without yarn feeder so fabric comes out of machine easier. Should 
+     * obviously be called when castoff was done.
+     * @param {*} l 
+     * @param {*} r 
+     * @param {*} movements 
+     */
     this.dropOff = function(l, r, movements = DROPOFF_MOVEMENTS) {
         this.rack(0.25);
         this.comment(movements + " empty carrier movements");
+
+        if(l === undefined)
+            l = Math.min(this.machine.beds.f.leftmost, this.machine.beds.b.leftmost);
+        if(r === undefined)
+            r = Math.max(this.machine.beds.f.rightmost, this.machine.beds.b.rightmost);
 
         //TODO: find out what best option would actually be, figure out current carriage position?
         let d = LEFT; 

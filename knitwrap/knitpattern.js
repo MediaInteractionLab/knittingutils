@@ -701,7 +701,7 @@ var KnitPattern = function() {
             }
         }
 
-        kw.dropOff(this.leftmost, this.rightmost);
+        kw.dropOff();
 
         kw.write(outFileName);
 
