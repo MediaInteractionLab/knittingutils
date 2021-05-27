@@ -75,7 +75,9 @@ var KnitPattern = function() {
                     leftPos: Infinity,
                     rightPos: -Infinity,
                     courses: [],
-                    carrierID: undefined
+                    carrierID: undefined,
+                    doBringin: false,
+                    isHookReleased: undefined
                 };
             };
 
@@ -412,7 +414,7 @@ var KnitPattern = function() {
         }, this);
     }
 
-    this.mapYarn = function(yarn, carrierID) {
+    this.mapYarn = function(yarn, carrierID, doBringin = true) {
         let m = this.maps[yarn.id];
         if(!m) {
             console.error("ERROR: yarn '" + yarn.id + "' is unknown at this point");
@@ -420,6 +422,7 @@ var KnitPattern = function() {
         }
 
         m.carrierID = carrierID;
+        m.doBringin = doBringin;
     }
 
     /**
@@ -443,8 +446,6 @@ var KnitPattern = function() {
         kw.initKnitout(machine, position);
         kw.comment("description: " + desc);
 
-        kw.rack(0);
-
         let cInfo = {};
         for(var key in this.maps) {
             //let cm = carrierMapping[key];
@@ -458,13 +459,18 @@ var KnitPattern = function() {
                 wasInUse: false,
                 wasKnit: false,
                 wasTuck: false,
+                doBringin: map.doBringin,
                 carrier: kw.machine.carriers[map.carrierID.toString()],
                 stitchNumber: map.carrierID + 10
             };
+
+            kw.comment("yarn '" + key + "' is mapped to carrier " + cInfo[key].carrier.name);
         }
         let dropBringIn = null;
 
         let numActiveCarriers = 0;
+
+        kw.rack(0);
 
         this.commands.forEach(function(command) {
 
@@ -493,10 +499,13 @@ var KnitPattern = function() {
                     let c = ci.carrier;
 
                     if(!c.isIn) {
-                        kw.bringIn(c, this.bringInArea.left, this.bringInArea.right);
+                        if(ci.doBringin) {
+                            kw.bringIn(c, this.bringInArea.left, this.bringInArea.right);
+                            dropBringIn = ci;
+                        } else {
+                            kw.bringIn(c);
+                        }
                         numActiveCarriers++;
-
-                        dropBringIn = ci;
 
                         c.isIn = true;
                     }
@@ -597,6 +606,11 @@ var KnitPattern = function() {
 
                             n += dir;
                             i += dir;
+                        }
+
+                        if(c.isHookReleased === false) {
+                            kw.comment("bringin was skipped for carrier " + c.name + ", releasing hook after first course");
+                            kw.releasehook(c);
                         }
                     }
                     

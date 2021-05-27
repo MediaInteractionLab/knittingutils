@@ -142,6 +142,7 @@ var KnitOutWrapper = function() {
         c.pos = this.machine.width; //TODO: doublecheck if this is reasonable to set
         //this.machine.hook = ...;  //TODO: set yarn held by inserting hook(s?)
         c.isIn = true;
+        c.isHookReleased = false;
     }
     
     /**
@@ -150,6 +151,8 @@ var KnitOutWrapper = function() {
      */
     this.releasehook = function(c) {
         this.k.releasehook(c.name);
+        c.isHookReleased = true;
+
         //this.machine.hook = ...;  //TODO: unset yarn held by inserting hook(s?)
     }
     
@@ -348,36 +351,38 @@ var KnitOutWrapper = function() {
         this.comment("knitting bringin-dummy for carrier " + c.name);
         this.inhook(c);
     
-        let pos = Math.floor( r / 2 ) * 2;    
-        while(pos >= l) {
-            this.tuck(LEFT, 'f', pos, c);
-            pos -= 2;
-        }
-    
-        if(pos + 2 === l) {
-            pos += 3;
-        } else {
-            pos = l;
-        }
-    
-        while(pos <= r) {
-            this.tuck(RIGHT, 'f', pos, c);
-            pos += 2;
-        }
-    
-        pos = r;
-        while(pos >= l) {
-            this.knit(LEFT, 'f', pos, c);
-            pos--;
-        }
+        if(l !== undefined && r !== undefined) {
+            let pos = Math.floor( r / 2 ) * 2;    
+            while(pos >= l) {
+                this.tuck(LEFT, 'f', pos, c);
+                pos -= 2;
+            }
         
-        this.releasehook(c);
+            if(pos + 2 === l) {
+                pos += 3;
+            } else {
+                pos = l;
+            }
         
-        this.bringInInfo = {
-            left:   l,
-            right:  r,
-            cName:  c.name
-        };
+            while(pos <= r) {
+                this.tuck(RIGHT, 'f', pos, c);
+                pos += 2;
+            }
+        
+            pos = r;
+            while(pos >= l) {
+                this.knit(LEFT, 'f', pos, c);
+                pos--;
+            }
+            
+            this.releasehook(c);
+            
+            this.bringInInfo = {
+                left:   l,
+                right:  r,
+                cName:  c.name
+            };
+        }
     
         this.comment("bringin done");
     }

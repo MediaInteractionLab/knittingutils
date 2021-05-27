@@ -25,8 +25,8 @@ function generateKnit(){
     let yarnPoly1 =    kp.makeYarn("Poly1");
     let yarnNylon =    kp.makeYarn("Nylon");
 
-    let wales = 10;
-    let courses = 10;
+    let wales = 40;
+    let courses = 40;
 
     knitPattern.comment("spacer button");
     for(let j = 0; j < courses; j++) {
@@ -44,7 +44,6 @@ function generateKnit(){
         knitPattern.insert(yarnNylon, "Tt", wales);
     }
 
-    //BUG??
     knitPattern.shift(1);
 
     knitPattern.printAllMaps();
@@ -54,7 +53,7 @@ function generateKnit(){
 
     knitPattern.mapYarn(yarnPoly0, 3);
     knitPattern.mapYarn(yarnPoly1, 4);
-    knitPattern.mapYarn(yarnNylon, 8);
+    knitPattern.mapYarn(yarnNylon, 8, false);
 
     knitPattern.generate(outFileName, "spacer button");
 }
