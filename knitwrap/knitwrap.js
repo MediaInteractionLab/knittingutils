@@ -485,6 +485,8 @@ var KnitOutWrapper = function() {
             this.knit(cntr % 2 ? invDir : dir, bed, l - 1, c);
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
+
+            this.out(c);
             this.drop(bed, l - 1);
         } else {
             dir = LEFT;
@@ -510,6 +512,8 @@ var KnitOutWrapper = function() {
             this.knit(cntr % 2 ? invDir : dir, bed, r + 1, c);
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
+
+            this.out(c);
             this.drop(bed, r + 1);
         }
         this.rack(0);

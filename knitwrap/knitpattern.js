@@ -622,9 +622,10 @@ var KnitPattern = function() {
                         if(numActiveCarriers === 1) {
                             //TODO: replace this with leftmost and rightmost needles actually holding loops
                             kw.castOff(c, this.leftmost, this.rightmost);
+                        } else {
+                            kw.out(c);
                         }
-
-                        kw.out(c);
+                        
                         numActiveCarriers--;
 
                         c.isIn = false;
