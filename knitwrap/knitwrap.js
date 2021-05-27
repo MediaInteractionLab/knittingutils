@@ -410,6 +410,8 @@ var KnitOutWrapper = function() {
      * @param {Number} stitchNumber stitch nuber to set (leave undefined keeps current stitch number)
      */
     this.castOff = function(c, l, r, frontBed = true, stitchNumber = undefined) {
+
+        this.comment("cast off");
     
         if(stitchNumber)
             this.setStitchNumber(stitchNumber);
@@ -424,7 +426,7 @@ var KnitOutWrapper = function() {
             let dir = RIGHT;
             let invDir = LEFT;
     
-            for(let i = l; i < r; i++) {
+            for(let i = l; i <= r; i++, cntr++) {
                 this.rack(0);
                 if(cntr % 2)
                     this.knit(invDir, bed, i, c);
@@ -436,16 +438,16 @@ var KnitOutWrapper = function() {
                 this.rack(1);
                 this.xfer(oppBed, i, (i + 1));
             }
-            this.knit(cntr % 2 ? invDir : dir, bed, r, c);
+            this.knit(cntr % 2 ? invDir : dir, bed, r + 1, c);
             for(let i = 0; i < 5; i++)
-                this.knit(cntr % 2 ? dir : invDir, bed, r, c);
-            this.drop(bed, r);
+                this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
+            this.drop(bed, r + 1);
             this.rack(0);
         } else {
             let dir = LEFT;
             let invDir = RIGHT;
     
-            for(let i = r; i > l; i--, cntr++) {
+            for(let i = r; i >= l; i--, cntr++) {
                 this.rack(0);
                 if(cntr % 2)
                     this.knit(invDir, bed, i, c);
@@ -457,10 +459,10 @@ var KnitOutWrapper = function() {
                 this.rack(-1);
                 this.xfer(oppBed, i, (i - 1));
             }
-            this.knit(cntr % 2 ? invDir : dir, bed, l, c);
+            this.knit(cntr % 2 ? invDir : dir, bed, l - 1, c);
             for(let i = 0; i < 5; i++)
-                this.knit(cntr % 2 ? dir : invDir, bed, l, c);
-            this.drop(bed, l);
+                this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
+            this.drop(bed, l - 1);
             this.rack(0);
         }
     }
