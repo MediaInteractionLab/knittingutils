@@ -9,6 +9,8 @@ v2
 const LEFT = -1;
 const RIGHT = 1;
 
+const DROPOFF_MOVEMENTS = 3;
+
 var KnitOutWrapper = function() {
 
     /**
@@ -216,25 +218,36 @@ var KnitOutWrapper = function() {
      * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
      */
     this.knit = function(dir, b, n, cs) {
-        let str = '';
+        let arg = '';
         if(Array.isArray(cs)) {
-            cs.forEach(c => {
-                str += c.name + ' ';
-            
+            if(cs.length) {
+                cs.forEach(c => {
+                    arg += c.name + ' ';
+                
+                    //TODO: add racking value if back bed needle
+                    //TODO: figure out if 0.5 is a reasonable value to add
+                    c.pos = n + dir * 0.5; 
+                });
+                arg = arg.trim();
+            } else {
+                arg = undefined;
+            }
+        } else {
+            if(cs) {
+                arg = cs.name;
+
                 //TODO: add racking value if back bed needle
                 //TODO: figure out if 0.5 is a reasonable value to add
-                c.pos = n + dir * 0.5; 
-            });
-            str = str.trim();
-        } else {
-            str = cs.name;
-
-            //TODO: add racking value if back bed needle
-            //TODO: figure out if 0.5 is a reasonable value to add
-            cs.pos = n + dir * 0.5; 
+                cs.pos = n + dir * 0.5; 
+            } else {
+                arg = undefined;
+            }
         }
 
-        this.k.knit(getDirSign(dir), b + n, str);
+        if(arg)
+            this.k.knit(getDirSign(dir), b + n, arg);
+        else
+            this.k.knit(getDirSign(dir), b + n);
     }
     
     /**
@@ -421,10 +434,13 @@ var KnitOutWrapper = function() {
     
         let cntr = 0;
         let center = (r + l) / 2;
-    
+
+        let dir = undefined;
+        let invDir = undefined;
+
         if(c.pos < center) {
-            let dir = RIGHT;
-            let invDir = LEFT;
+            dir = RIGHT;
+            invDir = LEFT;
     
             for(let i = l; i <= r; i++, cntr++) {
                 this.rack(0);
@@ -442,10 +458,9 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, r + 1, c);
             this.drop(bed, r + 1);
-            this.rack(0);
         } else {
-            let dir = LEFT;
-            let invDir = RIGHT;
+            dir = LEFT;
+            invDir = RIGHT;
     
             for(let i = r; i >= l; i--, cntr++) {
                 this.rack(0);
@@ -463,8 +478,26 @@ var KnitOutWrapper = function() {
             for(let i = 0; i < 5; i++)
                 this.knit(cntr % 2 ? dir : invDir, bed, l - 1, c);
             this.drop(bed, l - 1);
-            this.rack(0);
         }
+
+        this.rack(0.25);
+        this.comment(DROPOFF_MOVEMENTS + " empty carrier movements");
+        let d = invDir;
+        for(let j = 0; j < DROPOFF_MOVEMENTS; j++) {
+            if(d == RIGHT) {
+                for(let i = l; i <= r; i++) {
+                    this.knit(d, 'f', i);
+                    this.knit(d, 'b', i);
+                }
+            } else {
+                for(let i = r; i >= l; i--) {
+                    this.knit(d, 'b', i);
+                    this.knit(d, 'f', i);
+                }
+            }
+            d *= -1;
+        }
+        this.rack(0);
     }
 
     /**
