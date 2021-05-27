@@ -21,7 +21,7 @@ function generateKnit(){
     let kp = require("./knitwrap/knitpattern.js");
     let knitPattern = new kp.KnitPattern();
 
-    let yarnCotton =    kp.makeYarn("Polyester");
+    let yarnPoly =    kp.makeYarn("Polyester");
 
     let courses = 150;
     let wales = 50;
@@ -29,8 +29,8 @@ function generateKnit(){
     knitPattern.comment("basic twill");
     for(let j = 0; j < courses; j++) {
 
-        knitPattern.newCourse(yarnCotton);
-        knitPattern.insert(yarnCotton, "-k", wales, j % 2);
+        knitPattern.newCourse(yarnPoly);
+        knitPattern.insert(yarnPoly, "-k", wales, j % 2);
     }
 
     knitPattern.printAllMaps();
@@ -38,11 +38,9 @@ function generateKnit(){
 
     knitPattern.printSequence();
 
-    let carrierMapping = {
-        "Polyester":  4
-    };
+    knitPattern.mapYarn(yarnPoly, 4);
 
-    knitPattern.generate(outFileName, carrierMapping, "twill fabric");
+    knitPattern.generate(outFileName, "twill fabric");
 }
 
 generateKnit();

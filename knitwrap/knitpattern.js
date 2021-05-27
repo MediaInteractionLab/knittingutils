@@ -11,8 +11,11 @@ v2
  * @param {String} id yarn descriptor
  * @returns instance of yarn
  */
-var makeYarn = function(id) {
-    return { id:id };
+var makeYarn = function(id, carrier = undefined) {
+    return { 
+        id:id,
+        carrier:carrier
+    };
 }
 
 var createTransfer = function() {
@@ -28,6 +31,9 @@ var createDrops = function() {
         ops: ''
     }
 }
+
+const BRINGIN_DISTANCE = 2;
+const BRINGIN_WALES = 6;
 
 var KnitPattern = function() {
 
@@ -68,7 +74,8 @@ var KnitPattern = function() {
                     name: yarn.id,
                     leftPos: Infinity,
                     rightPos: -Infinity,
-                    courses: []
+                    courses: [],
+                    carrierID: undefined
                 };
             };
 
@@ -166,9 +173,8 @@ var KnitPattern = function() {
         this.leftmost = Math.min(this.leftmost, m.leftPos);
         this.rightmost = Math.max(this.rightmost, m.rightPos);
 
-        //TODO: remove hardcoded values here
-        this.bringInArea.left = this.rightmost + 2;
-        this.bringInArea.right = this.rightmost + 8;
+        this.bringInArea.left = this.rightmost + BRINGIN_DISTANCE;
+        this.bringInArea.right = this.rightmost + BRINGIN_DISTANCE + BRINGIN_WALES;
     }
 
     /**
@@ -255,9 +261,8 @@ var KnitPattern = function() {
             });
         });
 
-        //TODO: remove hardcoded values here
-        this.bringInArea.left = this.leftmost + 2;
-        this.bringInArea.right = this.leftmost + 8;
+        this.bringInArea.left = this.rightmost + BRINGIN_DISTANCE;
+        this.bringInArea.right = this.rightmost + BRINGIN_DISTANCE + BRINGIN_WALES;
     }
 
     /**
@@ -407,14 +412,23 @@ var KnitPattern = function() {
         }, this);
     }
 
+    this.mapYarn = function(yarn, carrierID) {
+        let m = this.maps[yarn.id];
+        if(!m) {
+            console.error("ERROR: yarn '" + yarn.id + "' is unknown at this point");
+            return;
+        }
+
+        m.carrierID = carrierID;
+    }
+
     /**
      * 
      * @param {String} outFileName 
-     * @param {*} carrierMapping
      * @param {String} desc 
      * @param {*} machine 
      */
-    this.generate = function(outFileName, carrierMapping, desc = "", position = "Keep", machine = undefined) {
+    this.generate = function(outFileName, desc = "", position = "Keep", machine = undefined) {
 
         const knitwrap = require('./knitwrap.js');
         let kw = new knitwrap.KnitOutWrapper();
@@ -433,16 +447,19 @@ var KnitPattern = function() {
 
         let cInfo = {};
         for(var key in this.maps) {
-            let cm = carrierMapping[key];
-            if(!cm)
-                throw new Error("mapping for carrier with name \'" + key + "' not found");
+            //let cm = carrierMapping[key];
+            //if(!cm)
+            //    throw new Error("mapping for carrier with name \'" + key + "' not found");
+            let map = this.maps[key];
+            if(!map.carrierID)
+                throw new Error("mapping for carrier \'" + key + "' not defined");
             cInfo[key] = {
                 courseCntr: 0,
                 wasInUse: false,
                 wasKnit: false,
                 wasTuck: false,
-                carrier: kw.machine.carriers[cm.toString()],
-                stitchNumber: cm + 10
+                carrier: kw.machine.carriers[map.carrierID.toString()],
+                stitchNumber: map.carrierID + 10
             };
         }
         let dropBringIn = null;

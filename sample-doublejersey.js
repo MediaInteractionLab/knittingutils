@@ -36,9 +36,7 @@ function generateKnit(){
 
     knitPattern.printSequence();
 
-    let carrierMapping = {
-        "Cotton":  3,
-    };
+    knitPattern.mapYarn(yarnCotton, 3);
 
     knitPattern.generate(outFileName, carrierMapping, "double jersey fabric");
 }

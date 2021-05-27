@@ -39,12 +39,10 @@ function generateKnit(){
 
     knitPattern.printSequence();
 
-    let carrierMapping = {
-        "Cotton0":  3,
-        "Cotton1":  4
-    };
+    knitPattern.mapYarn(yarnCotton0, 3);
+    knitPattern.mapYarn(yarnCotton1, 4);
 
-    knitPattern.generate(outFileName, carrierMapping, "interlock fabric");
+    knitPattern.generate(outFileName, "interlock fabric");
 }
 
 generateKnit();
