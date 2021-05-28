@@ -130,9 +130,10 @@ var KnitPattern = function() {
      *      'X' knit back + tuck front
      *      '-' explicit miss front
      *      '_' explicit miss back
-     * @param {Number} needleCount 
-     * @param {Number} repeatOffset 
-     * @returns 
+     * @param {Number} needleCount number of needle indices to be used
+     * @param {Number} repeatOffset optional offset for indexing repeat, for realizing patterns that are offset with 
+     * each new course, e.g. by passing a counter. Specifying 0 will start filling with first repeat operation for 
+     * first needle, specifying 2 will start with 3rd, and so on.
      */
     this.insert = function(yarn, repeat, needleCount, repeatOffset = 0) {
         if(!yarn.id) {
@@ -181,7 +182,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {Number} racking absolute racking value
+     * @param {Number} racking machine racking value (absolute)
      */
     this.rack = function(racking) {
         //TODO: figure out what the deal with half-pitch, quater-pitch is
@@ -195,8 +196,10 @@ var KnitPattern = function() {
      *      'd' drop front
      *      'D' drop back
      *      'a' drop all (front + back)
-     * @param {Number} needleCount 
-     * @param {Number} repeatOffset 
+     * @param {Number} needleCount number of needle indices to be used
+     * @param {Number} repeatOffset optional offset for indexing repeat, for realizing patterns that are offset with 
+     * each new course, e.g. by passing a counter. Specifying 0 will start filling with first repeat operation for 
+     * first needle, specifying 2 will start with 3rd, and so on.
      */
     this.drop = function(repeat, needleCount, repeatOffset = 0) {
         this.commands.push("d|" + this.drops.length);
@@ -210,6 +213,12 @@ var KnitPattern = function() {
         this.drops.push(dr);
     }
 
+    /**
+     * 
+     * @param {String} b0 source bed identifier ('b' or 'f')
+     * @param {Number} n0 source needle index
+     * @param {Number} n1 destination needle index
+     */
     this.transfer = function(b0, n0, n1) {
         if(Array.isArray(n0) ^ Array.isArray(n1)) {
             throw new Error("either none or both arguments need to be arrays");
@@ -231,6 +240,18 @@ var KnitPattern = function() {
 
         this.commands.push("x|" + b0);
         this.transfers.push(tf);
+    }
+
+    /**
+     * Overrides the 
+     * @param {Number} index index into machine stitch number table
+     */
+    this.stitchNumberOverride = function(index) {
+        this.commands.push("sn|" + index);
+    }
+
+    this.clearStitchNumberOverride = function(index) {
+        this.commands.push("sn|clear");
     }
 
     /**
@@ -472,6 +493,8 @@ var KnitPattern = function() {
 
         kw.rack(0);
 
+        let stitchNumberOverride = undefined;
+
         this.commands.forEach(function(command) {
 
             let p0 = 0;
@@ -525,7 +548,8 @@ var KnitPattern = function() {
                         let n = start;
                         let i = (dir === RIGHT ? 0 : course.ops.length - 1);
 
-                        kw.setStitchNumber(ci.stitchNumber);
+                        if(stitchNumberOverride === undefined)
+                            kw.setStitchNumber(ci.stitchNumber);
 
                         while(n !== end) {
 
@@ -686,6 +710,14 @@ var KnitPattern = function() {
                     break;
                 case 'c': //insert comment
                     kw.comment(arg);
+                    break;
+                case 'sn': //override stitch number (or clear stitch number override) from here on
+                    if(arg === "clear")
+                        stitchNumberOverride = undefined;
+                    else {
+                        stitchNumberOverride = parseInt(arg);
+                        kw.setStitchNumber(stitchNumberOverride);
+                    }
                     break;
                 default:
                     console.error("ERROR: unrecognized command '" + cmd + "'" );
