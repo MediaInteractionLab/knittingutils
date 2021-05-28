@@ -176,7 +176,9 @@ var KnitOutWrapper = function() {
         // 0, temporarily and restore afert outhook
         let prevRacking = undefined;
         if(this.machine.racking != 0) {
-            this.rack(0);
+            this.k.comment("racking to 0 for outhook");
+            prevRacking = this.machine.racking;
+            this.rack(0);            
         }
 
         this.k.outhook(c.name);
