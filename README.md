@@ -15,6 +15,5 @@
 
 - KnitWrap: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
 - KnitPattern: come up with good idea for how to specify plating
-- KnitPattern: setting custom stitch number at any point
 - KnitWrap: generate cast-on (similar to how we did it in our early samples)
 - KnitPattern: find way to specify 2nd stitch (make extension for knitout and converter?)
