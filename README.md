@@ -5,6 +5,7 @@
 ## dependencies
 
 - knitout [npm package](https://www.npmjs.com/package/knitout)
+- for using the preconfigured "convert to DAT" task, you need to create an environment variable ```KNITOUT_BACKEND_SWG``` pointing to the path containing your ```knitout-to-dat.js``` converter script file.
 
 ## Links
 
