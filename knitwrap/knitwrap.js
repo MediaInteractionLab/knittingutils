@@ -355,8 +355,8 @@ var KnitOutWrapper = function() {
             cs.pos = n0 + dir * 0.5; 
         }
 
-        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n0, n1);
-        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n0, n1);
+        this.machine.beds[b0].leftmost = Math.min(this.machine.beds[b0].leftmost, n0, n1);
+        this.machine.beds[b0].rightmost = Math.max(this.machine.beds[b0].rightmost, n0, n1);
 
         this.k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
     }
@@ -456,7 +456,7 @@ var KnitOutWrapper = function() {
         if(stitchNumber)
             this.setStitchNumber(stitchNumber);
     
-        let pos = Math.floor( r / 2 ) * 2;    
+        let pos = Math.floor(r / 2) * 2;    
         while(pos >= l) {
             this.tuck(LEFT, bed, pos, c);
             pos -= 2;

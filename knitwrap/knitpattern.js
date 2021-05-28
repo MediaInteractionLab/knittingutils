@@ -58,7 +58,6 @@ var KnitPattern = function() {
      *  n   needle operations (knit, tuck, miss, xfer, etc.)
      *  d   drop loops
      *  x   needle transfer
-     *  y   loop split
      *  r   rack
      *  s   set stitch setting
      *  c   insert comment
@@ -133,6 +132,8 @@ var KnitPattern = function() {
      *      'X' knit back + tuck front
      *      '-' explicit miss front
      *      '_' explicit miss back
+     *      'y' split front to back
+     *      'Y' split back to front
      * @param {Number} needleCount number of needle indices to be used
      * @param {Number} repeatOffset optional offset for indexing repeat, for realizing patterns that are offset with 
      * each new course, e.g. by passing a counter. Specifying 0 will start filling with first repeat operation for 
@@ -219,8 +220,8 @@ var KnitPattern = function() {
     /**
      * 
      * @param {String} b0 source bed identifier ('b' or 'f')
-     * @param {Number} n0 source needle index
-     * @param {Number} n1 destination needle index
+     * @param {*} n0 source needle index or array of source needle indices
+     * @param {*} n1 destination needle index or array of destination needle indices
      */
     this.transfer = function(b0, n0, n1) {
         if(Array.isArray(n0) ^ Array.isArray(n1)) {
@@ -234,8 +235,9 @@ var KnitPattern = function() {
                 return;
             }
 
-            tf.srcNeedles = n0;
-            tf.dstNeedles = n1;
+            //clone arrays
+            tf.srcNeedles = n0.map((x) => x);
+            tf.dstNeedles = n1.map((x) => x);
         } else {
             tf.srcNeedles.push(n0);
             tf.dstNeedles.push(n1);
@@ -279,11 +281,11 @@ var KnitPattern = function() {
         });
 
         this.transfers.forEach(tf => {
-            tf.srcNeedles.forEach(n => {
-                n += offset;
+            tf.srcNeedles.forEach((_, i) => {
+                tf.srcNeedles[i] += offset;
             });
-            tf.dstNeedles.forEach(n => {
-                n += offset;
+            tf.dstNeedles.forEach((_, i) => {
+                tf.dstNeedles[i] += offset;
             });
         });
 
@@ -420,9 +422,6 @@ var KnitPattern = function() {
 
                     transferCntr++;
                     break;
-                case 'y': //loop split
-                    //TODO
-                    break;
                 case 'r': //rack
                     console.log('R: ' + arg);
                     break;
@@ -441,7 +440,7 @@ var KnitPattern = function() {
     this.mapYarn = function(yarn, carrierID, doBringin = true) {
         let m = this.maps[yarn.id];
         if(!m) {
-            console.error("ERROR: yarn '" + yarn.id + "' is unknown at this point");
+            console.error("WARNING: yarn '" + yarn.id + "' is unknown at this point (maybe yarn never used?) -- mapping has no effect.");
             return;
         }
 
@@ -612,6 +611,16 @@ var KnitPattern = function() {
                                 case '_':
                                     kw.miss(dir, 'b', n, c);
                                     break;
+                                case 'y':
+                                    //TODO: calculate opposite needle from current racking?
+                                    //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                    kw.split(dir, 'f', n, n, c);
+                                    break;
+                                case 'Y':
+                                    //TODO: calculate opposite needle from current racking?
+                                    //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                    kw.split(dir, 'b', n, n, c);
+                                    break;
                                 case 'x':
                                     if(dir === LEFT) {
                                         kw.tuck(dir, 'b', n, c);
@@ -704,14 +713,12 @@ var KnitPattern = function() {
                     dropCntr++;
                     break;
                 case 'x': //needle transfer
+                    //TODO: correct racking if not integral number and reset after all transferse were done (or just warn?)
                     let tf = this.transfers[transferCntr];
                     for(let i = 0; i < tf.srcNeedles.length; i++) {
                         kw.xfer(arg, tf.srcNeedles[i], tf.dstNeedles[i]);
                     }
                     transferCntr++;
-                    break;
-                case 'y': //loop split
-                    //TODO
                     break;
                 case 'r': //rack
                     kw.rack(parseFloat(arg));
