@@ -372,9 +372,10 @@ var KnitOutWrapper = function() {
      * @param {*} c carrier object
      * @param {Number} l needle number for leftmost bringin loop
      * @param {Number} r needle number for rightmost bringin loop
+     * @param {Number} stitchNumber 
      * @returns 
      */
-    this.bringIn = function(c, l, r) {
+    this.bringIn = function(c, stitchNumber, l, r) {
 
         if(c.isIn) {
             console.warn("WARNING: carrier " + c.name + " already brought in -- skipping...");
@@ -384,6 +385,10 @@ var KnitOutWrapper = function() {
         this.comment("bringin carrier with name \"" + c.name + "\"");
     
         this.comment("knitting bringin-dummy for carrier " + c.name);
+    
+        if(stitchNumber)
+            this.setStitchNumber(stitchNumber);
+
         this.inhook(c);
     
         if(l !== undefined && r !== undefined) {
@@ -440,6 +445,33 @@ var KnitOutWrapper = function() {
         this.bringInInfo = undefined;
     }
 
+    this.castOn = function(c, l, r, stitchNumber = undefined, frontBed = true) {
+
+        this.comment("knitting cast on with carrier " + c.name);
+
+        let bed = (frontBed ? 'f' : 'b');
+    
+        if(stitchNumber)
+            this.setStitchNumber(stitchNumber);
+    
+        let pos = Math.floor( r / 2 ) * 2;    
+        while(pos >= l) {
+            this.tuck(LEFT, bed, pos, c);
+            pos -= 2;
+        }
+    
+        if(pos + 2 === l) {
+            pos += 3;
+        } else {
+            pos = l;
+        }
+    
+        while(pos <= r) {
+            this.tuck(RIGHT, bed, pos, c);
+            pos += 2;
+        }
+    }
+
     /**
      * 
      * @param {*} c carrier object
@@ -448,7 +480,7 @@ var KnitOutWrapper = function() {
      * @param {Boolean} frontBed specify if front bed is used
      * @param {Number} stitchNumber stitch nuber to set (leave undefined keeps current stitch number)
      */
-    this.castOff = function(c, l, r, frontBed = true, stitchNumber = undefined) {
+    this.castOff = function(c, l, r, stitchNumber = undefined, frontBed = true) {
 
         this.comment("cast off");
     

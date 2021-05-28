@@ -35,6 +35,9 @@ var createDrops = function() {
 const BRINGIN_DISTANCE = 2;
 const BRINGIN_WALES = 6;
 
+const STITCHNUMBER_CASTON  = 2;
+const STITCHNUMBER_CASTOFF = 3;
+
 var KnitPattern = function() {
 
     this.prevYarn = null;
@@ -516,24 +519,32 @@ var KnitPattern = function() {
                     }
 
                     let ci = cInfo[arg];
-
-                    let courseNr = ci.courseCntr;
-
                     let c = ci.carrier;
+                    let course = m.courses[ci.courseCntr];
 
                     if(!c.isIn) {
                         if(ci.doBringin) {
-                            kw.bringIn(c, this.bringInArea.left, this.bringInArea.right);
+                            kw.bringIn(c, ci.stitchNumber, this.bringInArea.left, this.bringInArea.right);
                             dropBringIn = ci;
                         } else {
-                            kw.bringIn(c);
+                            kw.bringIn(c, ci.stitchNumber);
                         }
+
+                        if(!numActiveCarriers) {
+                            //TODO: adapt function to being able to handle left-out neeldes or using either bed
+                            kw.castOn(c, course.leftPos, course.leftPos + course.ops.length - 1, STITCHNUMBER_CASTON);
+                            ci.wasTuck = true;
+                            if(dropBringIn) {
+                                kw.dropBringIn();
+                                dropBringIn = null;
+                            }
+                        }
+
                         numActiveCarriers++;
 
                         c.isIn = true;
                     }
 
-                    let course = m.courses[courseNr];
                     let dir = 0;
 
                     if(course.ops.length) {
@@ -645,7 +656,7 @@ var KnitPattern = function() {
 
                         if(numActiveCarriers === 1) {
                             //TODO: replace this with leftmost and rightmost needles actually holding loops
-                            kw.castOff(c, this.leftmost, this.rightmost);
+                            kw.castOff(c, this.leftmost, this.rightmost, STITCHNUMBER_CASTOFF);
                         } else {
                             kw.outhook(c);
                         }
