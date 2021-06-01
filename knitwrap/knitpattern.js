@@ -12,6 +12,11 @@ v2
  * @returns instance of yarn
  */
 var makeYarn = function(id, carrier = undefined) {
+    if(id.indexOf('|') != -1) {
+        console.error("ERROR: yarn id must not contain '|'");
+        return;
+    }
+
     return { 
         id:id,
         carrier:carrier
@@ -54,7 +59,7 @@ var KnitPattern = function() {
     this.transfers = [];
 
     /**
-     * supported operations
+     * operations reference
      *  n   needle operations (knit, tuck, miss, xfer, etc.)
      *  d   drop loops
      *  x   needle transfer
@@ -66,14 +71,15 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {*} yarn 
+     * @param {*} y yarn instance or array
      */
-    this.prepare = function(yarn) {
-        if(!(yarn.id in this.maps)) {
+    this.prepare = function(y) {
+
+        if(!(y.id in this.maps)) {
 
             let createMap = function() {
                 return {
-                    name: yarn.id,
+                    name: y.id,
                     leftPos: Infinity,
                     rightPos: -Infinity,
                     courses: [],
@@ -83,13 +89,33 @@ var KnitPattern = function() {
                 };
             };
 
-            this.maps[yarn.id] = createMap();
+            this.maps[y.id] = createMap();
         };
+    }
+
+    this.makeYarnString = function(yarn) {
+        let ys = [];
+        if(Array.isArray(yarn)) {
+            yarn.forEach( y => { ys.push(y.id); } );
+        } else {
+            ys.push(yarn);
+        }
+
+        ys.sort();
+        return ys.join('|');
+    }
+
+    this.yarnChanged = function(yarn) {
+        return(this.makeYarnString(yarn) === this.prevYarn)
+    }
+
+    this.setYarn = function(yarn) {
+        this.prevYarn = this.makeYarnString();
     }
     
     /**
      * creates new course, i.e. a 'newline' in the pattern description
-     * @param {*} yarn yarn instance
+     * @param {*} yarn yarn instance or array
      * @param {Number} offset optional course-directional offset relative to to needle #1
      */
     this.newCourse = function(yarn, offset = 0) {
@@ -100,10 +126,29 @@ var KnitPattern = function() {
             };
         };
 
+        if(Array.isArray(yarn)) {
+            yarn.forEach( y => 
+                { 
+                    this.prepare(y);
+                }, this);
+
+            let idList = [];
+            yarn.forEach( y => { idList.push(y.id); });
+            this.commands.push("n|" + idList.join('|'));
+
+            this.setYarn(yarn);
+            yarn.forEach( y => 
+                { 
+                    this.maps[y.id].courses.push(createCourse(offset + 1)) 
+                }, this);
+
+            return;
+        }
+
         this.prepare(yarn);
 
         this.commands.push("n|" + yarn.id);
-        this.prevYarn = yarn;
+        this.setYarn(yarn);
 
         this.maps[yarn.id].courses.push(createCourse(offset + 1));
     }
@@ -116,9 +161,40 @@ var KnitPattern = function() {
         this.commands.push("c|" + msg);
     }
 
+    this.insertInternal = function(yarn, repeat, needleCount, repeatOffset) {
+        let m = this.maps[yarn.id];
+        let len = m.courses.length;
+        if(!len) {
+            console.error("ERROR: pattern for yarn " + yarn.id + " must have at least one course");
+            return;
+        }
+    
+        if(!repeat.length) {
+            console.error("ERROR: no pattern repeat specified");
+            return;
+        }
+    
+        let ops = '';
+        for(let i = 0; i < needleCount; i++) {
+            ops += repeat[(i + repeatOffset) % repeat.length];
+        }
+    
+        let course = m.courses[len - 1];
+        course.ops += ops;
+
+        m.leftPos = Math.min(m.leftPos, course.leftPos);
+        m.rightPos = Math.max(m.rightPos, course.leftPos + course.ops.length - 1);
+
+        this.leftmost = Math.min(this.leftmost, m.leftPos);
+        this.rightmost = Math.max(this.rightmost, m.rightPos);
+
+        this.bringInArea.left = this.rightmost + BRINGIN_DISTANCE;
+        this.bringInArea.right = this.rightmost + BRINGIN_DISTANCE + BRINGIN_WALES;
+    }
+
     /**
      * insert a specific pattern repeat into current course of specified yarn
-     * @param {*} yarn yarn instance
+     * @param {*} yarn yarn instance or array
      * @param {String} repeat char-encoded definition of pattern repeat
      *      * needle operations:
      *      '.' nop
@@ -140,6 +216,29 @@ var KnitPattern = function() {
      * first needle, specifying 2 will start with 3rd, and so on.
      */
     this.insert = function(yarn, repeat, needleCount, repeatOffset = 0) {
+
+        if(Array.isArray(yarn)) {
+            yarn.forEach( y => {
+                if(!y.id) {
+                    console.error("ERROR: no valid yarn passed");
+                    return;
+                }
+                this.prepare(y);
+            }, this);
+
+            //TODO: compare arrays by content
+            if(this.yarnChanged(yarn)) {
+                console.log("yarn changed, auto-newcourse");
+                this.newCourse(yarn);
+            }
+
+            yarn.forEach( y => {
+                this.insertInternal(y, repeat, needleCount, repeatOffset);
+            }, this);
+
+            return;
+        }
+
         if(!yarn.id) {
             console.error("ERROR: no valid yarn passed");
             return;
@@ -147,41 +246,11 @@ var KnitPattern = function() {
 
         this.prepare(yarn);
 
-        if(yarn !== this.prevYarn) {
+        if(this.yarnChanged(yarn)) {
             this.newCourse(yarn);
         }
 
-        let m = this.maps[yarn.id];
-        let len = m.courses.length;
-        if(!len) {
-            console.error("ERROR: pattern for yarn " + yarn.id + " must have at least one course");
-            return;
-        }
-    
-        if(!repeat.length) {
-            console.error("ERROR: no pattern repeat specified");
-            return;
-        }
-    
-        // if(!validate(repeat)) {
-        // }
-    
-        let ops = '';
-        for(let i = 0; i < needleCount; i++) {
-            ops += repeat[(i + repeatOffset) % repeat.length];
-        }
-    
-        let course = m.courses[len - 1];
-        course.ops += ops;
-
-        m.leftPos = Math.min(m.leftPos, course.leftPos);
-        m.rightPos = Math.max(m.rightPos, course.leftPos + course.ops.length - 1);
-
-        this.leftmost = Math.min(this.leftmost, m.leftPos);
-        this.rightmost = Math.max(this.rightmost, m.rightPos);
-
-        this.bringInArea.left = this.rightmost + BRINGIN_DISTANCE;
-        this.bringInArea.right = this.rightmost + BRINGIN_DISTANCE + BRINGIN_WALES;
+        this.insertInternal(yarn, repeat, needleCount, repeatOffset);
     }
 
     /**
@@ -386,22 +455,62 @@ var KnitPattern = function() {
                 case 'n': //needle operations (knit, tuck, miss, etc.)
                     carrierCounter++;
 
-                    let m = this.maps[arg];
-                    if(!m) {
-                        console.error("ERROR: map '" + arg + "' not found in pattern" );
+                    let ys = arg.split('|');
+                    if(!ys.length) {
+                        console.error("ERROR: no yarn IDs found in arg");
                         return;
                     }
-                    let courseNr = courseCntr[arg];
-                    //m.leftPos;
-                    let course = m.courses[courseNr];
-                    //course.leftPos;
 
-                    let il = String(carrierCounter).length;
-                    let cl = String(courseNr + 1).length;
-                    
-                    console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - arg.length) + arg + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
+                    if(ys.length == 1) {
+                        let y = ys[0];
+                        let m = this.maps[y];
+                        if(!m) {
+                            console.error("ERROR: map '" + y + "' not found in pattern" );
+                            return;
+                        }
 
-                    courseCntr[arg]++;
+                        let courseNr = courseCntr[y];
+                        let course = m.courses[courseNr];
+
+                        let il = String(carrierCounter).length;
+                        let cl = String(courseNr + 1).length;
+                        
+                        console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
+
+                        courseCntr[y]++;
+                    } else {
+
+                        ys.forEach( function(y, i, arr) {
+                            let m = this.maps[y];
+                            if(!m) {
+                                console.error("ERROR: map '" + y + "' not found in pattern" );
+                                return;
+                            }
+    
+                            let courseNr = courseCntr[y];
+                            let course = m.courses[courseNr];
+
+                            let il = String(carrierCounter).length;
+                            let cl = String(courseNr + 1).length;
+
+                            let str = "";
+
+                            if(i === 0)
+                                str += 'N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ';
+                            else
+                                str += '   ' + ' '.repeat(coml) + '  ';
+                            str +=  ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + ')';
+
+                            if(i == arr.length - 1)
+                                str += ': ' + ' '.repeat(course.leftPos - 1) + course.ops;
+                            else
+                                str += ' ↴';
+
+                            console.log(str);
+
+                            courseCntr[y]++;
+                        }, this);
+                    }
                     break;
                 case 'd': //drop
                     let dr = this.drops[dropCntr];
@@ -511,168 +620,388 @@ var KnitPattern = function() {
 
             switch (cmd) {
                 case 'n': //needle operations (knit, tuck, miss, etc.)
-                    let m = this.maps[arg];
-                    if(!m) {
-                        console.error("ERROR: map '" + arg + "' not found in pattern" );
+                    let ys = arg.split('|');
+                    if(!ys.length) {
+                        console.error("ERROR: no yarn IDs found in arg");
                         return;
-                    }
-
-                    let ci = cInfo[arg];
-                    let c = ci.carrier;
-                    let course = m.courses[ci.courseCntr];
-
-                    if(!c.isIn) {
-                        if(ci.doBringin) {
-                            kw.bringIn(c, ci.stitchNumber, this.bringInArea.left, this.bringInArea.right);
-                            dropBringIn = ci;
-                        } else {
-                            kw.bringIn(c, ci.stitchNumber);
-                        }
-
-                        if(!numActiveCarriers) {
-                            //TODO: adapt function to being able to handle left-out neeldes or using either bed
-                            kw.castOn(c, course.leftPos, course.leftPos + course.ops.length - 1, STITCHNUMBER_CASTON);
-                            ci.wasTuck = true;
-                            if(dropBringIn) {
-                                kw.dropBringIn();
-                                dropBringIn = null;
-                            }
-                        }
-
-                        numActiveCarriers++;
-
-                        c.isIn = true;
                     }
 
                     let dir = 0;
 
-                    if(course.ops.length) {
+                    if(ys.length == 1) {
+                        let y = arg;
 
-                        let l = course.leftPos;
-                        let r = l + course.ops.length - 1;
-                        let center = (l + r) / 2;
+                        let m = this.maps[y];
+                        if(!m) {
+                            console.error("ERROR: map '" + y + "' not found in pattern" );
+                            return;
+                        }
+        
+                        let ci = cInfo[y];
+                        let course = m.courses[ci.courseCntr];
+        
+                        if(!ci.carrier.isIn) {
+                            if(ci.doBringin) {
+                                kw.bringIn(ci.carrier, ci.stitchNumber, this.bringInArea.left, this.bringInArea.right);
+                                dropBringIn = ci;
+                            } else {
+                                kw.bringIn(ci.carrier, ci.stitchNumber);
+                            }
+        
+                            if(!numActiveCarriers) {
+                                //TODO: adapt function to being able to handle left-out neeldes or using either bed
+                                kw.castOn(ci.carrier, course.leftPos, course.leftPos + course.ops.length - 1, STITCHNUMBER_CASTON);
+                                ci.wasTuck = true;
+                                if(dropBringIn) {
+                                    kw.dropBringIn();
+                                    dropBringIn = null;
+                                }
+                            }
+        
+                            numActiveCarriers++;
+        
+                            ci.carrier.isIn = true;
+                        }
+    
+                        if(course.ops.length) {
+    
+                            let l = course.leftPos;
+                            let r = l + course.ops.length - 1;
+                            let center = (l + r) / 2;
+    
+                            dir = (ci.carrier.pos < center ? RIGHT : LEFT);
+                            let start = (dir === RIGHT ? l : r);
+                            let end = start + course.ops.length * dir;
+                            let n = start;
+                            let i = (dir === RIGHT ? 0 : course.ops.length - 1);
+    
+                            if(stitchNumberOverride === undefined)
+                                kw.setStitchNumber(ci.stitchNumber);
+    
+                            let c = ci.carrier;
+                            while(n !== end) {
 
-                        dir = (c.pos < center ? RIGHT : LEFT);
-                        let start = (dir === RIGHT ? l : r);
-                        let end = start + course.ops.length * dir;
-                        let n = start;
-                        let i = (dir === RIGHT ? 0 : course.ops.length - 1);
-
-                        if(stitchNumberOverride === undefined)
-                            kw.setStitchNumber(ci.stitchNumber);
-
-                        while(n !== end) {
-
-                            switch (course.ops[i]) {
-                                case '.':
-                                    //nop --> do nothing
-                                    break;
-                                case 'k':
-                                    kw.knit(dir, 'f', n, c);
-                                    ci.wasKnit = true;
-                                    break;
-                                case 'K':
-                                    kw.knit(dir, 'b', n, c);
-                                    ci.wasKnit = true;
-                                    break;
-                                case 'b':
-                                    //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir === LEFT) {
-                                        kw.knit(dir, 'b', n, c);
+                                switch (course.ops[i]) {
+                                    case '.':
+                                        //nop --> do nothing
+                                        break;
+                                    case 'k':
                                         kw.knit(dir, 'f', n, c);
-                                    } else {
-                                        kw.knit(dir, 'f', n, c);
+                                        ci.wasKnit = true;
+                                        break;
+                                    case 'K':
                                         kw.knit(dir, 'b', n, c);
-                                    }
-                                    ci.wasKnit = true;
-                                    break;
-                                case 'B':
-                                    //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
-                                    if(dir === LEFT) {
-                                        kw.tuck(dir, 'b', n, c);
+                                        ci.wasKnit = true;
+                                        break;
+                                    case 'b':
+                                        //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
+                                        if(dir === LEFT) {
+                                            kw.knit(dir, 'b', n, c);
+                                            kw.knit(dir, 'f', n, c);
+                                        } else {
+                                            kw.knit(dir, 'f', n, c);
+                                            kw.knit(dir, 'b', n, c);
+                                        }
+                                        ci.wasKnit = true;
+                                        break;
+                                    case 'B':
+                                        //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
+                                        if(dir === LEFT) {
+                                            kw.tuck(dir, 'b', n, c);
+                                            kw.tuck(dir, 'f', n, c);
+                                        } else {
+                                            kw.tuck(dir, 'f', n, c);
+                                            kw.tuck(dir, 'b', n, c);
+                                        }
+                                        ci.wasTuck = true;
+                                        break;
+                                    case 't':
                                         kw.tuck(dir, 'f', n, c);
-                                    } else {
-                                        kw.tuck(dir, 'f', n, c);
+                                        ci.wasTuck = true;
+                                        break;
+                                    case 'T':
                                         kw.tuck(dir, 'b', n, c);
+                                        ci.wasTuck = true;
+                                        break;
+                                    case '-':
+                                        kw.miss(dir, 'f', n, c);
+                                        break;
+                                    case '_':
+                                        kw.miss(dir, 'b', n, c);
+                                        break;
+                                    case 'y':
+                                        //TODO: calculate opposite needle from current racking?
+                                        //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                        kw.split(dir, 'f', n, n, c);
+                                        break;
+                                    case 'Y':
+                                        //TODO: calculate opposite needle from current racking?
+                                        //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                        kw.split(dir, 'b', n, n, c);
+                                        break;
+                                    case 'x':
+                                        if(dir === LEFT) {
+                                            kw.tuck(dir, 'b', n, c);
+                                            kw.knit(dir, 'f', n, c);
+                                        } else {
+                                            kw.knit(dir, 'f', n, c);
+                                            kw.tuck(dir, 'b', n, c);
+                                        }
+                                        ci.wasKnit = true;
+                                        ci.wasTuck = true;
+                                        break;
+                                    case 'X':
+                                        if(dir === LEFT) {
+                                            kw.knit(dir, 'b', n, c);
+                                            kw.tuck(dir, 'f', n, c);
+                                        } else {
+                                            kw.tuck(dir, 'f', n, c);
+                                            kw.knit(dir, 'b', n, c);
+                                        }
+                                        ci.wasKnit = true;
+                                        ci.wasTuck = true;
+                                        break;
+                                    default:
+                                        console.warn("WARNING: unknown needle operation '" + course.ops[i] + "'");
+                                        break;
+                                }
+    
+                                n += dir;
+                                i += dir;
+                            }
+    
+                            if(ci.carrier.isHookReleased === false) {
+                                kw.comment("bringin was skipped for carrier " + ci.carrier.name + ", releasing hook after first course");
+                                kw.releasehook(ci.carrier);
+                            }
+                        }
+                        
+                        ci.wasInUse = true;
+                        ci.courseCntr++;
+    
+                        if(ci.courseCntr === m.courses.length) {
+    
+                            if(numActiveCarriers === 1) {
+                                //TODO: replace this with leftmost and rightmost needles actually holding loops
+                                kw.castOff(ci.carrier, this.leftmost, this.rightmost, STITCHNUMBER_CASTOFF);
+                            } else {
+                                kw.outhook(ci.carrier);
+                            }
+    
+                            numActiveCarriers--;
+    
+                            ci.carrier.isIn = false;
+                        }
+                    } else {
+
+                        let mList = [];
+                        let ciList = [];
+                        let courseList = [];
+
+                        ys.forEach( function(y) {
+                            let m = this.maps[y];
+                            if(!m) {
+                                console.error("ERROR: map '" + y + "' not found in pattern" );
+                                return;
+                            }
+            
+                            let ci = cInfo[y];
+                            let course = m.courses[ci.courseCntr];
+
+                            mList.push(m);
+                            ciList.push(ci);
+                            courseList.push(course);
+
+                            if(!ci.carrier.isIn) {
+                                if(ci.doBringin) {
+                                    kw.bringIn(ci.carrier, ci.stitchNumber, this.bringInArea.left, this.bringInArea.right);
+                                    dropBringIn = ci;
+                                } else {
+                                    kw.bringIn(ci.carrier, ci.stitchNumber);
+                                }
+            
+                                if(!numActiveCarriers) {
+                                    //TODO: adapt function to being able to handle left-out neeldes or using either bed
+                                    kw.castOn(ci.carrier, course.leftPos, course.leftPos + course.ops.length - 1, STITCHNUMBER_CASTON);
+                                    ci.wasTuck = true;
+                                    if(dropBringIn) {
+                                        kw.dropBringIn();
+                                        dropBringIn = null;
                                     }
-                                    ci.wasTuck = true;
-                                    break;
-                                case 't':
-                                    kw.tuck(dir, 'f', n, c);
-                                    ci.wasTuck = true;
-                                    break;
-                                case 'T':
-                                    kw.tuck(dir, 'b', n, c);
-                                    ci.wasTuck = true;
-                                    break;
-                                case '-':
-                                    kw.miss(dir, 'f', n, c);
-                                    break;
-                                case '_':
-                                    kw.miss(dir, 'b', n, c);
-                                    break;
-                                case 'y':
-                                    //TODO: calculate opposite needle from current racking?
-                                    //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
-                                    kw.split(dir, 'f', n, n, c);
-                                    break;
-                                case 'Y':
-                                    //TODO: calculate opposite needle from current racking?
-                                    //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
-                                    kw.split(dir, 'b', n, n, c);
-                                    break;
-                                case 'x':
-                                    if(dir === LEFT) {
-                                        kw.tuck(dir, 'b', n, c);
+                                }
+            
+                                numActiveCarriers++;
+            
+                                ci.carrier.isIn = true;
+                            }
+    
+                        }, this);
+
+                        let ops = courseList[0].ops;
+                        let l = courseList[0].leftPos;
+                        //TODO: figure out which one to use here;
+                        // for now, setting stitch number of first passed carrier
+                        let stitchNumber = ciList[0].stitchNumber;
+                        for(let i = 1; i < courseList.length; i++) {
+                            if(ops !== courseList[i].ops) {
+                                console.error("ERROR: ops for plating must not differ");
+                                return;
+                            }
+                            if(l != courseList[i].leftPos) {
+                                console.error("ERROR: courses must be aligned for plating");
+                                return;
+                            }
+                        }
+
+                        if(ops.length) {
+
+                            let r = l + ops.length - 1;
+                            let center = (l + r) / 2;
+    
+                            //TODO: figure out what to do here;
+                            // for now, deciding on position of first passed carrier
+                            dir = (ciList[0].carrier.pos < center ? RIGHT : LEFT);
+                            let start = (dir === RIGHT ? l : r);
+                            let end = start + ops.length * dir;
+                            let n = start;
+                            let i = (dir === RIGHT ? 0 : ops.length - 1);
+    
+                            if(stitchNumberOverride === undefined)
+                                kw.setStitchNumber(stitchNumber);
+    
+                            let c = [];
+                            ciList.forEach( ci => { c.push(ci.carrier); } );
+
+                            let wasKnit = false;
+                            let wasTuck = false;
+
+                            while(n !== end) {
+
+                                switch (ops[i]) {
+                                    case '.':
+                                        //nop --> do nothing
+                                        break;
+                                    case 'k':
                                         kw.knit(dir, 'f', n, c);
-                                    } else {
-                                        kw.knit(dir, 'f', n, c);
+                                        wasKnit = true;
+                                        break;
+                                    case 'K':
+                                        kw.knit(dir, 'b', n, c);
+                                        wasKnit = true;
+                                        break;
+                                    case 'b':
+                                        //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
+                                        if(dir === LEFT) {
+                                            kw.knit(dir, 'b', n, c);
+                                            kw.knit(dir, 'f', n, c);
+                                        } else {
+                                            kw.knit(dir, 'f', n, c);
+                                            kw.knit(dir, 'b', n, c);
+                                        }
+                                        wasKnit = true;
+                                        break;
+                                    case 'B':
+                                        //TODO: not sure about what happens (and what *SHOULD* happen!) when bed is racked
+                                        if(dir === LEFT) {
+                                            kw.tuck(dir, 'b', n, c);
+                                            kw.tuck(dir, 'f', n, c);
+                                        } else {
+                                            kw.tuck(dir, 'f', n, c);
+                                            kw.tuck(dir, 'b', n, c);
+                                        }
+                                        wasTuck = true;
+                                        break;
+                                    case 't':
+                                        kw.tuck(dir, 'f', n, c);
+                                        wasTuck = true;
+                                        break;
+                                    case 'T':
                                         kw.tuck(dir, 'b', n, c);
-                                    }
-                                    ci.wasKnit = true;
-                                    ci.wasTuck = true;
-                                    break;
-                                case 'X':
-                                    if(dir === LEFT) {
-                                        kw.knit(dir, 'b', n, c);
-                                        kw.tuck(dir, 'f', n, c);
-                                    } else {
-                                        kw.tuck(dir, 'f', n, c);
-                                        kw.knit(dir, 'b', n, c);
-                                    }
-                                    ci.wasKnit = true;
-                                    ci.wasTuck = true;
-                                    break;
-                                default:
-                                    console.warn("WARNING: unknown needle operation '" + course.ops[i] + "'");
-                                    break;
+                                        wasTuck = true;
+                                        break;
+                                    case '-':
+                                        kw.miss(dir, 'f', n, c);
+                                        break;
+                                    case '_':
+                                        kw.miss(dir, 'b', n, c);
+                                        break;
+                                    case 'y':
+                                        //TODO: calculate opposite needle from current racking?
+                                        //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                        kw.split(dir, 'f', n, n, c);
+                                        break;
+                                    case 'Y':
+                                        //TODO: calculate opposite needle from current racking?
+                                        //TODO: correct racking if not integral number and reset after all splits were done (or just warn?)
+                                        kw.split(dir, 'b', n, n, c);
+                                        break;
+                                    case 'x':
+                                        if(dir === LEFT) {
+                                            kw.tuck(dir, 'b', n, c);
+                                            kw.knit(dir, 'f', n, c);
+                                        } else {
+                                            kw.knit(dir, 'f', n, c);
+                                            kw.tuck(dir, 'b', n, c);
+                                        }
+                                        wasKnit = true;
+                                        wasTuck = true;
+                                        break;
+                                    case 'X':
+                                        if(dir === LEFT) {
+                                            kw.knit(dir, 'b', n, c);
+                                            kw.tuck(dir, 'f', n, c);
+                                        } else {
+                                            kw.tuck(dir, 'f', n, c);
+                                            kw.knit(dir, 'b', n, c);
+                                        }
+                                        wasKnit = true;
+                                        wasTuck = true;
+                                        break;
+                                    default:
+                                        console.warn("WARNING: unknown needle operation '" + course.ops[i] + "'");
+                                        break;
+                                }
+    
+                                n += dir;
+                                i += dir;
                             }
 
-                            n += dir;
-                            i += dir;
+                            ciList.forEach( ci => 
+                                {
+                                    if(wasKnit)
+                                        ci.wasKnit = true;
+                                    if(wasTuck)
+                                        ci.wasTuck = true;
+                                        
+                                    if(ci.carrier.isHookReleased === false) {
+                                        kw.comment("bringin was skipped for carrier " + ci.carrier.name + ", releasing hook after first course");
+                                        kw.releasehook(ci.carrier);
+                                    }
+                                }, this );
                         }
 
-                        if(c.isHookReleased === false) {
-                            kw.comment("bringin was skipped for carrier " + c.name + ", releasing hook after first course");
-                            kw.releasehook(c);
+                        for(let i = 0; i < ciList.length; i++)
+                        {
+                            let m = mList[i];
+                            let ci = ciList[i];
+
+                            ci.wasInUse = true;
+                            ci.courseCntr++;
+
+                            if(ci.courseCntr === m.courses.length) {
+
+                                if(numActiveCarriers === 1) {
+                                    //TODO: replace this with leftmost and rightmost needles actually holding loops
+                                    kw.castOff(ci.carrier, this.leftmost, this.rightmost, STITCHNUMBER_CASTOFF);
+                                } else {
+                                    kw.outhook(ci.carrier);
+                                }
+        
+                                numActiveCarriers--;
+        
+                                ci.carrier.isIn = false;
+                            }
                         }
-                    }
-                    
-                    ci.wasInUse = true;
-                    ci.courseCntr++;
-
-                    if(ci.courseCntr === m.courses.length) {
-
-                        if(numActiveCarriers === 1) {
-                            //TODO: replace this with leftmost and rightmost needles actually holding loops
-                            kw.castOff(c, this.leftmost, this.rightmost, STITCHNUMBER_CASTOFF);
-                        } else {
-                            kw.outhook(c);
-                        }
-
-                        numActiveCarriers--;
-
-                        c.isIn = false;
                     }
 
                     if(dropBringIn && dir === RIGHT) {
