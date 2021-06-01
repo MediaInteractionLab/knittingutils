@@ -394,7 +394,8 @@ var KnitOutWrapper = function() {
         this.inhook(c);
     
         if(l !== undefined && r !== undefined) {
-            let pos = Math.floor( r / 2 ) * 2;    
+
+            let pos = r;
             while(pos >= l) {
                 this.tuck(LEFT, 'f', pos, c);
                 pos -= 2;
