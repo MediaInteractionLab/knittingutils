@@ -4,8 +4,9 @@
 
 ## dependencies
 
-- knitout [npm package](https://www.npmjs.com/package/knitout)
+- knitout-frontend-js [npm package](https://www.npmjs.com/package/knitout)
 - for using the preconfigured "convert to DAT" task, you need to create an environment variable ```KNITOUT_BACKEND_SWG``` pointing to the path containing your ```knitout-to-dat.js``` converter script file.
+- the script [dat2png.js](./dat2png.js) requires the node-canvas [npm package](https://www.npmjs.com/package/canvas) (tested with 2.8.0).
 
 ## Links
 
