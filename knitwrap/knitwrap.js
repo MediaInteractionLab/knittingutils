@@ -18,7 +18,7 @@ var KnitOutWrapper = function() {
      * @param {Number} dir use LEFT or RIGHT const values
      * @returns String '-' for LEFT and '+' for RIGHT, undefined otherwise
      */
-    function getDirSign(dir) {
+    var getDirSign = function(dir) {
         return (dir === LEFT ? '-' : (dir === RIGHT ? '+' : undefined));
     }
 
@@ -27,7 +27,7 @@ var KnitOutWrapper = function() {
      * @param {String} b bed specifier (use 'b' or 'f')
      * @returns String specifier of opposite bed ('f' or 'b'); returns undefined when b has invalid value
      */
-    function getOpposite(b) {
+    var getOpposite = function(b) {
         return (b === 'b' ? 'f' : (b === 'f' ? 'b' : undefined));
     }
 
@@ -68,13 +68,10 @@ var KnitOutWrapper = function() {
         };
     }
 
-    this.leftmost = Infinity;
-    this.rightmost = -Infinity;
-
     this.machine = undefined;
-    this.k = undefined;
 
-    this.bringInInfo = undefined;
+    let k = undefined;
+    let bringInInfo = undefined;
 
     /**
      * 
@@ -82,7 +79,7 @@ var KnitOutWrapper = function() {
      * @param {Number} stitchNumber default stitch number when using this carrier
      * @returns 
      */
-    this.makeCarrier = function(name){
+    var makeCarrier = function(name){
 
         let c = {
             name:   name,
@@ -108,7 +105,7 @@ var KnitOutWrapper = function() {
         let c = {};
         for(let i = 0; i < machineDesc.numCarriers; i++) {
             cn[i] = (i + 1).toString();
-            c[cn[i]] = this.makeCarrier(cn[i]);
+            c[cn[i]] = makeCarrier(cn[i]);
         }
     
         this.machine = {
@@ -127,14 +124,14 @@ var KnitOutWrapper = function() {
         };
 
         const knitout = require('knitout');
-        this.k = new knitout.Writer({ carriers: cn });
+        k = new knitout.Writer({ carriers: cn });
     
-        this.k.addHeader('Machine', this.machine.name);
-        this.k.addHeader('Width', this.machine.width.toString());
-        this.k.addHeader('Gauge', this.machine.gauge.toString());
-        this.k.addHeader('Position', position);
-        this.k.fabricPresser(this.machine.presser);
-        this.k.stitchNumber(this.machine.stitchNumber);
+        k.addHeader('Machine', this.machine.name);
+        k.addHeader('Width', this.machine.width.toString());
+        k.addHeader('Gauge', this.machine.gauge.toString());
+        k.addHeader('Position', position);
+        k.fabricPresser(this.machine.presser);
+        k.stitchNumber(this.machine.stitchNumber);
     }
 
     /**
@@ -142,7 +139,7 @@ var KnitOutWrapper = function() {
      * @param {*} c carrier object
      */
     this.inhook = function(c) {
-        this.k.inhook(c.name);
+        k.inhook(c.name);
         c.pos = this.machine.width; //TODO: doublecheck if this is reasonable to set
         //this.machine.hook = ...;  //TODO: set yarn held by inserting hook(s?)
         c.isIn = true;
@@ -154,7 +151,7 @@ var KnitOutWrapper = function() {
      * @param {*} c carrier object
      */
     this.releasehook = function(c) {
-        this.k.releasehook(c.name);
+        k.releasehook(c.name);
         c.isHookReleased = true;
 
         //this.machine.hook = ...;  //TODO: unset yarn held by inserting hook(s?)
@@ -176,12 +173,12 @@ var KnitOutWrapper = function() {
         // 0, temporarily and restore afert outhook
         let prevRacking = undefined;
         if(this.machine.racking != 0) {
-            this.k.comment("racking to 0 for outhook");
+            k.comment("racking to 0 for outhook");
             prevRacking = this.machine.racking;
             this.rack(0);            
         }
 
-        this.k.outhook(c.name);
+        k.outhook(c.name);
         c.isIn = false;
         c.pos = Infinity;
 
@@ -197,7 +194,7 @@ var KnitOutWrapper = function() {
      * @param {Number} n1 needle number of new position
      */
     this.xfer = function(b0, n0, n1) {
-        this.k.xfer(b0 + n0, getOpposite(b0) + n1);
+        k.xfer(b0 + n0, getOpposite(b0) + n1);
     }
     
     /**
@@ -205,7 +202,7 @@ var KnitOutWrapper = function() {
      * @param {Number} offset racking offset, specified in needle pitch
      */
     this.rack = function(offset) {
-        this.k.rack(offset);
+        k.rack(offset);
         this.machine.racking = offset;
     }
     
@@ -238,7 +235,7 @@ var KnitOutWrapper = function() {
         this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
         this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
 
-        this.k.tuck(getDirSign(dir), b + n, str);
+        k.tuck(getDirSign(dir), b + n, str);
     }
     
     /**
@@ -279,9 +276,9 @@ var KnitOutWrapper = function() {
         this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
  
         if(arg)
-            this.k.knit(getDirSign(dir), b + n, arg);
+            k.knit(getDirSign(dir), b + n, arg);
         else
-            this.k.knit(getDirSign(dir), b + n);
+            k.knit(getDirSign(dir), b + n);
     }
     
     /**
@@ -313,7 +310,7 @@ var KnitOutWrapper = function() {
         this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
         this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
  
-        this.k.miss(getDirSign(dir), b + n, str);
+        k.miss(getDirSign(dir), b + n, str);
     }
     
     /**
@@ -322,7 +319,7 @@ var KnitOutWrapper = function() {
      * @param {Number} n needle number
      */
     this.drop = function(b, n) {
-        this.k.drop(b + n);
+        k.drop(b + n);
     }
 
     /**
@@ -358,7 +355,7 @@ var KnitOutWrapper = function() {
         this.machine.beds[b0].leftmost = Math.min(this.machine.beds[b0].leftmost, n0, n1);
         this.machine.beds[b0].rightmost = Math.max(this.machine.beds[b0].rightmost, n0, n1);
 
-        this.k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
+        k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
     }
     
     /**
@@ -366,7 +363,7 @@ var KnitOutWrapper = function() {
      * @param {Number} nr stitch number to set (index into machine specific LUT)
      */
     this.setStitchNumber = function(nr) {
-        this.k.stitchNumber(nr);
+        k.stitchNumber(nr);
     }
 
     /**
@@ -420,7 +417,7 @@ var KnitOutWrapper = function() {
             
             this.releasehook(c);
             
-            this.bringInInfo = {
+            bringInInfo = {
                 left:   l,
                 right:  r,
                 cName:  c.name
@@ -436,16 +433,16 @@ var KnitOutWrapper = function() {
      */
     this.dropBringIn = function() {
     
-        if(typeof this.bringInInfo === 'undefined') {
+        if(typeof bringInInfo === 'undefined') {
             return;
         }
     
-        this.comment("dropping bringin of carrier " + this.bringInInfo.cName + " needles " + this.bringInInfo.left + " -> " + this.bringInInfo.right);
+        this.comment("dropping bringin of carrier " + bringInInfo.cName + " needles " + bringInInfo.left + " -> " + bringInInfo.right);
     
-        for(let i = this.bringInInfo.left; i <= this.bringInInfo.right; i++)
+        for(let i = bringInInfo.left; i <= bringInInfo.right; i++)
             this.drop("f", i);
     
-        this.bringInInfo = undefined;
+        bringInInfo = undefined;
     }
 
     this.castOn = function(c, l, r, stitchNumber = undefined, frontBed = true) {
@@ -613,7 +610,7 @@ var KnitOutWrapper = function() {
      * @param {String} text comment to write to file
      */
     this.comment = function(text) {
-        this.k.comment(text);
+        k.comment(text);
     }
     
     /**
@@ -621,7 +618,7 @@ var KnitOutWrapper = function() {
      * @param {String} fileName filename or path to file
      */
     this.write = function(fileName) {
-        this.k.write(fileName);
+        k.write(fileName);
     }
 }
 
