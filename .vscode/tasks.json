@@ -34,7 +34,7 @@
                 "focus": false,
                 "panel": "shared",
                 "showReuseMessage": true,
-                "clear": true
+                "clear": false
             },
             "type": "shell",
             "args": [
@@ -55,7 +55,7 @@
                 "focus": false,
                 "panel": "shared",
                 "showReuseMessage": true,
-                "clear": true
+                "clear": false
             },
             "type": "shell",
             "args": [
@@ -65,6 +65,16 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
+            "problemMatcher": []
+        },
+        {
+            "label": "rebuild all",
+            "dependsOn": [
+                "run",
+                "convert to DAT",
+                "DAT to PNG"
+            ],
+            "dependsOrder": "sequence",
             "problemMatcher": []
         }
     ]
