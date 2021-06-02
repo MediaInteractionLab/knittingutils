@@ -702,6 +702,9 @@ var KnitPattern = function() {
                             numActiveCarriers++;
         
                             ci.carrier.isIn = true;
+
+                            if(stitchNumberOverride !== undefined)
+                                kw.setStitchNumber(stitchNumberOverride);
                         }
     
                         if(course.ops.length) {
@@ -839,6 +842,8 @@ var KnitPattern = function() {
                         let ciList = [];
                         let courseList = [];
 
+                        let broughtIn = false;
+
                         ys.forEach( function(y) {
                             let m = this.maps[y];
                             if(!m) {
@@ -873,9 +878,14 @@ var KnitPattern = function() {
                                 numActiveCarriers++;
             
                                 ci.carrier.isIn = true;
+
+                                broughtIn = true;
                             }
     
                         }, this);
+
+                        if(broughtIn && stitchNumberOverride !== undefined)
+                            kw.setStitchNumber(stitchNumberOverride);
 
                         let ops = courseList[0].ops;
                         let l = courseList[0].leftPos;
