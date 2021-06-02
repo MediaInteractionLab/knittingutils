@@ -515,7 +515,7 @@ var KnitPattern = function() {
                         let il = String(carrierCounter).length;
                         let cl = String(courseNr + 1).length;
                         
-                        console.log('N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
+                        console.log('N:  ' + ' '.repeat(coml - il) + (carrierCounter) + ': ' + ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + '): ' +  ' '.repeat(course.leftPos - 1) + course.ops);
 
                         courseCntr[y]++;
                     } else {
@@ -536,7 +536,7 @@ var KnitPattern = function() {
                             let str = "";
 
                             if(i === 0)
-                                str += 'N: ' + ' '.repeat(coml - il) + (carrierCounter) + ': ';
+                                str += 'N:  ' + ' '.repeat(coml - il) + (carrierCounter) + ': ';
                             else
                                 str += '   ' + ' '.repeat(coml) + '  ';
                             str +=  ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + ')';
@@ -554,7 +554,7 @@ var KnitPattern = function() {
                     break;
                 case 'd': //drop
                     let dr = this.drops[dropCntr];
-                    console.log('D: ' + ' '.repeat(coml + maxIdLen + coul + dr.left + 6) + dr.ops);
+                    console.log('D:  ' + ' '.repeat(coml + maxIdLen + coul + dr.left + 6) + dr.ops);
 
                     dropCntr++;
                     break;
@@ -567,18 +567,21 @@ var KnitPattern = function() {
                         subs.push(tf.srcNeedles[i] + " > " + tf.dstNeedles[i]);
                     }
                     str += subs.join(', ');
-                    console.log('X: ' + str);
+                    console.log('X:  ' + str);
 
                     transferCntr++;
                     break;
                 case 'r': //rack
-                    console.log('R: ' + arg);
+                    console.log('R:  ' + arg);
                     break;
                 case 's': //set stitch setting
                     //TODO
                     break;
                 case 'c': //insert comment
-                    console.log('C: "' + arg + '"');
+                    console.log('C:  "' + arg + '"');
+                    break;
+                case 'sn': //override stitch number (or clear stitch number override) from here on
+                    console.log('SN: ' + arg);
                     break;
                 default:
                     console.error("ERROR: unrecognized command '" + cmd + "'" );
