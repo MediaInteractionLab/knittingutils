@@ -13,8 +13,7 @@ v2
  */
 var makeYarn = function(id, carrier = undefined) {
     if(id.indexOf('|') != -1) {
-        console.error("ERROR: yarn id must not contain '|'");
-        return;
+        throw Error("yarn id must not contain '|'");
     }
 
     return { 
@@ -98,7 +97,7 @@ var KnitPattern = function() {
         if(Array.isArray(yarn)) {
             yarn.forEach( y => { ys.push(y.id); } );
         } else {
-            ys.push(yarn);
+            ys.push(yarn.id);
         }
 
         ys.sort();
@@ -106,11 +105,28 @@ var KnitPattern = function() {
     }
 
     this.yarnChanged = function(yarn) {
-        return(this.makeYarnString(yarn) === this.prevYarn)
+        return(this.makeYarnString(yarn) !== this.prevYarn);
     }
 
     this.setYarn = function(yarn) {
-        this.prevYarn = this.makeYarnString();
+        this.prevYarn = this.makeYarnString(yarn);
+    }
+
+    this.finishUp = function() {
+        if(this.prevYarn) {
+            let ys = this.prevYarn.split('|');
+            for(let i = 0; i < ys.length; i++) {
+                let cs = this.maps[ys[i]].courses;
+                if(cs.length) {
+
+                    //if at least one course was already written, finish up
+                    if(cs[cs.length - 1].ops.length) {
+                        this.prevYarn = null;
+                        return;
+                    }
+                }
+            }
+        }
     }
     
     /**
@@ -165,13 +181,11 @@ var KnitPattern = function() {
         let m = this.maps[yarn.id];
         let len = m.courses.length;
         if(!len) {
-            console.error("ERROR: pattern for yarn " + yarn.id + " must have at least one course");
-            return;
+            throw Error("pattern for yarn " + yarn.id + " must have at least one course");
         }
     
         if(!repeat.length) {
-            console.error("ERROR: no pattern repeat specified");
-            return;
+            throw Error("no pattern repeat specified");
         }
     
         let ops = '';
@@ -217,19 +231,21 @@ var KnitPattern = function() {
      */
     this.insert = function(yarn, repeat, needleCount, repeatOffset = 0) {
 
+        if(!this.prevYarn) {
+            throw Error("previous yarn not set, forgot to call newCourse?");
+        }
+
         if(Array.isArray(yarn)) {
             yarn.forEach( y => {
                 if(!y.id) {
-                    console.error("ERROR: no valid yarn passed");
-                    return;
+                    throw Error("no valid yarn passed");
                 }
                 this.prepare(y);
             }, this);
 
             //TODO: compare arrays by content
             if(this.yarnChanged(yarn)) {
-                console.log("yarn changed, auto-newcourse");
-                this.newCourse(yarn);
+                throw Error("yarn changed, forgot to call newCourse?");
             }
 
             yarn.forEach( y => {
@@ -240,14 +256,13 @@ var KnitPattern = function() {
         }
 
         if(!yarn.id) {
-            console.error("ERROR: no valid yarn passed");
-            return;
+            throw Error("no valid yarn passed");
         }
 
         this.prepare(yarn);
 
         if(this.yarnChanged(yarn)) {
-            this.newCourse(yarn);
+            throw Error("yarn changed, forgot to call newCourse?");
         }
 
         this.insertInternal(yarn, repeat, needleCount, repeatOffset);
@@ -258,6 +273,12 @@ var KnitPattern = function() {
      * @param {Number} racking machine racking value (absolute)
      */
     this.rack = function(racking) {
+        //have to finish up current course, make sure we're not continuing on 
+        // the same course because rack command would come after current 
+        // needle command and racking would not affect needle ops until the next
+        // call of newCourse
+        this.finishUp();
+
         //TODO: figure out what the deal with half-pitch, quater-pitch is
         this.commands.push("r|" + racking);
     }
@@ -275,6 +296,11 @@ var KnitPattern = function() {
      * first needle, specifying 2 will start with 3rd, and so on.
      */
     this.drop = function(repeat, needleCount, repeatOffset = 0) {
+        //have to finish up current course, make sure we're not continuing on 
+        // the same course because drop command would come after current 
+        // needle command and transfer would come after next call of newCourse
+        this.finishUp();
+
         this.commands.push("d|" + this.drops.length);
         let dr = createDrops();
 
@@ -293,15 +319,19 @@ var KnitPattern = function() {
      * @param {*} n1 destination needle index or array of destination needle indices
      */
     this.transfer = function(b0, n0, n1) {
+        //have to finish up current course, make sure we're not continuing on 
+        // the same course because transfers command would come after current 
+        // needle command and transfer would come after next call of newCourse
+        this.finishUp();
+ 
         if(Array.isArray(n0) ^ Array.isArray(n1)) {
-            throw new Error("either none or both arguments need to be arrays");
+            throw Error("either none or both arguments need to be arrays");
         }
 
         let tf = createTransfer();
         if(Array.isArray(n0)) {
             if(n0.length !== n1.length) {
-                console.error("ERROR: needle count of 'n0' and 'n1' must match up");
-                return;
+                throw Error("needle count of 'n0' and 'n1' must match up");
             }
 
             //clone arrays
@@ -321,10 +351,20 @@ var KnitPattern = function() {
      * @param {Number} index index into machine stitch number table
      */
     this.stitchNumberOverride = function(index) {
+        //have to finish up current course, make sure we're not continuing on 
+        // the same course because stitch number command would come after current 
+        // needle command and transfer would come after next call of newCourse
+        this.finishUp();
+
         this.commands.push("sn|" + index);
     }
 
     this.clearStitchNumberOverride = function(index) {
+        //have to finish up current course, make sure we're not continuing on 
+        // the same course because stitch number command would come after current 
+        // needle command and transfer would come after next call of newCourse
+        this.finishUp();
+
         this.commands.push("sn|clear");
     }
 
@@ -549,7 +589,7 @@ var KnitPattern = function() {
     this.mapYarn = function(yarn, carrierID, doBringin = true) {
         let m = this.maps[yarn.id];
         if(!m) {
-            console.error("WARNING: yarn '" + yarn.id + "' is unknown at this point (maybe yarn never used?) -- mapping has no effect.");
+            console.warn("WARNING: yarn '" + yarn.id + "' is unknown at this point (maybe yarn never used?) -- mapping has no effect.");
             return;
         }
 
@@ -585,7 +625,7 @@ var KnitPattern = function() {
             //    throw new Error("mapping for carrier with name \'" + key + "' not found");
             let map = this.maps[key];
             if(!map.carrierID)
-                throw new Error("mapping for carrier \'" + key + "' not defined");
+                throw Error("mapping for carrier \'" + key + "' not defined");
             cInfo[key] = {
                 courseCntr: 0,
                 wasInUse: false,
@@ -622,8 +662,7 @@ var KnitPattern = function() {
                 case 'n': //needle operations (knit, tuck, miss, etc.)
                     let ys = arg.split('|');
                     if(!ys.length) {
-                        console.error("ERROR: no yarn IDs found in arg");
-                        return;
+                        throw Error("no yarn IDs found in arg");
                     }
 
                     let dir = 0;
@@ -633,8 +672,7 @@ var KnitPattern = function() {
 
                         let m = this.maps[y];
                         if(!m) {
-                            console.error("ERROR: map '" + y + "' not found in pattern" );
-                            return;
+                            throw Error("map '" + y + "' not found in pattern" );
                         }
         
                         let ci = cInfo[y];
@@ -801,8 +839,7 @@ var KnitPattern = function() {
                         ys.forEach( function(y) {
                             let m = this.maps[y];
                             if(!m) {
-                                console.error("ERROR: map '" + y + "' not found in pattern" );
-                                return;
+                                throw Error("map '" + y + "' not found in pattern" );
                             }
             
                             let ci = cInfo[y];
@@ -844,12 +881,10 @@ var KnitPattern = function() {
                         let stitchNumber = ciList[0].stitchNumber;
                         for(let i = 1; i < courseList.length; i++) {
                             if(ops !== courseList[i].ops) {
-                                console.error("ERROR: ops for plating must not differ");
-                                return;
+                                throw Error("ops for plating must not differ");
                             }
                             if(l != courseList[i].leftPos) {
-                                console.error("ERROR: courses must be aligned for plating");
-                                return;
+                                throw Error("courses must be aligned for plating");
                             }
                         }
 
@@ -1067,7 +1102,7 @@ var KnitPattern = function() {
                     }
                     break;
                 default:
-                    console.error("ERROR: unrecognized command '" + cmd + "'" );
+                    throw Error("unrecognized command '" + cmd + "'" );
             }
         }, this);
 
