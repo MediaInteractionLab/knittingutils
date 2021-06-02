@@ -16,5 +16,4 @@
 ## Todo
 
 - KnitWrap: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
-- KnitPattern: come up with good idea for how to specify plating
 - KnitPattern: find way to specify 2nd stitch (make extension for knitout and converter?)
