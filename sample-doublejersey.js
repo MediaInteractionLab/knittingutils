@@ -38,7 +38,7 @@ function generateKnit(){
 
     knitPattern.mapYarn(yarnCotton, 3);
 
-    knitPattern.generate(outFileName, carrierMapping, "double jersey fabric");
+    knitPattern.generate(outFileName, "double jersey fabric");
 }
 
 generateKnit();
