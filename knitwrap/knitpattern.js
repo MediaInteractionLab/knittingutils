@@ -66,6 +66,7 @@ var KnitPattern = function() {
      *  r   rack
      *  s   set stitch setting
      *  c   insert comment
+     *  p   pause machine
     */
     let commands = [];
 
@@ -176,6 +177,14 @@ var KnitPattern = function() {
      */
     this.comment = function(msg) {
         commands.push("c|" + msg);
+    }
+
+    /**
+     * 
+     * @param {String} comment optional comment
+     */
+    this.pause = function(comment = undefined) {
+        commands.push("p|" + (comment === undefined ? "" : comment));
     }
 
     let insertInternal = function(yarn, repeat, needleCount, repeatOffset) {
@@ -598,6 +607,12 @@ var KnitPattern = function() {
                 case 'c': //insert comment
                     console.log('C:  "' + arg + '"');
                     break;
+                case 'p': //pause machine
+                    if(arg !== undefined)
+                        console.log('PAUSE with comment "' + arg + '"');
+                    else
+                        console.log('PAUSE');
+                    break;
                 case 'sn': //override stitch number (or clear stitch number override) from here on
                     console.log('SN: ' + arg);
                     break;
@@ -607,7 +622,15 @@ var KnitPattern = function() {
         }, this);
     }
 
-    this.mapYarn = function(yarn, carrierID, doBringin = true) {
+    /**
+     * 
+     * @param {*} yarn instance of yarn object to be mapped to a carrier
+     * @param {Number} carrierID ID of carrier to map to (e.g. 1 to 10 for Shima)
+     * @param {Boolean} doBringin set false to skip knitting bringin-field
+     * @param {Number} speedNumber optional speed number associated with this yarn carrier
+     * @returns 
+     */
+    this.mapYarn = function(yarn, carrierID, doBringin = true, speedNumber = undefined) {
         let m = maps[yarn.id];
         if(!m) {
             console.warn("WARNING: yarn '" + yarn.id + "' is unknown at this point (maybe yarn never used?) -- mapping has no effect.");
@@ -616,6 +639,7 @@ var KnitPattern = function() {
 
         m.carrierID = carrierID;
         m.doBringin = doBringin;
+        m.speedNumber = speedNumber;
     }
 
     /**
@@ -653,7 +677,8 @@ var KnitPattern = function() {
                 wasTuck: false,
                 doBringin: map.doBringin,
                 carrier: kw.machine.carriers[map.carrierID.toString()],
-                stitchNumber: map.carrierID + 10
+                stitchNumber: map.carrierID + 10,
+                speedNumber: map.speedNumber
             };
 
             kw.comment("yarn '" + key + "' is mapped to carrier " + cInfo[key].carrier.name);
@@ -738,6 +763,11 @@ var KnitPattern = function() {
     
                             if(stitchNumberOverride === undefined)
                                 kw.setStitchNumber(ci.stitchNumber);
+
+                            if(ci.speedNumber !== undefined)
+                                kw.setSpeedNumber(ci.speedNumber);
+                            else
+                                kw.setSpeedNumber(0);
     
                             let c = ci.carrier;
                             while(n !== end) {
@@ -1123,6 +1153,10 @@ var KnitPattern = function() {
                 case 'c': //insert comment
                     kw.comment(arg);
                     break;
+                case 'p': //pause machine
+                    console.log("PAUSE ARGUMENT " + arg);
+                    kw.pause(arg === undefined ? "user-defined pause" : arg);
+                    break;
                 case 'sn': //override stitch number (or clear stitch number override) from here on
                     if(arg === "clear")
                         stitchNumberOverride = undefined;
@@ -1134,6 +1168,7 @@ var KnitPattern = function() {
                 default:
                     throw Error("unrecognized command '" + cmd + "'" );
             }
+
         }, this);
 
         for(var key in cInfo) {

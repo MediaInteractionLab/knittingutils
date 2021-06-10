@@ -39,14 +39,14 @@ var KnitOutWrapper = function() {
     var createBed = function(needles) {
         let bed = {};
 
-        bed.needles = ' '.repeat(needles);
-        bed.sliders = ' '.repeat(needles);
-        bed.needleStatus = new Array(needles);
-        bed.sliderStatus = new Array(needles);
-        for(let i = 0; i < needles; i++) {
-            bed.needleStatus[i] = undefined;
-            bed.sliderStatus[i] = undefined;
-        }
+        bed.needles = new Array(needles).fill(0);
+        bed.sliders = new Array(needles).fill(0);
+        // bed.needleStatus = new Array(needles);
+        // bed.sliderStatus = new Array(needles);
+        // for(let i = 0; i < needles; i++) {
+        //     bed.needleStatus[i] = undefined;
+        //     bed.sliderStatus[i] = undefined;
+        // }
         bed.leftmost = Infinity;
         bed.rightmost = -Infinity;
 
@@ -91,6 +91,18 @@ var KnitOutWrapper = function() {
         return c;
     }
 
+    let setLoops = function(b, n, loops) {
+        this.machine.beds[b].needles[n - 1] = loops;
+    }.bind(this);
+
+    let getLoops = function(b, n) {
+        return this.machine.beds[b].needles[n - 1];
+    }.bind(this);
+
+    let addLoops = function(b, n, loops) {
+        setLoops(b, n, getLoops(b, n) + loops);
+    }.bind(this);
+
     /**
      * 
      * @param {*} machineDesc machine description
@@ -115,6 +127,7 @@ var KnitOutWrapper = function() {
             presser: machineDesc.presser,
             //hook: undefined,  //TODO: set and unset yarn held by inserting hook(s?)
             stitchNumber: machineDesc.defaultStitchNumber,
+            speedNumber: 0,
             racking: 0,
             beds: {
                 f: createBed(machineDesc.width),
@@ -132,6 +145,7 @@ var KnitOutWrapper = function() {
         k.addHeader('Position', position);
         k.fabricPresser(this.machine.presser);
         k.stitchNumber(this.machine.stitchNumber);
+        k.speedNumber(this.machine.speedNumber);
     }
 
     /**
@@ -189,53 +203,14 @@ var KnitOutWrapper = function() {
     
     /**
      * 
-     * @param {String} b0 bed identifier of old position ('b' or 'f')
-     * @param {Number} n0 needle number of old position
-     * @param {Number} n1 needle number of new position
-     */
-    this.xfer = function(b0, n0, n1) {
-        k.xfer(b0 + n0, getOpposite(b0) + n1);
-    }
-    
-    /**
-     * 
      * @param {Number} offset racking offset, specified in needle pitch
+     * @param {Boolean} force set to true if you want to skip redundancy-check
      */
-    this.rack = function(offset) {
-        k.rack(offset);
-        this.machine.racking = offset;
-    }
-    
-    /**
-     * 
-     * @param {Number} dir use LEFT or RIGHT const values
-     * @param {String} b bed identifier ('b' or 'f')
-     * @param {Number} n needle number
-     * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
-     */
-    this.tuck = function(dir, b, n, cs) {
-        let str = '';
-        if(Array.isArray(cs)) {
-            cs.forEach(c => {
-                str += c.name + ' ';
-            
-                //TODO: add racking value if back bed needle
-                //TODO: figure out if 0.5 is a reasonable value to add
-                c.pos = n + dir * 0.5; 
-            });
-            str = str.trim();
-        } else {
-            str = cs.name;
-
-            //TODO: add racking value if back bed needle
-            //TODO: figure out if 0.5 is a reasonable value to add
-            cs.pos = n + dir * 0.5; 
+    this.rack = function(offset, force = false) {
+        if(this.machine.racking !== offset || force) {
+            k.rack(offset);
+            this.machine.racking = offset;
         }
-
-        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
-        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
-
-        k.tuck(getDirSign(dir), b + n, str);
     }
     
     /**
@@ -246,10 +221,12 @@ var KnitOutWrapper = function() {
      * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
      */
     this.knit = function(dir, b, n, cs) {
+        let numCarriers = 0;
         let arg = '';
         if(Array.isArray(cs)) {
             if(cs.length) {
                 cs.forEach(c => {
+                    numCarriers++;
                     arg += c.name + ' ';
                 
                     //TODO: add racking value if back bed needle
@@ -262,6 +239,7 @@ var KnitOutWrapper = function() {
             }
         } else {
             if(cs) {
+                numCarriers++;
                 arg = cs.name;
 
                 //TODO: add racking value if back bed needle
@@ -279,6 +257,45 @@ var KnitOutWrapper = function() {
             k.knit(getDirSign(dir), b + n, arg);
         else
             k.knit(getDirSign(dir), b + n);
+
+        setLoops(b, n, numCarriers);
+    }
+    
+    /**
+     * 
+     * @param {Number} dir use LEFT or RIGHT const values
+     * @param {String} b bed identifier ('b' or 'f')
+     * @param {Number} n needle number
+     * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
+     */
+    this.tuck = function(dir, b, n, cs) {
+        let numCarriers = 0;
+        let str = '';
+        if(Array.isArray(cs)) {
+            cs.forEach(c => {
+                numCarriers++;
+                str += c.name + ' ';
+            
+                //TODO: add racking value if back bed needle
+                //TODO: figure out if 0.5 is a reasonable value to add
+                c.pos = n + dir * 0.5; 
+            });
+            str = str.trim();
+        } else {
+            numCarriers++;
+            str = cs.name;
+
+            //TODO: add racking value if back bed needle
+            //TODO: figure out if 0.5 is a reasonable value to add
+            cs.pos = n + dir * 0.5; 
+        }
+
+        this.machine.beds[b].leftmost = Math.min(this.machine.beds[b].leftmost, n);
+        this.machine.beds[b].rightmost = Math.max(this.machine.beds[b].rightmost, n);
+
+        k.tuck(getDirSign(dir), b + n, str);
+
+        addLoops(b, n, numCarriers);
     }
     
     /**
@@ -315,28 +332,35 @@ var KnitOutWrapper = function() {
     
     /**
      * 
-     * @param {String} b bed identifier ('b' or 'f')
-     * @param {Number} n needle number
+     * @param {String} b0 bed identifier of old position ('b' or 'f')
+     * @param {Number} n0 needle number of old position
+     * @param {Number} n1 needle number of new position
      */
-    this.drop = function(b, n) {
-        k.drop(b + n);
+     this.xfer = function(b0, n0, n1) {
+        let b1 = getOpposite(b0);
+        k.xfer(b0 + n0, b1 + n1);
+
+        addLoops(b1, n1, getLoops(b0, n0));
+        setLoops(b0, n0, 0);
     }
 
     /**
      * 
      * @param {Number} dir use LEFT or RIGHT const values
-     * @param {*} b0 
-     * @param {*} n0 
-     * @param {*} n1 
+     * @param {String} b0 
+     * @param {Number} n0 
+     * @param {Number} n1 
      * @param {*} cs 
      */
     this.split = function(dir, b0, n0, n1, cs) {
 
         let b1 = getOpposite(b0);
 
+        let numCarriers = 0;
         let str = '';
         if(Array.isArray(cs)) {
             cs.forEach(c => {
+                numCarriers++;
                 str += c.name + ' ';
             
                 //TODO: add racking value if back bed needle
@@ -345,6 +369,7 @@ var KnitOutWrapper = function() {
             });
             str = str.trim();
         } else {
+            numCarriers++;
             str = cs.name;
 
             //TODO: add racking value if back bed needle
@@ -356,14 +381,44 @@ var KnitOutWrapper = function() {
         this.machine.beds[b0].rightmost = Math.max(this.machine.beds[b0].rightmost, n0, n1);
 
         k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
+
+        addLoops(b1, n1, getLoops(b0, n0));
+        setLoops(b0, n0, numCarriers);
+    }
+    
+    /**
+     * 
+     * @param {String} b bed identifier ('b' or 'f')
+     * @param {Number} n needle number
+     */
+    this.drop = function(b, n) {
+        k.drop(b + n);
+
+        setLoops(b, n, 0);
     }
     
     /**
      * 
      * @param {Number} nr stitch number to set (index into machine specific LUT)
+     * @param {Boolean} force set to true if you want to skip redundancy-check
      */
-    this.setStitchNumber = function(nr) {
-        k.stitchNumber(nr);
+    this.setStitchNumber = function(nr, force = false) {
+        if(this.machine.stitchNumber !== nr || force) {
+            k.stitchNumber(nr);
+            this.machine.stitchNumber = nr;
+        }
+    }
+
+    /**
+     * 
+     * @param {Number} nr speed number to set (index into machine specific LUT)
+     * @param {Boolean} force set to true if you want to skip redundancy-check
+     */
+     this.setSpeedNumber = function(nr, force = false) {
+        if(this.machine.speedNumber !== nr || force) {
+            k.speedNumber(nr);
+            this.machine.speedNumber = nr;
+        }
     }
 
     /**
@@ -429,7 +484,6 @@ var KnitOutWrapper = function() {
     
     /**
      * 
-     * @returns 
      */
     this.dropBringIn = function() {
     
@@ -445,6 +499,14 @@ var KnitOutWrapper = function() {
         bringInInfo = undefined;
     }
 
+    /**
+     * 
+     * @param {*} c carrier object
+     * @param {Number} l left needle
+     * @param {Number} r right needle
+     * @param {Number} stitchNumber optional stitchnumber override for caston
+     * @param {Boolean} frontBed set true to cast on at front bed, set false to cast on at back bed
+     */
     this.castOn = function(c, l, r, stitchNumber = undefined, frontBed = true) {
 
         this.comment("knitting cast on with carrier " + c.name);
@@ -612,6 +674,14 @@ var KnitOutWrapper = function() {
     this.comment = function(text) {
         k.comment(text);
     }
+
+    /**
+     * 
+     * @param {*} comment 
+     */
+    this.pause = function(comment) {
+        k.pause(comment);
+    }
     
     /**
      * 
@@ -619,6 +689,34 @@ var KnitOutWrapper = function() {
      */
     this.write = function(fileName) {
         k.write(fileName);
+    }
+
+    this.printNeedleStatus = function() {
+
+        let prefix = "bed ";
+        ['f', 'b'].forEach( b => {
+            let leftmost = Infinity;
+            let rightmost = -Infinity;
+
+            this.machine.beds[b].needles.forEach( function(c, i) { 
+                if(c > 0) {
+                    rightmost = i + 1;
+                    if(leftmost === Infinity)
+                        leftmost = i + 1;
+                }
+            } );
+
+            if(leftmost !== Infinity) {
+                let needleString = "";
+                for(let i = leftmost; i <= rightmost; i++)
+                    needleString += this.machine.beds[b].needles[i - 1];
+
+                console.log(prefix + b + ": needles [" + leftmost + " thru " + rightmost + "]: " + needleString);
+            } else {
+                console.log(prefix + b + ": no needles currently in use");
+            }
+            prefix = "    ";
+        });
     }
 }
 
