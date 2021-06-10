@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-/*
-v2
-*/
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Media Interaction Lab
+ *  Licensed under the MIT License. See LICENSE file in the package root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
 "use strict";
 
@@ -285,7 +286,7 @@ var KnitPattern = function() {
 
     /**
      * 
-     * @param {String} repeat char-encoded drop pattern repeat
+     * @param {String} repeat char-encoded drop pattern repeat. supported commands:
      *      '.' nop
      *      'd' drop front
      *      'D' drop back
@@ -296,6 +297,23 @@ var KnitPattern = function() {
      * first needle, specifying 2 will start with 3rd, and so on.
      */
     this.drop = function(repeat, needleCount, repeatOffset = 0) {
+        this.dropAt(0, repeat, needleCount, repeatOffset);
+    }
+
+    /**
+     * 
+     * @param {Number} needleOffset right-shift repeat by this offset. pass 0 to align first drop command to needle #1
+     * @param {String} repeat char-encoded drop pattern repeat. supported commands:
+     *      '.' nop
+     *      'd' drop front
+     *      'D' drop back
+     *      'a' drop all (front + back)
+     * @param {Number} needleCount number of needle indices to be used
+     * @param {Number} repeatOffset optional offset for indexing repeat, for realizing patterns that are offset with 
+     * each new course, e.g. by passing a counter. Specifying 0 will start filling with first repeat operation for 
+     * first needle, specifying 2 will start with 3rd, and so on.
+     */
+     this.dropAt = function(needleOffset, repeat, needleCount, repeatOffset = 0) {
         //have to finish up current course, make sure we're not continuing on 
         // the same course because drop command would come after current 
         // needle command and transfer would come after next call of newCourse
@@ -304,7 +322,7 @@ var KnitPattern = function() {
         commands.push("d|" + drops.length);
         let dr = createDrops();
 
-        dr.left = 1;
+        dr.left = needleOffset + 1;
         for(let i = 0; i < needleCount; i++) {
             dr.ops += repeat[(i + repeatOffset) % repeat.length];
         }

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-/*
-v2
-*/
+/*-----------------------------------------------------------------------------------------------
+ *  Copyright (c) 2021 Media Interaction Lab
+ *  Licensed under the MIT License. See LICENSE file in the package root for license information.
 
 "use strict";
 
