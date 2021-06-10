@@ -566,7 +566,7 @@ var KnitSequence = function() {
                             if(i === 0)
                                 str += 'N:  ' + ' '.repeat(coml - il) + (carrierCounter) + ': ';
                             else
-                                str += '   ' + ' '.repeat(coml) + '  ';
+                                str += '    ' + ' '.repeat(coml) + '  ';
                             str +=  ' '.repeat(maxIdLen - y.length) + y + ' ' + ' '.repeat(coul - cl) + '(' + (courseNr + 1) + ')';
 
                             if(i == arr.length - 1)

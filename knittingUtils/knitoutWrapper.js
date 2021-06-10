@@ -12,6 +12,17 @@ const RIGHT = 1;
 
 const DROPOFF_MOVEMENTS = 6;
 
+var getNames = function(cs) {
+    let names = [];
+    if(Array.isArray(cs)) {
+        cs.forEach( c => { names.push(c.name); });
+    } else {
+        if(cs)
+            names.push(cs.name);
+    }
+    return names;
+}
+
 var KnitoutWrapper = function() {
 
     /**
@@ -40,14 +51,12 @@ var KnitoutWrapper = function() {
     var createBed = function(needles) {
         let bed = {};
 
-        bed.needles = new Array(needles).fill(0);
-        bed.sliders = new Array(needles).fill(0);
-        // bed.needleStatus = new Array(needles);
-        // bed.sliderStatus = new Array(needles);
-        // for(let i = 0; i < needles; i++) {
-        //     bed.needleStatus[i] = undefined;
-        //     bed.sliderStatus[i] = undefined;
-        // }
+        bed.needles = new Array(needles);
+        bed.sliders = new Array(needles);
+        for(let i = 0; i < needles; i++) {
+            bed.needles[i] = [];
+            bed.sliders[i] = [];
+        }
         bed.leftmost = Infinity;
         bed.rightmost = -Infinity;
 
@@ -92,16 +101,21 @@ var KnitoutWrapper = function() {
         return c;
     }
 
-    let setLoops = function(b, n, loops) {
-        this.machine.beds[b].needles[n - 1] = loops;
+    let setLoops = function(b, n, names) {
+        this.machine.beds[b].needles[n - 1] = [];
+        addLoops(b, n, names);
     }.bind(this);
 
     let getLoops = function(b, n) {
         return this.machine.beds[b].needles[n - 1];
     }.bind(this);
 
-    let addLoops = function(b, n, loops) {
-        setLoops(b, n, getLoops(b, n) + loops);
+    let addLoops = function(b, n, names) {
+        if(Array.isArray(names)) {
+            names.forEach( name => { this.machine.beds[b].needles[n - 1].push(name); });
+        } else if(names !== undefined) {
+            this.machine.beds[b].needles[n - 1].push(names);
+        }
     }.bind(this);
 
     /**
@@ -114,11 +128,11 @@ var KnitoutWrapper = function() {
         if(machineDesc === undefined)
             machineDesc = defaultShima();
 
-        let cn = new Array(machineDesc.numCarriers);
-        let c = {};
+        let names = new Array(machineDesc.numCarriers);
+        let cs = {};
         for(let i = 0; i < machineDesc.numCarriers; i++) {
-            cn[i] = (i + 1).toString();
-            c[cn[i]] = makeCarrier(cn[i]);
+            names[i] = (i + 1).toString();
+            cs[names[i]] = makeCarrier(names[i]);
         }
     
         this.machine = {
@@ -134,11 +148,11 @@ var KnitoutWrapper = function() {
                 f: createBed(machineDesc.width),
                 b: createBed(machineDesc.width)
             },
-            carriers: c
+            carriers: cs
         };
 
         const knitout = require('knitout');
-        k = new knitout.Writer({ carriers: cn });
+        k = new knitout.Writer({ carriers: names });
     
         k.addHeader('Machine', this.machine.name);
         k.addHeader('Width', this.machine.width.toString());
@@ -222,12 +236,10 @@ var KnitoutWrapper = function() {
      * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
      */
     this.knit = function(dir, b, n, cs) {
-        let numCarriers = 0;
         let arg = '';
         if(Array.isArray(cs)) {
             if(cs.length) {
                 cs.forEach(c => {
-                    numCarriers++;
                     arg += c.name + ' ';
                 
                     //TODO: add racking value if back bed needle
@@ -240,7 +252,6 @@ var KnitoutWrapper = function() {
             }
         } else {
             if(cs) {
-                numCarriers++;
                 arg = cs.name;
 
                 //TODO: add racking value if back bed needle
@@ -259,7 +270,7 @@ var KnitoutWrapper = function() {
         else
             k.knit(getDirSign(dir), b + n);
 
-        setLoops(b, n, numCarriers);
+        setLoops(b, n, getNames(cs));
     }
     
     /**
@@ -270,11 +281,9 @@ var KnitoutWrapper = function() {
      * @param {*} cs single carrier object or carrier set (for plating; pass as array of carrier objects)
      */
     this.tuck = function(dir, b, n, cs) {
-        let numCarriers = 0;
         let str = '';
         if(Array.isArray(cs)) {
             cs.forEach(c => {
-                numCarriers++;
                 str += c.name + ' ';
             
                 //TODO: add racking value if back bed needle
@@ -283,7 +292,6 @@ var KnitoutWrapper = function() {
             });
             str = str.trim();
         } else {
-            numCarriers++;
             str = cs.name;
 
             //TODO: add racking value if back bed needle
@@ -296,7 +304,7 @@ var KnitoutWrapper = function() {
 
         k.tuck(getDirSign(dir), b + n, str);
 
-        addLoops(b, n, numCarriers);
+        addLoops(b, n, getNames(cs));
     }
     
     /**
@@ -342,7 +350,7 @@ var KnitoutWrapper = function() {
         k.xfer(b0 + n0, b1 + n1);
 
         addLoops(b1, n1, getLoops(b0, n0));
-        setLoops(b0, n0, 0);
+        setLoops(b0, n0, []);
     }
 
     /**
@@ -357,11 +365,9 @@ var KnitoutWrapper = function() {
 
         let b1 = getOpposite(b0);
 
-        let numCarriers = 0;
         let str = '';
         if(Array.isArray(cs)) {
             cs.forEach(c => {
-                numCarriers++;
                 str += c.name + ' ';
             
                 //TODO: add racking value if back bed needle
@@ -370,7 +376,6 @@ var KnitoutWrapper = function() {
             });
             str = str.trim();
         } else {
-            numCarriers++;
             str = cs.name;
 
             //TODO: add racking value if back bed needle
@@ -384,7 +389,7 @@ var KnitoutWrapper = function() {
         k.split(getDirSign(dir), b0 + n0, b1 + n1, str);
 
         addLoops(b1, n1, getLoops(b0, n0));
-        setLoops(b0, n0, numCarriers);
+        setLoops(b0, n0, getNames(cs));
     }
     
     /**
@@ -395,7 +400,7 @@ var KnitoutWrapper = function() {
     this.drop = function(b, n) {
         k.drop(b + n);
 
-        setLoops(b, n, 0);
+        setLoops(b, n, []);
     }
     
     /**
@@ -654,13 +659,13 @@ var KnitoutWrapper = function() {
         for(let j = 0; j < movements; j++) {
             if(d == RIGHT) {
                 for(let i = l; i <= r; i++) {
-                    this.knit(d, 'f', i);
-                    this.knit(d, 'b', i);
+                    this.knit(d, 'f', i, undefined);
+                    this.knit(d, 'b', i, undefined);
                 }
             } else {
                 for(let i = r; i >= l; i--) {
-                    this.knit(d, 'b', i);
-                    this.knit(d, 'f', i);
+                    this.knit(d, 'b', i, undefined);
+                    this.knit(d, 'f', i, undefined);
                 }
             }
             d *= -1;
@@ -699,22 +704,34 @@ var KnitoutWrapper = function() {
             let leftmost = Infinity;
             let rightmost = -Infinity;
 
-            this.machine.beds[b].needles.forEach( function(c, i) { 
-                if(c > 0) {
+            let maxLoopCount = 0;
+
+            this.machine.beds[b].needles.forEach( function(n, i) { 
+                if(n.length > 0) {
                     rightmost = i + 1;
                     if(leftmost === Infinity)
                         leftmost = i + 1;
+                    maxLoopCount = Math.max(maxLoopCount, n.length);
                 }
             } );
 
-            if(leftmost !== Infinity) {
-                let needleString = "";
-                for(let i = leftmost; i <= rightmost; i++)
-                    needleString += this.machine.beds[b].needles[i - 1];
+            if(maxLoopCount) {
+                let descStr = prefix + b + ": needles [" + leftmost + " thru " + rightmost + "]: ";
 
-                console.log(prefix + b + ": needles [" + leftmost + " thru " + rightmost + "]: " + needleString);
+                for(let j = 0; j < maxLoopCount; j++) {
+                    let needleString = "";
+                    for(let i = leftmost; i <= rightmost; i++) {
+                        if(j < this.machine.beds[b].needles[i - 1].length)
+                            needleString += this.machine.beds[b].needles[i - 1][j] + ' ';
+                        else
+                            needleString += '  ';
+                    }
+
+                    console.log(descStr + needleString);
+                    descStr = ' '.repeat(descStr.length);
+                }
             } else {
-                console.log(prefix + b + ": no needles currently in use");
+                console.log(prefix + b + ": no needles currently holding any yarn");
             }
             prefix = "    ";
         });
