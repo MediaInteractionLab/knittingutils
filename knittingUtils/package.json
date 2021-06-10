@@ -1,11 +1,23 @@
 {
   "name": "knitwrap",
   "version": "0.0.1",
-  "main": "knitwrap.js",
+  "description": "wrapper/convenience functions for generating knitout",
+  "homepage": "",
+  "main": "knitoutWrapper.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Roland Aigner, Media Interaction Lab",
+  "repository": {
+    "type": "git",
+    "url": "git+https://TODO:insertURLhere"
+  },
+  "bugs": "https://TODO:insertURLhere/issues",
+  "author": "Media Interaction Lab",
+  "contributors": [
+    "Roland Aigner <himself@rolandaigner.com> (https://rolandaigner.com)"
+  ],
   "license": "MIT",
-  "description": "wrapper/convenience functions for generating knitout; depends on knitout npm package (duh)"
+  "dependencies": {
+    "knitout": "^1.0.3"
+  }
 }
