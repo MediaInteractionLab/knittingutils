@@ -15,10 +15,10 @@
 
 ## Notes
 
-For the speed-number feature to work, the code requires a slight modification of the file ```knitout.js```: the safety check in line 348 (function ```speedNumber```), i.e. the check for ```value > 0``` needs to be changed to ```value >= 0```, to allow the default value ```0```.
+When used with knitout npm package 1.0.2 and below, for the speed-number feature to work, the code requires a slight modification of the file ```knitout.js```: the safety check in line 348 (function ```speedNumber```), i.e. the check for ```value > 0``` needs to be changed to ```value >= 0```, to allow the default value ```0```.
 
 ## Todo
 
-- KnitWrap: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
-- KnitPattern: still have to implement sliders
-- KnitPattern: find way to specify 2nd stitch (make extension for knitout and converter?)
+- ```knitoutWrapper.js```: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
+- ```knitSequence.js```: sliders still not implemented
+- ```knitSequence.js```: find way to specify 2nd stitch (make extension for knitout and converter?)

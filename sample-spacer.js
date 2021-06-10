@@ -18,44 +18,44 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let kp = require("./knitwrap/knitpattern.js");
-    let knitPattern = new kp.KnitPattern();
+    let ksp = require("./knittingUtils/knitSequence.js");
+    let ks = new ksp.KnitSequence();
 
-    let yarnPoly0 =    kp.makeYarn("Poly0");
-    let yarnPoly1 =    kp.makeYarn("Poly1");
-    let yarnNylon =    kp.makeYarn("Nylon");
+    let yarnPoly0 =    ks.makeYarn("Poly0");
+    let yarnPoly1 =    ks.makeYarn("Poly1");
+    let yarnNylon =    ks.makeYarn("Nylon");
 
     let wales = 40;
     let courses = 40;
 
-    knitPattern.comment("spacer button");
+    ks.comment("spacer button");
     for(let j = 0; j < courses; j++) {
 
-        knitPattern.newCourse(yarnPoly0);
-        knitPattern.insert(yarnPoly0, "k", wales);
+        ks.newCourse(yarnPoly0);
+        ks.insert(yarnPoly0, "k", wales);
 
-        knitPattern.newCourse(yarnNylon);
-        knitPattern.insert(yarnNylon, "tT", wales);
+        ks.newCourse(yarnNylon);
+        ks.insert(yarnNylon, "tT", wales);
 
-        knitPattern.newCourse(yarnPoly1);
-        knitPattern.insert(yarnPoly1, "K", wales);
+        ks.newCourse(yarnPoly1);
+        ks.insert(yarnPoly1, "K", wales);
 
-        knitPattern.newCourse(yarnNylon);
-        knitPattern.insert(yarnNylon, "Tt", wales);
+        ks.newCourse(yarnNylon);
+        ks.insert(yarnNylon, "Tt", wales);
     }
 
-    knitPattern.shift(1);
+    ks.shift(1);
 
-    knitPattern.printAllMaps();
-    knitPattern.printOrder();
+    ks.printAllMaps();
+    ks.printOrder();
 
-    knitPattern.printSequence();
+    ks.printSequence();
 
-    knitPattern.mapYarn(yarnPoly0, 3);
-    knitPattern.mapYarn(yarnPoly1, 4);
-    knitPattern.mapYarn(yarnNylon, 8, false);
+    ks.mapYarn(yarnPoly0, 3);
+    ks.mapYarn(yarnPoly1, 4);
+    ks.mapYarn(yarnNylon, 8, false);
 
-    knitPattern.generate(outFileName, "spacer button");
+    ks.generate(outFileName, "spacer button");
 }
 
 generateKnit();

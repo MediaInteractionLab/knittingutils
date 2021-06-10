@@ -18,31 +18,31 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let kp = require("./knitwrap/knitpattern.js");
-    let knitPattern = new kp.KnitPattern();
+    let ksp = require("./knittingUtils/knitSequence.js");
+    let ks = new ksp.KnitSequence();
 
-    let yarnCotton0 =    kp.makeYarn("Cotton0");
-    let yarnCotton1 =    kp.makeYarn("Cotton1");
+    let yarnCotton0 =    ks.makeYarn("Cotton0");
+    let yarnCotton1 =    ks.makeYarn("Cotton1");
 
-    knitPattern.comment("basic interlock");
+    ks.comment("basic interlock");
     for(let j = 0; j < 40; j++) {
 
-        knitPattern.newCourse(yarnCotton0);
-        knitPattern.insert(yarnCotton0, "kK", 50);
+        ks.newCourse(yarnCotton0);
+        ks.insert(yarnCotton0, "kK", 50);
 
-        knitPattern.newCourse(yarnCotton1);
-        knitPattern.insert(yarnCotton1, "Kk", 50);
+        ks.newCourse(yarnCotton1);
+        ks.insert(yarnCotton1, "Kk", 50);
     }
 
-    knitPattern.printAllMaps();
-    knitPattern.printOrder();
+    ks.printAllMaps();
+    ks.printOrder();
 
-    knitPattern.printSequence();
+    ks.printSequence();
 
-    knitPattern.mapYarn(yarnCotton0, 3);
-    knitPattern.mapYarn(yarnCotton1, 4);
+    ks.mapYarn(yarnCotton0, 3);
+    ks.mapYarn(yarnCotton1, 4);
 
-    knitPattern.generate(outFileName, "interlock fabric");
+    ks.generate(outFileName, "interlock fabric");
 }
 
 generateKnit();

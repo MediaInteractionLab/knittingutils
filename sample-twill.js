@@ -18,29 +18,29 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let kp = require("./knitwrap/knitpattern.js");
-    let knitPattern = new kp.KnitPattern();
+    let ksp = require("./knittingUtils/knitSequence.js");
+    let ks = new ksp.KnitSequence();
 
-    let yarnPoly =    kp.makeYarn("Polyester");
+    let yarnPoly =    ks.makeYarn("Polyester");
 
     let courses = 150;
     let wales = 50;
 
-    knitPattern.comment("basic twill");
+    ks.comment("basic twill");
     for(let j = 0; j < courses; j++) {
 
-        knitPattern.newCourse(yarnPoly);
-        knitPattern.insert(yarnPoly, "-k", wales, j % 2);
+        ks.newCourse(yarnPoly);
+        ks.insert(yarnPoly, "-k", wales, j % 2);
     }
 
-    knitPattern.printAllMaps();
-    knitPattern.printOrder();
+    ks.printAllMaps();
+    ks.printOrder();
 
-    knitPattern.printSequence();
+    ks.printSequence();
 
-    knitPattern.mapYarn(yarnPoly, 4);
+    ks.mapYarn(yarnPoly, 4);
 
-    knitPattern.generate(outFileName, "twill fabric");
+    ks.generate(outFileName, "twill fabric");
 }
 
 generateKnit();

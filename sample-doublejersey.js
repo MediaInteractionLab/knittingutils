@@ -18,27 +18,27 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let kp = require("./knitwrap/knitpattern.js");
-    let knitPattern = new kp.KnitPattern();
+    let ksp = require("./knittingUtils/knitSequence.js");
+    let ks = new ksp.KnitSequence();
 
-    let yarnCotton =    kp.makeYarn("Cotton");
+    let yarnCotton =    ks.makeYarn("Cotton");
 
-    knitPattern.comment("basic double jersey");
-    knitPattern.rack(0.25);
+    ks.comment("basic double jersey");
+    ks.rack(0.25);
     for(let j = 0; j < 40; j++) {
 
-        knitPattern.newCourse(yarnCotton);
-        knitPattern.insert(yarnCotton, "b", 50);
+        ks.newCourse(yarnCotton);
+        ks.insert(yarnCotton, "b", 50);
     }
 
-    knitPattern.printAllMaps();
-    knitPattern.printOrder();
+    ks.printAllMaps();
+    ks.printOrder();
 
-    knitPattern.printSequence();
+    ks.printSequence();
 
-    knitPattern.mapYarn(yarnCotton, 3);
+    ks.mapYarn(yarnCotton, 3);
 
-    knitPattern.generate(outFileName, "double jersey fabric");
+    ks.generate(outFileName, "double jersey fabric");
 }
 
 generateKnit();

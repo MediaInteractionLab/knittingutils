@@ -19,3 +19,6 @@
 package.json
 package-lock.json
 node_modules/*
+
+# allow JSON files in package
+!knittingUtils/*.json

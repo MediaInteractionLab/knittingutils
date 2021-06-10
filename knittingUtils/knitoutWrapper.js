@@ -3,6 +3,7 @@
 /*-----------------------------------------------------------------------------------------------
  *  Copyright (c) 2021 Media Interaction Lab
  *  Licensed under the MIT License. See LICENSE file in the package root for license information.
+*/
 
 "use strict";
 
@@ -11,14 +12,14 @@ const RIGHT = 1;
 
 const DROPOFF_MOVEMENTS = 6;
 
-var KnitOutWrapper = function() {
+var KnitoutWrapper = function() {
 
     /**
      * 
      * @param {Number} dir use LEFT or RIGHT const values
      * @returns String '-' for LEFT and '+' for RIGHT, undefined otherwise
      */
-    var getDirSign = function(dir) {
+     var getDirSign = function(dir) {
         return (dir === LEFT ? '-' : (dir === RIGHT ? '+' : undefined));
     }
 
@@ -722,7 +723,7 @@ var KnitOutWrapper = function() {
 
 // browser-compatibility
 if(typeof(module) !== 'undefined'){
-    module.exports.KnitOutWrapper = KnitOutWrapper;
+    module.exports.KnitoutWrapper = KnitoutWrapper;
 	module.exports.LEFT = LEFT;
     module.exports.RIGHT = RIGHT;
 }

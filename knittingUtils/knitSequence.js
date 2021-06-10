@@ -7,22 +7,6 @@
 
 "use strict";
 
-/**
- * 
- * @param {String} id yarn descriptor
- * @returns instance of yarn
- */
-var makeYarn = function(id, carrier = undefined) {
-    if(id.indexOf('|') != -1) {
-        throw Error("yarn id must not contain '|'");
-    }
-
-    return { 
-        id:id,
-        carrier:carrier
-    };
-}
-
 var createTransfer = function() {
     return { 
         srcNeedles: [],
@@ -43,7 +27,7 @@ const BRINGIN_WALES = 6;
 const STITCHNUMBER_CASTON  = 2;
 const STITCHNUMBER_CASTOFF = 3;
 
-var KnitPattern = function() {
+var KnitSequence = function() {
 
     let prevYarn = null;
     let leftmost = Infinity;
@@ -130,6 +114,23 @@ var KnitPattern = function() {
             }
         }
     }.bind(this);
+
+
+    /**
+     * 
+     * @param {String} id yarn descriptor
+     * @returns instance of yarn
+     */
+    this.makeYarn = function(id, carrier = undefined) {
+        if(id.indexOf('|') != -1) {
+            throw Error("yarn id must not contain '|'");
+        }
+
+        return { 
+            id:id,
+            carrier:carrier
+        };
+    }
     
     /**
      * creates new course, i.e. a 'newline' in the pattern description
@@ -650,11 +651,11 @@ var KnitPattern = function() {
      */
     this.generate = function(outFileName, desc = "", position = "Keep", machine = undefined) {
 
-        const knitwrap = require('./knitwrap.js');
-        let kw = new knitwrap.KnitOutWrapper();
+        const wrapper = require('./knitoutWrapper.js');
+        let kw = new wrapper.KnitoutWrapper();
 
-        const LEFT = knitwrap.LEFT;
-        const RIGHT = knitwrap.RIGHT;
+        const LEFT = wrapper.LEFT;
+        const RIGHT = wrapper.RIGHT;
 
         let dropCntr = 0;
         let transferCntr = 0;
@@ -1190,6 +1191,5 @@ var KnitPattern = function() {
 
 // browser-compatibility
 if(typeof(module) !== 'undefined'){
-	module.exports.KnitPattern = KnitPattern;
-    module.exports.makeYarn = makeYarn;
+	module.exports.KnitSequence = KnitSequence;
 }
