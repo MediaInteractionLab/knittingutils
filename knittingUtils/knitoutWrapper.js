@@ -87,7 +87,7 @@ var KnitoutWrapper = function() {
      * 
      * @param {String} name carrier identifier
      * @param {Number} stitchNumber default stitch number when using this carrier
-     * @returns 
+     * @returns instance of newly created carrier object
      */
     var makeCarrier = function(name){
 
@@ -433,7 +433,6 @@ var KnitoutWrapper = function() {
      * @param {Number} l needle number for leftmost bringin loop
      * @param {Number} r needle number for rightmost bringin loop
      * @param {Number} stitchNumber 
-     * @returns 
      */
     this.bringIn = function(c, stitchNumber, l, r) {
 

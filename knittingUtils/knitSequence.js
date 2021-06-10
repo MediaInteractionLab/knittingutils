@@ -629,7 +629,6 @@ var KnitSequence = function() {
      * @param {Number} carrierID ID of carrier to map to (e.g. 1 to 10 for Shima)
      * @param {Boolean} doBringin set false to skip knitting bringin-field
      * @param {Number} speedNumber optional speed number associated with this yarn carrier
-     * @returns 
      */
     this.mapYarn = function(yarn, carrierID, doBringin = true, speedNumber = undefined) {
         let m = maps[yarn.id];
