@@ -12,8 +12,9 @@
 *.k
 *.knitout
 
-# Shima DAT files
+# Shima DAT files and png files
 *.dat
+*.png
 
 # node
 package-lock.json
