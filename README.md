@@ -4,18 +4,25 @@
 
 ## dependencies
 
-- knitout-frontend-js [npm package](https://www.npmjs.com/package/knitout)
+- [knitout-frontend-js](https://www.npmjs.com/package/knitout) npm package
 - for using the preconfigured "convert to DAT" task, you need to create an environment variable ```KNITOUT_BACKEND_SWG``` pointing to the path containing your ```knitout-to-dat.js``` converter script file.
 - the script [dat2png.js](./dat2png.js) requires the node-canvas [npm package](https://www.npmjs.com/package/canvas) (tested with 2.8.0).
+- [min-document](https://www.npmjs.com/package/min-document) npm package is required by the sample scripts for command line argument parsing.
 
 ## Usage
 
 Clone the repository and, in the repository root folder, run ```npm link``` to create a symlink in the global npm package folder. In order to use the package in some other location, call ```npm link knittingutils``` in the respective directory. See [npm-link documentation](https://docs.npmjs.com/cli/v7/commands/npm-link) for more details.
 
-See the included samples scripts for basic usage of the package.
+See the included samples scripts for basic usage of the package. When used from other location, import main file ```knittingutils.js``` and use, e.g. ```KnitSequence``` constructor like this:
+
+```
+let ku = require("knittingutils");
+let ks = new ku.KnitSequence();
+```
 
 ## Links
 
+Further informations about knitout format and extensions can be found here:
 - knitout [specification](https://textiles-lab.github.io/knitout/knitout.html)
 - knitout [Shima Seiki SWG N2 extensions](https://textiles-lab.github.io/knitout/extensions.html) (incomplete)
 
