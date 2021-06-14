@@ -198,6 +198,11 @@ var KnitSequence = function() {
         if(!repeat.length) {
             throw Error("no pattern repeat specified");
         }
+
+        if(repeatOffset < 0) {
+            //transform negative offsets to positive values
+            repeatOffset = repeat.length - (Math.abs(repeatOffset) % repeat.length);
+        }
     
         let ops = '';
         for(let i = 0; i < needleCount; i++) {
