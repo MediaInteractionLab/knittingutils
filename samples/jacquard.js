@@ -4,6 +4,8 @@
 v2
 */
 
+
+//map code (basically, a binary image) to a knit
 let code = [
 "                       ",
 " xxxxxxx  x  x xxxxxxx ",
@@ -47,24 +49,30 @@ function generateKnit(){
     let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
+    //create yarn descriptors
     let yarnPolyW =    ks.makeYarn("Polyester white");
     let yarnPolyB =    ks.makeYarn("Polyester black");
 
     let width = code[0].length;
     let height = code.length;
 
-    let cpp = 5;
-    let wpp = 3;
+    let cpp = 5;    //courses per pixel
+    let wpp = 3;    //wales per pixel
 
     let wales = width * wpp;
     let courses = height * cpp;
 
+    //rack back bad for front/back knitting
     ks.rack(0.25);
 
     for(let j = 0; j < courses; j++) {
 
+        //create strings, supposed to hold the patterns for both yarns, as courses cannot be written, alternatingly
         let lineW = "";
         let lineB = "";
+        //create birds eye jacquard pattern from code (or binary image)
+        // front bed is knit according to image content
+        // back bed must be knit alternatingly with black/white
         for(let i = 0; i < wales; i++) {
             if(code[Math.floor((courses - 1 - j) / cpp)][Math.floor(i / wpp)] === ' ') {
                 lineW += (i % 2 ? 'k' : 'b');
@@ -75,24 +83,33 @@ function generateKnit(){
             }
         }
 
+        //now write patterns to courses
+        //create new course with white yarn
         ks.newCourse(yarnPolyW);
         ks.insert(yarnPolyW, lineW);
 
+        //create new course with black yarn
         ks.newCourse(yarnPolyB);
         ks.insert(yarnPolyB, lineB);
     }
 
-    //shift one to the right, otherwise cast-off from R to L does not fit
+    //shift entire pattern one needle to the right, otherwise cast-off from R to L does not fit
     ks.shift(1);
 
+    //print all maps to console
     ks.printAllMaps();
+
+    //print command order to console
     ks.printOrder();
 
+    //print entire interlaced knitting sequence to console
     ks.printSequence();
 
+    //map yarns to carriers
     ks.mapYarn(yarnPolyW, 3);
     ks.mapYarn(yarnPolyB, 5);
 
+    //create knitout and write file
     ks.generate(outFileName, "QR code via birds eye jacquard");
 }
 

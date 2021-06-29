@@ -21,23 +21,40 @@ function generateKnit(){
     let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
+    //create yarn descriptor
     let yarnCotton =    ks.makeYarn("Cotton");
 
-    ks.comment("basic double jersey");
-    ks.rack(0.25);
-    for(let j = 0; j < 40; j++) {
+    let courses = 40;
+    let wales = 50;
 
+    ks.comment("basic double jersey");
+
+    //rack back bad for front/back knitting
+    ks.rack(0.25);
+
+    for(let j = 0; j < courses; j++) {
+
+        //create new cotton course
         ks.newCourse(yarnCotton);
-        ks.insert(yarnCotton, "b", 50);
+
+        //fill course with operations 'b' for both (front + back)
+        // fill _wales_ needles with repeat pattern "b"
+        ks.insert(yarnCotton, "b", wales);
     }
 
+    //print all maps to console
     ks.printAllMaps();
+
+    //print command order to console
     ks.printOrder();
 
+    //print entire interlaced knitting sequence to console
     ks.printSequence();
 
+    //map yarn to carrier #3
     ks.mapYarn(yarnCotton, 3);
 
+    //create knitout and write file
     ks.generate(outFileName, "double jersey fabric");
 }
 
