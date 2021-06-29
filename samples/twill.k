@@ -6,7 +6,6 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
 ;description: twill fabric
 ;yarn 'Polyester' is mapped to carrier 4
 ;basic twill

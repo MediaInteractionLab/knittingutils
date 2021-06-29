@@ -6,11 +6,9 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
-;description: plated single jersey fabric
+;description: intarsia in single jersey
 ;yarn 'Polyester0' is mapped to carrier 3
 ;yarn 'Polyester1' is mapped to carrier 4
-;single jersey with rectangular intarsia
 ;lower margin area
 ;bringin carrier with name "3"
 ;knitting bringin-dummy for carrier 3

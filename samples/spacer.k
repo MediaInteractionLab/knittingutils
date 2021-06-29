@@ -6,7 +6,6 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
 ;description: spacer button
 ;yarn 'Poly0' is mapped to carrier 3
 ;yarn 'Nylon' is mapped to carrier 8

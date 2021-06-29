@@ -18,7 +18,7 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let ku = require("./knittingutils.js");
+    let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
     let yarnPoly0 =    ks.makeYarn("Polyester0");

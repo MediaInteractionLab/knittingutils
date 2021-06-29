@@ -6,7 +6,6 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
 ;description: plated single jersey fabric
 ;yarn 'Polyester0' is mapped to carrier 3
 ;yarn 'Polyester1' is mapped to carrier 4

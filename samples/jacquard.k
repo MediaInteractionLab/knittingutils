@@ -6,8 +6,7 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
-;description: birds eye jacquard QR code
+;description: QR code via birds eye jacquard
 ;yarn 'Polyester white' is mapped to carrier 3
 ;yarn 'Polyester black' is mapped to carrier 5
 rack 0.25

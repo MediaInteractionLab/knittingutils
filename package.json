@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://TODO:insertURLhere"
+    "url": "git+https://github.com/MediaInteractionLab/knittingutils"
   },
-  "bugs": "https://TODO:insertURLhere/issues",
+  "bugs": "https://github.com/MediaInteractionLab/knittingutils/issues",
   "author": "Media Interaction Lab",
   "contributors": [
     "Roland Aigner <himself@rolandaigner.com> (https://rolandaigner.com)"

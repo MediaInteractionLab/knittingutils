@@ -19,7 +19,7 @@
                 "${fileBasenameNoExtension}.k"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${workspaceFolder}/samples"
             },
             "group": {
                 "kind": "build",
@@ -43,7 +43,7 @@
                 "${fileBasenameNoExtension}.dat"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${workspaceFolder}/samples"
             },
             "problemMatcher": []
         },
@@ -59,11 +59,11 @@
             },
             "type": "shell",
             "args": [
-                "dat2png.js",
+                "../dat2png.js",
                 "${fileBasenameNoExtension}.dat"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${workspaceFolder}/samples"
             },
             "problemMatcher": []
         },

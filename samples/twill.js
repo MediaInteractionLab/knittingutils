@@ -18,17 +18,19 @@ if(process.argv[2]) {
 
 function generateKnit(){
 
-    let ku = require("./knittingutils.js");
+    let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
-    let yarnCotton =    ks.makeYarn("Cotton");
+    let yarnPoly =    ks.makeYarn("Polyester");
 
-    ks.comment("basic double jersey");
-    ks.rack(0.25);
-    for(let j = 0; j < 40; j++) {
+    let courses = 150;
+    let wales = 50;
 
-        ks.newCourse(yarnCotton);
-        ks.insert(yarnCotton, "b", 50);
+    ks.comment("basic twill");
+    for(let j = 0; j < courses; j++) {
+
+        ks.newCourse(yarnPoly);
+        ks.insert(yarnPoly, "-k", wales, j % 2);
     }
 
     ks.printAllMaps();
@@ -36,9 +38,9 @@ function generateKnit(){
 
     ks.printSequence();
 
-    ks.mapYarn(yarnCotton, 3);
+    ks.mapYarn(yarnPoly, 4);
 
-    ks.generate(outFileName, "double jersey fabric");
+    ks.generate(outFileName, "twill fabric");
 }
 
 generateKnit();
