@@ -26,6 +26,8 @@ Further informations about knitout format and extensions can be found here:
 - knitout [specification](https://textiles-lab.github.io/knitout/knitout.html)
 - knitout [Shima Seiki SWG N2 extensions](https://textiles-lab.github.io/knitout/extensions.html) (incomplete)
 
+A (slightly modified) copy of the CMU Textiles Lab's [knitout live visualizer](https://textiles-lab.github.io/knitout-live-visualizer/) is also hosted on the Media Interaction Lab webspace [here](https://mi-lab.org/files/utils/knitout-live-visualizer/visualizer.html), with yarn coloring analog to the color scheme used in Shima Seiki KnitPaint, making it easier to read for folks with a heavy KnitPaint-background.
+
 ## Notes
 
 When used with knitout npm package 1.0.2 and below, for the speed-number feature to work, the code requires a slight modification of the file ```knitout.js```: the safety check in line 348 (function ```speedNumber```), i.e. the check for ```value > 0``` needs to be changed to ```value >= 0```, to allow the default value ```0```.
