@@ -6,6 +6,7 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
+x-speed-number 0
 ;description: double jersey fabric
 ;yarn 'Cotton' is mapped to carrier 3
 ;basic double jersey
