@@ -34,6 +34,7 @@ When used with knitout npm package 1.0.2 and below, for the speed-number feature
 
 ## Todo
 
+- privide API documentation
 - ```knitoutWrapper.js```: extensive error checking (validity of arguments and current machine/carrier/hook states, etc.)
 - ```knitSequence.js```: sliders still not implemented
 - ```knitSequence.js```: find way to specify 2nd stitch (make extension for knitout and converter?)
