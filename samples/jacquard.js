@@ -93,7 +93,9 @@ function generateKnit(){
         ks.insert(yarnPolyB, lineB);
     }
 
-    //shift entire pattern one needle to the right, otherwise cast-off from R to L does not fit
+    //shift entire pattern one needle to the right, otherwise castOff 
+    // would need to access negative needle indices, when done from
+    // right-to-left
     ks.shift(1);
 
     //print all maps to console

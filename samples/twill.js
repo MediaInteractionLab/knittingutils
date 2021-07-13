@@ -38,6 +38,11 @@ function generateKnit(){
         ks.insert(yarnPoly, "-k", wales, j % 2);
     }
 
+    //shift entire pattern one needle to the right, otherwise castOff 
+    // would need to access negative needle indices, when done from
+    // right-to-left
+    ks.shift(1);
+
     //print all maps to console
     ks.printAllMaps();
 

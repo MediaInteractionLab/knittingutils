@@ -2,10 +2,10 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "command": "node",
     "tasks": [
         {
-            "label": "run",
+            "label": "run script",
+            "command": "node",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -28,6 +28,7 @@
         },
         {
             "label": "convert to DAT",
+            "command": "node",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -49,6 +50,7 @@
         },
         {
             "label": "DAT to PNG",
+            "command": "node",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -68,13 +70,30 @@
             "problemMatcher": []
         },
         {
-            "label": "rebuild all",
+            "label": "generate all",
             "dependsOn": [
                 "run",
                 "convert to DAT",
                 "DAT to PNG"
             ],
             "dependsOrder": "sequence",
+            "problemMatcher": []
+        },
+        {
+            "label": "run all sample scripts",
+            "command": "buildAll.cmd",
+            "presentation":{
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/samples"
+            },
             "problemMatcher": []
         }
     ]
