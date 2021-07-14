@@ -15,7 +15,7 @@ Clone the repository and, in the repository root folder, run ```npm link``` to c
 
 See the included [samples scripts](./samples/) for basic usage of the package. When used from a different location, import the main file ```knittingutils.js``` and use, e.g. ```KnitSequence``` constructor like this:
 
-```
+```js
 let ku = require("knittingutils");
 ```
 
@@ -29,7 +29,7 @@ The script [knitoutWrapper.js](./lib/knioutWrapper.js) is basically exactly this
 
 First, a ```KnitSequence``` object must be created and used yarns need to be specified, e.g.
 
-```
+```js
 let ks = new ku.KnitSequence();
 
 //create yarn descriptor
@@ -38,7 +38,7 @@ let yarnCotton = ks.makeYarn("Cotton");
 
 Beginnings of new courses have to explicitly specified by calling ```ks.newCourse```. Subsequently, knitting instructions can be inserted (left-to-right) to specify a course:
 
-```
+```js
 ks.newCourse(yarnCotton);           //create new cotton course
 ks.insert(yarnCotton, "k", 20);     //inserts 'front knit' for 20 needles
     //resulting course: "kkkkkkkkkkkkkkkkkkkk"
@@ -48,7 +48,7 @@ ks.insert(yarnCotton, "k", 20);     //inserts 'front knit' for 20 needles
 
 Finally, yarns have to be mapped to machine carriers and the knitout file has to be generated:
 
-```
+```js
 //map yarn to carrier #3
 ks.mapYarn(yarnCotton, 3);
 
@@ -76,7 +76,7 @@ Supported commands are the following:
 
 The instruction-strings can hold a sequence of knitting instructions, which can be repeated, e.g.
 
-```
+```js
 ks.newCourse(yarnCotton);           //create new cotton course
 ks.insert(yarnCotton, "kkkt", 20);  //inserts sequence of 3 front knits, followed by 1 tuck, repeated for 20 needles
     //resulting course: "kkktkkktkkktkkktkkkt"
@@ -86,7 +86,7 @@ ks.insert(yarnCotton, "kkkt", 20);  //inserts sequence of 3 front knits, followe
 
 The reason a course has to be specified explicitly is you are able to construct your courses by concatenating sequences like the following:
 
-```
+```js
 ks.newCourse(yarnCotton);           //create new cotton course
 ks.insert(yarnCotton, "kK", 14);    //inserts 1x1 rib sequence for 14 needles (left hand wales)
 ks.insert(yarnCotton, "tT");        //inserts front and back tuck
@@ -98,7 +98,7 @@ ks.insert(yarnCotton, "kK", 14);    //inserts 1x1 rib sequence for 14 needles (r
 
 Note in the second call of ```insert``` in the example above, you can just skip the ```needleCount``` argument, in which case the instruction-string is just inserted as-is. One more handy argument is ```repeatOffset```, which specifies what index of the pattern should be used for the left hand needle. This can be used to shift the pattern depending on, e.g., a counter:
 
-```
+```js
 for(let i = 0; i < 4; i++) {
     ks.newCourse(yarnCotton);               //create new cotton course
     ks.insert(yarnCotton, "kkk-", 20, i);   //insert sequence of three front knits and one miss for 20 needles
@@ -113,7 +113,7 @@ for(let i = 0; i < 4; i++) {
 
 By creating multiple yarns, more complex structures can be created with a few lines of code. For instance, the following script generates a basic spacer fabric:
 
-```
+```js
 let ku = require("knittingutils");
 let ks = new ku.KnitSequence();
 
