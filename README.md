@@ -161,7 +161,7 @@ More documentation will follow, e.g. on how to perform transfers, splits, and pl
 
 Lacking access to other machines, the library is created with Shima Seiki SWG in mind, and is therefore using the related [knitout extensions for SWG](https://textiles-lab.github.io/knitout/extensions.html). 
 
-The following convention is used for stitch numbers: before knitting with a carrier of ID ```x```, the stitch number index is set to ```x + 10```, e.g. carrier #2 is always associated with stitch number #12 in the lookup-table of the machine. Stitch numbers can be overwritten by the library user by calling ```stitchNumberOverride```, though. Since cast-on and cast-off/linking require independent stitching settings in most cases, stitch number #2 (cast-on) and #3 (cast-off/linking) are set respectively, regardless of what carrier is used for knitting.
+The following convention is used for stitch numbers: before knitting with a carrier of ID ```x```, the stitch number index is set to ```x + 10```, i.e., carrier #2 is always associated with stitch number #12 in the lookup-table of the machine. Stitch numbers can be overwritten by the library user by calling ```stitchNumberOverride```, though. Since cast-on and cast-off/linking require independent stitching settings in most cases, stitch number #2 (cast-on) and #3 (cast-off/linking) are set respectively, regardless of what carrier is used for knitting.
 
 Speed numbers can optionally be set for each yarn, by passing the desired machine index as the ```speedNumber``` argument when mapping the yarn to a carrier using ```mapYarn```.
 
