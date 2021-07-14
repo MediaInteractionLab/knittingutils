@@ -25,7 +25,7 @@ The script [knitoutWrapper.js](./lib/knioutWrapper.js) is basically exactly this
 
 ### knitSequence.js
 
-[knitSequence.js](./lib/knitSequence.js) is a convenience script making use of ```knitOutWrapper.js```. The idea is to construct a knitting program by providing knit commands on a base of either courses for each yarn, without having to worry much about current carrier positions and directions. Cast-on and cast-off is automatically taken care of, as well as off-knit yarn fixations when a yarn is first used. 
+[knitSequence.js](./lib/knitSequence.js) is a convenience script making use of ```knitOutWrapper.js```. The idea is to construct a knitting program by providing knit commands on a base of either courses for each yarn, without having to worry much about current carrier positions and directions. Cast-on and cast-off/linking is automatically taken care of, as well as off-knit yarn fixations (right hand side of the knit) when a yarn is first used. 
 
 First, a ```KnitSequence``` object must be created and used yarns need to be specified, e.g.
 
@@ -143,11 +143,29 @@ ks.mapYarn(yarnNylon, 8, false);  //skip fixation field for nylon filler
 ks.generate(outFileName, "spacer fabric");
 ```
 
-The result is the following knitting program, including cast-on, setting of stitch and speed numbers, inserting in-hooks and knitting fixation fields at first use of yarns (optional), inserting out-hooks at last use of yarns, cast-off performed with the last yarn in use:
+The result is the following knitting program, including 
+- cast-on (currently only front-bed: one course of ```t-```, followed by one course of ```-t```, followed by one course of ```k```)
+- setting of stitch numbers for each carrier
+- setting of speed numbers for each carrier (optional)
+- inserting in-hooks,  
+    - including knitting fixation fields at first use of yarns (optional)
+- inserting out-hooks at last use of yarns
+- cast-off/linking performed with the last yarn in use
+- automatic alignment of beds when transfer or split commands are performed (optional)
 
 ![spacer-fabric](./images/spacer-knitout.png)
 
-More documentation will follow; in the meantime, please refer to the provided samples for further usage.
+More documentation will follow, e.g. on how to perform transfers, splits, and pleating; in the meantime, please refer to the provided samples for further usage.
+
+***Notes for Knitting on the Machine***
+
+Lacking access to other machines, the library is created with Shima Seiki SWG in mind, and is therefore using the related [knitout extensions for SWG](https://textiles-lab.github.io/knitout/extensions.html). 
+
+The following convention is used for stitch numbers: before knitting with a carrier of ID ```x```, the stitch number index is set to ```x + 10```, e.g. carrier #2 is always associated with stitch number #12 in the lookup-table of the machine. Stitch numbers can be overwritten by the library user by calling ```stitchNumberOverride```, though. Since cast-on and cast-off/linking require independent stitching settings in most cases, stitch number #2 (cast-on) and #3 (cast-off/linking) are set respectively, regardless of what carrier is used for knitting.
+
+Speed numbers can optionally be set for each yarn, by passing the desired machine index as the ```speedNumber``` argument when mapping the yarn to a carrier using ```mapYarn```.
+
+Note in the image above, that since a commonly used composite command for linking (#61 and #71 in Shima Seiki KnitPaint, "front knit + move 1P left" and "front knit + move 1P right") are not yet supported in knitout or the converter, linking is emulated with the commands available and not 100% as efficient on the machine.
 
 ## Building Samples
 
