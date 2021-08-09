@@ -48,6 +48,27 @@
             "problemMatcher": []
         },
         {
+            "label": "convert to SIN",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "type": "shell",
+            "args": [
+                "${env:KNITOUT_BACKEND_SINTRAL}/knitout-to-sintral.js",
+                "${fileBasenameNoExtension}.k",
+                "${fileBasenameNoExtension}.sin"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/samples"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "DAT to PNG",
             "presentation": {
                 "echo": true,
