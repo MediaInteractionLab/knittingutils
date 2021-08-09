@@ -21,24 +21,22 @@ function generateKnit(){
     let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
-    //create yarn descriptors
-    let yarnPoly0 =    ks.makeYarn("Polyester0");
-    let yarnPoly1 =    ks.makeYarn("Polyester1");
+    //create yarn descriptor
+    let yarnCotton =    ks.makeYarn("Cotton");
 
-    let courses = 150;
+    let courses = 40;
     let wales = 50;
 
-    //create yarn descriptor set for use during plating
-    let yarnSet = [yarnPoly0, yarnPoly1];
+    ks.comment("basic single jersey");
 
-    ks.comment("plated single jersey");
     for(let j = 0; j < courses; j++) {
 
-        //create new course using plating set
-        ks.newCourse(yarnSet);
-        //fill course with operation 'k' for front knit ('k') using the yarn set
+        //create new cotton course
+        ks.newCourse(yarnCotton);
+
+        //fill course with operations 'k', meaning front knit
         // fill _wales_ needles with repeat pattern "k"
-        ks.insert(yarnSet, "k", wales);
+        ks.insert(yarnCotton, "k", wales);
     }
 
     //shift entire pattern one needle to the right, otherwise castOff 
@@ -55,12 +53,11 @@ function generateKnit(){
     //print entire interlaced knitting sequence to console
     ks.printSequence();
 
-    //map yarns to carriers
-    ks.mapYarn(yarnPoly0, 3);
-    ks.mapYarn(yarnPoly1, 4);
+    //map yarn to carrier #3
+    ks.mapYarn(yarnCotton, 3);
 
     //create knitout and write file
-    ks.generate(outFileName, "plated single jersey fabric");
+    ks.generate(outFileName, "single jersey fabric");
 }
 
 generateKnit();

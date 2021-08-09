@@ -6,29 +6,28 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
-x-speed-number 0
 ;description: plated single jersey fabric
 ;yarn 'Polyester0' is mapped to carrier 3
 ;yarn 'Polyester1' is mapped to carrier 4
 ;plated single jersey
-;bringin carrier with name "3"
-;knitting bringin-dummy for carrier 3
-x-stitch-number 13
+;bringing in carrier with name "3"
 inhook 3
-tuck - f58 3
-tuck - f56 3
-tuck - f54 3
-tuck - f52 3
-tuck + f53 3
-tuck + f55 3
-tuck + f57 3
+;knitting fixation for carrier 3
+x-stitch-number 13
+tuck - f59 3
+tuck - f57 3
+tuck - f55 3
+tuck - f53 3
+tuck + f54 3
+tuck + f56 3
+tuck + f58 3
+knit - f59 3
 knit - f58 3
 knit - f57 3
 knit - f56 3
 knit - f55 3
 knit - f54 3
 knit - f53 3
-knit - f52 3
 releasehook 3
 ;bringin done
 ;knitting cast on with carrier 3
@@ -58,7 +57,6 @@ tuck - f8 3
 tuck - f6 3
 tuck - f4 3
 tuck - f2 3
-tuck + f1 3
 tuck + f3 3
 tuck + f5 3
 tuck + f7 3
@@ -83,86 +81,86 @@ tuck + f43 3
 tuck + f45 3
 tuck + f47 3
 tuck + f49 3
-;dropping bringin of carrier 3 needles 52 -> 58
-drop f52
+tuck + f51 3
+knit - f51 3
+knit - f50 3
+knit - f49 3
+knit - f48 3
+knit - f47 3
+knit - f46 3
+knit - f45 3
+knit - f44 3
+knit - f43 3
+knit - f42 3
+knit - f41 3
+knit - f40 3
+knit - f39 3
+knit - f38 3
+knit - f37 3
+knit - f36 3
+knit - f35 3
+knit - f34 3
+knit - f33 3
+knit - f32 3
+knit - f31 3
+knit - f30 3
+knit - f29 3
+knit - f28 3
+knit - f27 3
+knit - f26 3
+knit - f25 3
+knit - f24 3
+knit - f23 3
+knit - f22 3
+knit - f21 3
+knit - f20 3
+knit - f19 3
+knit - f18 3
+knit - f17 3
+knit - f16 3
+knit - f15 3
+knit - f14 3
+knit - f13 3
+knit - f12 3
+knit - f11 3
+knit - f10 3
+knit - f9 3
+knit - f8 3
+knit - f7 3
+knit - f6 3
+knit - f5 3
+knit - f4 3
+knit - f3 3
+knit - f2 3
+;dropping fixation of carrier 3 needles 53 -> 59
 drop f53
 drop f54
 drop f55
 drop f56
 drop f57
 drop f58
-;bringin carrier with name "4"
-;knitting bringin-dummy for carrier 4
-x-stitch-number 14
+drop f59
+;bringing in carrier with name "4"
 inhook 4
-tuck - f58 4
-tuck - f56 4
-tuck - f54 4
-tuck - f52 4
-tuck + f53 4
-tuck + f55 4
-tuck + f57 4
+;knitting fixation for carrier 4
+x-stitch-number 14
+tuck - f59 4
+tuck - f57 4
+tuck - f55 4
+tuck - f53 4
+tuck + f54 4
+tuck + f56 4
+tuck + f58 4
+knit - f59 4
 knit - f58 4
 knit - f57 4
 knit - f56 4
 knit - f55 4
 knit - f54 4
 knit - f53 4
-knit - f52 4
 releasehook 4
 ;bringin done
 x-stitch-number 13
-knit - f50 3 4
-knit - f49 3 4
-knit - f48 3 4
-knit - f47 3 4
-knit - f46 3 4
-knit - f45 3 4
-knit - f44 3 4
-knit - f43 3 4
-knit - f42 3 4
-knit - f41 3 4
-knit - f40 3 4
-knit - f39 3 4
-knit - f38 3 4
-knit - f37 3 4
-knit - f36 3 4
-knit - f35 3 4
-knit - f34 3 4
-knit - f33 3 4
-knit - f32 3 4
-knit - f31 3 4
-knit - f30 3 4
-knit - f29 3 4
-knit - f28 3 4
-knit - f27 3 4
-knit - f26 3 4
-knit - f25 3 4
-knit - f24 3 4
-knit - f23 3 4
-knit - f22 3 4
-knit - f21 3 4
-knit - f20 3 4
-knit - f19 3 4
-knit - f18 3 4
-knit - f17 3 4
-knit - f16 3 4
-knit - f15 3 4
-knit - f14 3 4
-knit - f13 3 4
-knit - f12 3 4
-knit - f11 3 4
-knit - f10 3 4
-knit - f9 3 4
-knit - f8 3 4
-knit - f7 3 4
-knit - f6 3 4
-knit - f5 3 4
-knit - f4 3 4
-knit - f3 3 4
-knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -212,14 +210,16 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
-;dropping bringin of carrier 4 needles 52 -> 58
-drop f52
+knit + f51 3 4
+;dropping fixation of carrier 4 needles 53 -> 59
 drop f53
 drop f54
 drop f55
 drop f56
 drop f57
 drop f58
+drop f59
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -269,8 +269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -320,6 +318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -369,8 +369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -420,6 +418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -469,8 +469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -520,6 +518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -569,8 +569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -620,6 +618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -669,8 +669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -720,6 +718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -769,8 +769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -820,6 +818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -869,8 +869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -920,6 +918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -969,8 +969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1020,6 +1018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1069,8 +1069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1120,6 +1118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1169,8 +1169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1220,6 +1218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1269,8 +1269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1320,6 +1318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1369,8 +1369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1420,6 +1418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1469,8 +1469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1520,6 +1518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1569,8 +1569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1620,6 +1618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1669,8 +1669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1720,6 +1718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1769,8 +1769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1820,6 +1818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1869,8 +1869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -1920,6 +1918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -1969,8 +1969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2020,6 +2018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2069,8 +2069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2120,6 +2118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2169,8 +2169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2220,6 +2218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2269,8 +2269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2320,6 +2318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2369,8 +2369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2420,6 +2418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2469,8 +2469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2520,6 +2518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2569,8 +2569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2620,6 +2618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2669,8 +2669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2720,6 +2718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2769,8 +2769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2820,6 +2818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2869,8 +2869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -2920,6 +2918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -2969,8 +2969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3020,6 +3018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3069,8 +3069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3120,6 +3118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3169,8 +3169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3220,6 +3218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3269,8 +3269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3320,6 +3318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3369,8 +3369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3420,6 +3418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3469,8 +3469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3520,6 +3518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3569,8 +3569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3620,6 +3618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3669,8 +3669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3720,6 +3718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3769,8 +3769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3820,6 +3818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3869,8 +3869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -3920,6 +3918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -3969,8 +3969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4020,6 +4018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4069,8 +4069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4120,6 +4118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4169,8 +4169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4220,6 +4218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4269,8 +4269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4320,6 +4318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4369,8 +4369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4420,6 +4418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4469,8 +4469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4520,6 +4518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4569,8 +4569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4620,6 +4618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4669,8 +4669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4720,6 +4718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4769,8 +4769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4820,6 +4818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4869,8 +4869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -4920,6 +4918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -4969,8 +4969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5020,6 +5018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5069,8 +5069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5120,6 +5118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5169,8 +5169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5220,6 +5218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5269,8 +5269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5320,6 +5318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5369,8 +5369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5420,6 +5418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5469,8 +5469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5520,6 +5518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5569,8 +5569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5620,6 +5618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5669,8 +5669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5720,6 +5718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5769,8 +5769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5820,6 +5818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5869,8 +5869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -5920,6 +5918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -5969,8 +5969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6020,6 +6018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6069,8 +6069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6120,6 +6118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6169,8 +6169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6220,6 +6218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6269,8 +6269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6320,6 +6318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6369,8 +6369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6420,6 +6418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6469,8 +6469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6520,6 +6518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6569,8 +6569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6620,6 +6618,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6669,8 +6669,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6720,6 +6718,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6769,8 +6769,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6820,6 +6818,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6869,8 +6869,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -6920,6 +6918,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -6969,8 +6969,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7020,6 +7018,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7069,8 +7069,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7120,6 +7118,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7169,8 +7169,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7220,6 +7218,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7269,8 +7269,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7320,6 +7318,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7369,8 +7369,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7420,6 +7418,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7469,8 +7469,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7520,6 +7518,8 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
 knit - f50 3 4
 knit - f49 3 4
 knit - f48 3 4
@@ -7569,8 +7569,6 @@ knit - f5 3 4
 knit - f4 3 4
 knit - f3 3 4
 knit - f2 3 4
-knit - f1 3 4
-knit + f1 3 4
 knit + f2 3 4
 knit + f3 3 4
 knit + f4 3 4
@@ -7620,10 +7618,60 @@ knit + f47 3 4
 knit + f48 3 4
 knit + f49 3 4
 knit + f50 3 4
+knit + f51 3 4
+knit - f51 3 4
+knit - f50 3 4
+knit - f49 3 4
+knit - f48 3 4
+knit - f47 3 4
+knit - f46 3 4
+knit - f45 3 4
+knit - f44 3 4
+knit - f43 3 4
+knit - f42 3 4
+knit - f41 3 4
+knit - f40 3 4
+knit - f39 3 4
+knit - f38 3 4
+knit - f37 3 4
+knit - f36 3 4
+knit - f35 3 4
+knit - f34 3 4
+knit - f33 3 4
+knit - f32 3 4
+knit - f31 3 4
+knit - f30 3 4
+knit - f29 3 4
+knit - f28 3 4
+knit - f27 3 4
+knit - f26 3 4
+knit - f25 3 4
+knit - f24 3 4
+knit - f23 3 4
+knit - f22 3 4
+knit - f21 3 4
+knit - f20 3 4
+knit - f19 3 4
+knit - f18 3 4
+knit - f17 3 4
+knit - f16 3 4
+knit - f15 3 4
+knit - f14 3 4
+knit - f13 3 4
+knit - f12 3 4
+knit - f11 3 4
+knit - f10 3 4
+knit - f9 3 4
+knit - f8 3 4
+knit - f7 3 4
+knit - f6 3 4
+knit - f5 3 4
+knit - f4 3 4
+knit - f3 3 4
+knit - f2 3 4
 outhook 3
 ;cast off
 x-stitch-number 3
-xfer b1 f1
 xfer b2 f2
 xfer b3 f3
 xfer b4 f4
@@ -7673,345 +7721,348 @@ xfer b47 f47
 xfer b48 f48
 xfer b49 f49
 xfer b50 f50
-knit - f50 4
-knit - f49 4
-knit - f48 4
-knit - f47 4
-knit - f46 4
-knit - f45 4
-knit - f44 4
-knit - f43 4
-knit - f42 4
-knit - f41 4
-knit - f40 4
-knit - f39 4
-knit - f38 4
-knit - f37 4
-knit - f36 4
-knit - f35 4
-knit - f34 4
-knit - f33 4
-knit - f32 4
-knit - f31 4
-knit - f30 4
-knit - f29 4
-knit - f28 4
-knit - f27 4
-knit - f26 4
-knit - f25 4
-knit - f24 4
-knit - f23 4
-knit - f22 4
-knit - f21 4
-knit - f20 4
-knit - f19 4
-knit - f18 4
-knit - f17 4
-knit - f16 4
-knit - f15 4
-knit - f14 4
-knit - f13 4
-knit - f12 4
-knit - f11 4
-knit - f10 4
-knit - f9 4
-knit - f8 4
-knit - f7 4
-knit - f6 4
-knit - f5 4
-knit - f4 4
-knit - f3 4
-knit - f2 4
-knit - f1 4
-knit + f1 4
-knit + f1 4
-miss + f2 4
-xfer f1 b1
-rack 1
-xfer b1 f2
-rack 0
-knit - f2 4
-xfer f2 b2
-rack 1
-xfer b2 f3
-rack 0
+xfer b51 f51
+knit + f2 4
 knit + f3 4
-miss + f4 4
-xfer f3 b3
-rack 1
-xfer b3 f4
-rack 0
-knit - f4 4
-xfer f4 b4
-rack 1
-xfer b4 f5
-rack 0
+knit + f4 4
 knit + f5 4
-miss + f6 4
-xfer f5 b5
-rack 1
-xfer b5 f6
-rack 0
-knit - f6 4
-xfer f6 b6
-rack 1
-xfer b6 f7
-rack 0
+knit + f6 4
 knit + f7 4
-miss + f8 4
-xfer f7 b7
-rack 1
-xfer b7 f8
-rack 0
-knit - f8 4
-xfer f8 b8
-rack 1
-xfer b8 f9
-rack 0
+knit + f8 4
 knit + f9 4
-miss + f10 4
-xfer f9 b9
-rack 1
-xfer b9 f10
-rack 0
-knit - f10 4
-xfer f10 b10
-rack 1
-xfer b10 f11
-rack 0
+knit + f10 4
 knit + f11 4
-miss + f12 4
-xfer f11 b11
-rack 1
-xfer b11 f12
-rack 0
-knit - f12 4
-xfer f12 b12
-rack 1
-xfer b12 f13
-rack 0
+knit + f12 4
 knit + f13 4
-miss + f14 4
-xfer f13 b13
-rack 1
-xfer b13 f14
-rack 0
-knit - f14 4
-xfer f14 b14
-rack 1
-xfer b14 f15
-rack 0
+knit + f14 4
 knit + f15 4
-miss + f16 4
-xfer f15 b15
-rack 1
-xfer b15 f16
-rack 0
-knit - f16 4
-xfer f16 b16
-rack 1
-xfer b16 f17
-rack 0
+knit + f16 4
 knit + f17 4
-miss + f18 4
-xfer f17 b17
-rack 1
-xfer b17 f18
-rack 0
-knit - f18 4
-xfer f18 b18
-rack 1
-xfer b18 f19
-rack 0
+knit + f18 4
 knit + f19 4
-miss + f20 4
-xfer f19 b19
-rack 1
-xfer b19 f20
-rack 0
-knit - f20 4
-xfer f20 b20
-rack 1
-xfer b20 f21
-rack 0
+knit + f20 4
 knit + f21 4
-miss + f22 4
-xfer f21 b21
-rack 1
-xfer b21 f22
-rack 0
-knit - f22 4
-xfer f22 b22
-rack 1
-xfer b22 f23
-rack 0
+knit + f22 4
 knit + f23 4
-miss + f24 4
-xfer f23 b23
-rack 1
-xfer b23 f24
-rack 0
-knit - f24 4
-xfer f24 b24
-rack 1
-xfer b24 f25
-rack 0
+knit + f24 4
 knit + f25 4
-miss + f26 4
-xfer f25 b25
-rack 1
-xfer b25 f26
-rack 0
-knit - f26 4
-xfer f26 b26
-rack 1
-xfer b26 f27
-rack 0
+knit + f26 4
 knit + f27 4
-miss + f28 4
-xfer f27 b27
-rack 1
-xfer b27 f28
-rack 0
-knit - f28 4
-xfer f28 b28
-rack 1
-xfer b28 f29
-rack 0
+knit + f28 4
 knit + f29 4
-miss + f30 4
-xfer f29 b29
-rack 1
-xfer b29 f30
-rack 0
-knit - f30 4
-xfer f30 b30
-rack 1
-xfer b30 f31
-rack 0
+knit + f30 4
 knit + f31 4
-miss + f32 4
-xfer f31 b31
-rack 1
-xfer b31 f32
-rack 0
-knit - f32 4
-xfer f32 b32
-rack 1
-xfer b32 f33
-rack 0
+knit + f32 4
 knit + f33 4
-miss + f34 4
-xfer f33 b33
-rack 1
-xfer b33 f34
-rack 0
-knit - f34 4
-xfer f34 b34
-rack 1
-xfer b34 f35
-rack 0
+knit + f34 4
 knit + f35 4
-miss + f36 4
-xfer f35 b35
-rack 1
-xfer b35 f36
-rack 0
-knit - f36 4
-xfer f36 b36
-rack 1
-xfer b36 f37
-rack 0
+knit + f36 4
 knit + f37 4
-miss + f38 4
-xfer f37 b37
-rack 1
-xfer b37 f38
-rack 0
-knit - f38 4
-xfer f38 b38
-rack 1
-xfer b38 f39
-rack 0
+knit + f38 4
 knit + f39 4
-miss + f40 4
-xfer f39 b39
-rack 1
-xfer b39 f40
-rack 0
-knit - f40 4
-xfer f40 b40
-rack 1
-xfer b40 f41
-rack 0
+knit + f40 4
 knit + f41 4
-miss + f42 4
-xfer f41 b41
-rack 1
-xfer b41 f42
-rack 0
-knit - f42 4
-xfer f42 b42
-rack 1
-xfer b42 f43
-rack 0
+knit + f42 4
 knit + f43 4
-miss + f44 4
-xfer f43 b43
-rack 1
-xfer b43 f44
-rack 0
-knit - f44 4
-xfer f44 b44
-rack 1
-xfer b44 f45
-rack 0
+knit + f44 4
 knit + f45 4
-miss + f46 4
-xfer f45 b45
-rack 1
-xfer b45 f46
-rack 0
-knit - f46 4
-xfer f46 b46
-rack 1
-xfer b46 f47
-rack 0
+knit + f46 4
 knit + f47 4
-miss + f48 4
-xfer f47 b47
-rack 1
-xfer b47 f48
-rack 0
-knit - f48 4
-xfer f48 b48
-rack 1
-xfer b48 f49
-rack 0
+knit + f48 4
 knit + f49 4
-miss + f50 4
-xfer f49 b49
-rack 1
-xfer b49 f50
-rack 0
-knit - f50 4
-xfer f50 b50
-rack 1
-xfer b50 f51
+knit + f50 4
 knit + f51 4
 knit - f51 4
 knit - f51 4
-knit - f51 4
-knit - f51 4
-knit - f51 4
+miss - f50 4
+xfer f51 b51
+rack -1
+xfer b51 f50
+rack 0
+knit + f50 4
+xfer f50 b50
+rack -1
+xfer b50 f49
+rack 0
+knit - f49 4
+miss - f48 4
+xfer f49 b49
+rack -1
+xfer b49 f48
+rack 0
+knit + f48 4
+xfer f48 b48
+rack -1
+xfer b48 f47
+rack 0
+knit - f47 4
+miss - f46 4
+xfer f47 b47
+rack -1
+xfer b47 f46
+rack 0
+knit + f46 4
+xfer f46 b46
+rack -1
+xfer b46 f45
+rack 0
+knit - f45 4
+miss - f44 4
+xfer f45 b45
+rack -1
+xfer b45 f44
+rack 0
+knit + f44 4
+xfer f44 b44
+rack -1
+xfer b44 f43
+rack 0
+knit - f43 4
+miss - f42 4
+xfer f43 b43
+rack -1
+xfer b43 f42
+rack 0
+knit + f42 4
+xfer f42 b42
+rack -1
+xfer b42 f41
+rack 0
+knit - f41 4
+miss - f40 4
+xfer f41 b41
+rack -1
+xfer b41 f40
+rack 0
+knit + f40 4
+xfer f40 b40
+rack -1
+xfer b40 f39
+rack 0
+knit - f39 4
+miss - f38 4
+xfer f39 b39
+rack -1
+xfer b39 f38
+rack 0
+knit + f38 4
+xfer f38 b38
+rack -1
+xfer b38 f37
+rack 0
+knit - f37 4
+miss - f36 4
+xfer f37 b37
+rack -1
+xfer b37 f36
+rack 0
+knit + f36 4
+xfer f36 b36
+rack -1
+xfer b36 f35
+rack 0
+knit - f35 4
+miss - f34 4
+xfer f35 b35
+rack -1
+xfer b35 f34
+rack 0
+knit + f34 4
+xfer f34 b34
+rack -1
+xfer b34 f33
+rack 0
+knit - f33 4
+miss - f32 4
+xfer f33 b33
+rack -1
+xfer b33 f32
+rack 0
+knit + f32 4
+xfer f32 b32
+rack -1
+xfer b32 f31
+rack 0
+knit - f31 4
+miss - f30 4
+xfer f31 b31
+rack -1
+xfer b31 f30
+rack 0
+knit + f30 4
+xfer f30 b30
+rack -1
+xfer b30 f29
+rack 0
+knit - f29 4
+miss - f28 4
+xfer f29 b29
+rack -1
+xfer b29 f28
+rack 0
+knit + f28 4
+xfer f28 b28
+rack -1
+xfer b28 f27
+rack 0
+knit - f27 4
+miss - f26 4
+xfer f27 b27
+rack -1
+xfer b27 f26
+rack 0
+knit + f26 4
+xfer f26 b26
+rack -1
+xfer b26 f25
+rack 0
+knit - f25 4
+miss - f24 4
+xfer f25 b25
+rack -1
+xfer b25 f24
+rack 0
+knit + f24 4
+xfer f24 b24
+rack -1
+xfer b24 f23
+rack 0
+knit - f23 4
+miss - f22 4
+xfer f23 b23
+rack -1
+xfer b23 f22
+rack 0
+knit + f22 4
+xfer f22 b22
+rack -1
+xfer b22 f21
+rack 0
+knit - f21 4
+miss - f20 4
+xfer f21 b21
+rack -1
+xfer b21 f20
+rack 0
+knit + f20 4
+xfer f20 b20
+rack -1
+xfer b20 f19
+rack 0
+knit - f19 4
+miss - f18 4
+xfer f19 b19
+rack -1
+xfer b19 f18
+rack 0
+knit + f18 4
+xfer f18 b18
+rack -1
+xfer b18 f17
+rack 0
+knit - f17 4
+miss - f16 4
+xfer f17 b17
+rack -1
+xfer b17 f16
+rack 0
+knit + f16 4
+xfer f16 b16
+rack -1
+xfer b16 f15
+rack 0
+knit - f15 4
+miss - f14 4
+xfer f15 b15
+rack -1
+xfer b15 f14
+rack 0
+knit + f14 4
+xfer f14 b14
+rack -1
+xfer b14 f13
+rack 0
+knit - f13 4
+miss - f12 4
+xfer f13 b13
+rack -1
+xfer b13 f12
+rack 0
+knit + f12 4
+xfer f12 b12
+rack -1
+xfer b12 f11
+rack 0
+knit - f11 4
+miss - f10 4
+xfer f11 b11
+rack -1
+xfer b11 f10
+rack 0
+knit + f10 4
+xfer f10 b10
+rack -1
+xfer b10 f9
+rack 0
+knit - f9 4
+miss - f8 4
+xfer f9 b9
+rack -1
+xfer b9 f8
+rack 0
+knit + f8 4
+xfer f8 b8
+rack -1
+xfer b8 f7
+rack 0
+knit - f7 4
+miss - f6 4
+xfer f7 b7
+rack -1
+xfer b7 f6
+rack 0
+knit + f6 4
+xfer f6 b6
+rack -1
+xfer b6 f5
+rack 0
+knit - f5 4
+miss - f4 4
+xfer f5 b5
+rack -1
+xfer b5 f4
+rack 0
+knit + f4 4
+xfer f4 b4
+rack -1
+xfer b4 f3
+rack 0
+knit - f3 4
+miss - f2 4
+xfer f3 b3
+rack -1
+xfer b3 f2
+rack 0
+knit + f2 4
+xfer f2 b2
+rack -1
+xfer b2 f1
+knit - f1 4
+knit + f1 4
+knit + f1 4
+knit + f1 4
+knit + f1 4
+knit + f1 4
 ;racking to 0 for outhook
 rack 0
 outhook 4
-rack 1
-drop f51
+rack -1
+drop f1
 rack 0
 rack 0.25
 ;6 empty carrier movements
+knit - b59 
+knit - f59 
 knit - b58 
 knit - f58 
 knit - b57 
@@ -8244,6 +8295,10 @@ knit + f57
 knit + b57 
 knit + f58 
 knit + b58 
+knit + f59 
+knit + b59 
+knit - b59 
+knit - f59 
 knit - b58 
 knit - f58 
 knit - b57 
@@ -8476,6 +8531,10 @@ knit + f57
 knit + b57 
 knit + f58 
 knit + b58 
+knit + f59 
+knit + b59 
+knit - b59 
+knit - f59 
 knit - b58 
 knit - f58 
 knit - b57 
@@ -8708,4 +8767,6 @@ knit + f57
 knit + b57 
 knit + f58 
 knit + b58 
+knit + f59 
+knit + b59 
 rack 0
