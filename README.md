@@ -67,8 +67,8 @@ Supported commands are the following:
 |  ```t```  | tuck front             |
 |  ```T```  | tuck back              |
 |  ```B```  | tuck front + back      |
-|  ```x```  | tuck front + back      |
-|  ```X```  | knit back + tuck front |
+|  ```x```  | knit front + tuck back |
+|  ```X```  | tuck front + knit back |
 |  ```-```  | explicit miss front    |
 |  ```_```  | explicit miss back     |
 |  ```y```  | split front to back    |
