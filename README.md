@@ -5,6 +5,7 @@
 ## dependencies
 
 - [knitout-frontend-js](https://www.npmjs.com/package/knitout) npm package
+- [os](https://nodejs.org/api/os.html) npm package
 - for using the preconfigured "convert to DAT" Visual Studio Code task, you need to create an environment variable ```KNITOUT_BACKEND_SWG``` pointing to the path containing your ```knitout-to-dat.js``` converter script file.
 - the script [dat2png.js](./dat2png.js) requires the node-canvas [npm package](https://www.npmjs.com/package/canvas) (tested with 2.8.0).
 - [min-document](https://www.npmjs.com/package/min-document) npm package is required by the sample scripts for command line argument parsing.

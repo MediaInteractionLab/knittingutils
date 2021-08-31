@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.8.0",
-    "knitout": "^1.0.3"
+    "knitout": "^1.0.3",
+    "os": "^6.14.11"
   }
 }
