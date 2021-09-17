@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: single jersey fabric
+;generated 17/09/2021 @ 10:33:56 by iko79 on Troubadix
 ;yarn 'Cotton' is mapped to carrier 3
 ;basic single jersey
 ;bringing in carrier with name "3"

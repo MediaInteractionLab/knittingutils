@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: QR code via birds eye jacquard
+;generated 17/09/2021 @ 11:11:41 by iko79 on Troubadix
 ;yarn 'Polyester white' is mapped to carrier 3
 ;yarn 'Polyester black' is mapped to carrier 5
 rack 0.25

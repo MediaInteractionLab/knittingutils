@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: twill fabric
+;generated 17/09/2021 @ 10:33:25 by iko79 on Troubadix
 ;yarn 'Polyester' is mapped to carrier 4
 ;basic twill
 ;bringing in carrier with name "4"

@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: interlock fabric
+;generated 17/09/2021 @ 11:11:49 by iko79 on Troubadix
 ;yarn 'Cotton0' is mapped to carrier 3
 ;yarn 'Cotton1' is mapped to carrier 4
 ;basic interlock
