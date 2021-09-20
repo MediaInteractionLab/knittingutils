@@ -31,6 +31,17 @@ function generateKnit(){
     //create yarn descriptor set for use during plating
     let yarnSet = [yarnPoly0, yarnPoly1];
 
+    //create new course using only poly0, which is used for automatic
+    // cast-on, since it is the first yarn in use.
+    ks.newCourse(yarnPoly0);
+    //since after cast-on Polyester0 carrier is on the left, while 
+    // Polyester1 carrier is still on the right, we have to add one extra
+    // course, so both are at the same side of the knit for starting with
+    // actual plating: 
+    //fill course with operation 'k' for front knit ('k') using the yarn 
+    // Polyester0 fill _wales_ needles with repeat pattern "k"
+    ks.insert(yarnPoly0, "k", wales);
+    
     ks.comment("plated single jersey");
     for(let j = 0; j < courses; j++) {
 

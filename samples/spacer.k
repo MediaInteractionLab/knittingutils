@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: spacer fabric
+;generated 17/09/2021 @ 10:33:38 by iko79 on Troubadix
 ;yarn 'Poly0' is mapped to carrier 3
 ;yarn 'Poly1' is mapped to carrier 4
 ;yarn 'Nylon' is mapped to carrier 8

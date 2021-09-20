@@ -7,6 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: intarsia in single jersey
+;generated 17/09/2021 @ 11:11:55 by iko79 on Troubadix
 ;yarn 'Polyester0' is mapped to carrier 3
 ;yarn 'Polyester1' is mapped to carrier 4
 ;lower margin area

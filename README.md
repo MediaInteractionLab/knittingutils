@@ -156,7 +156,30 @@ The result is the following knitting program, including
 
 ![spacer-fabric](./images/spacer-knitout.png)
 
-More documentation will follow, e.g. on how to perform transfers, splits, and pleating; in the meantime, please refer to the provided samples for further usage.
+More documentation will follow, e.g. on how to perform transfers, splits, and pleating; in the meantime, please refer to the provided samples for further usage. In particular, look up [purl.js](./samples/purl.js) and [pleating.js](./samples/pleating.js) for transfers and pleating. In general, they are mostly carried out in a similar way as needle operations, e.g.
+
+```js
+// ffffff
+ks.transfer("x", 6);        //transfer needles 1-6 front-to-back
+// xxxxxx
+// bbbbbb
+ks.transfer("X.", 6);       //transfer needles 1, 3, 5 back-to-front ('.' => nop)
+// X.X.X.
+// fbfbfb
+ks.transfer("x.x..X");      //transfer needles 1, 3 font-to-back, transfer needle 6 back-to-front
+// x.x..X
+// bbbbff
+ks.transferAt(4, "x", 2);   //starting with an offset of 4 needles, transfer 2 needles front-to-back
+//     xx
+// bbbbbb
+```
+
+for transfer, and similarly for drop:
+
+```js
+ks.drop("ddDDaa");      //drop at needles f1, f2, b3, b4, as well as both front and back f5, b5, f6, b6
+ks.dropAt(10, "d", 6);  //starting with an offset of 10 needles, drop at 6 front needles (i.e. f10 thru f16)
+```
 
 ***Notes for Knitting on the Machine***
 
