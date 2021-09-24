@@ -50,6 +50,7 @@
         },
         {
             "label": "convert to SIN",
+            "command": "node",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
