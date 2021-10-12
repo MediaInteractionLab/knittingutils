@@ -16,6 +16,10 @@
 *.dat
 *.png
 
+# STOLL Sintral files
+*.sin
+*.jac
+
 # node
 package-lock.json
 node_modules/*

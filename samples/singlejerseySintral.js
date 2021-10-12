@@ -21,35 +21,28 @@ function generateKnit(){
     let ku = require("../knittingutils.js");
     let ks = new ku.KnitSequence();
 
-    //create yarn descriptors
-    let yarnCotton0 =    ks.makeYarn("Cotton0");
-    let yarnCotton1 =    ks.makeYarn("Cotton1");
+    //create yarn descriptor
+    let yarnCotton =    ks.makeYarn("Cotton");
 
     let courses = 40;
     let wales = 50;
 
-    ks.comment("basic interlock");
+    ks.comment("basic single jersey");
+
     for(let j = 0; j < courses; j++) {
 
-        //create new cotton0 course
-        ks.newCourse(yarnCotton0);
-        //fill course with operations 'k' and 'K' for front knit ('k') + back knit ('K')
-        // fill _wales_ needles with repeat pattern "kK"
-        // shift pattern by 1 every other course
-        ks.insert(yarnCotton0, "kK", wales, j % 2);
+        //create new cotton course
+        ks.newCourse(yarnCotton);
 
-        //create new cotton1 course
-        ks.newCourse(yarnCotton1);
-        //fill course with operations 'K' and 'k' for back knit ('K') + front knit ('k')
-        // fill _wales_ needles with repeat pattern "Kk"
-        // shift pattern by 1 every other course
-        ks.insert(yarnCotton1, "Kk", wales, j % 2);
+        //fill course with operations 'k', meaning front knit
+        // fill _wales_ needles with repeat pattern "k"
+        ks.insert(yarnCotton, "k", wales);
     }
 
     //shift entire pattern one needle to the right, otherwise castOff 
     // would need to access negative needle indices, when done from
     // right-to-left
-    ks.shift(1);
+    ks.shift(50);
 
     //print all maps to console
     ks.printAllMaps();
@@ -60,12 +53,11 @@ function generateKnit(){
     //print entire interlaced knitting sequence to console
     ks.printSequence();
 
-    //map yarns to carriers
-    ks.mapYarn(yarnCotton0, 3);
-    ks.mapYarn(yarnCotton1, 4);
+    //map yarn to carrier #3
+    ks.mapYarn(yarnCotton, 3);
 
     //create knitout and write file
-    ks.generate(outFileName, "interlock fabric");
+    ks.generate(outFileName, "single jersey fabric", "Keep", undefined, true, false, true, ku.SINTRAL);
 }
 
 generateKnit();

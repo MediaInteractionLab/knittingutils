@@ -7,7 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: twill fabric
-;generated 17/09/2021 @ 10:33:25 by iko79 on Troubadix
+;generated 12/10/2021 @ 14:21:36 by iko79 on Troubadix
 ;yarn 'Polyester' is mapped to carrier 4
 ;basic twill
 ;bringing in carrier with name "4"
@@ -32,56 +32,56 @@ releasehook 4
 ;bringin done
 ;knitting cast on with carrier 4
 x-stitch-number 2
-tuck - f50 4
-tuck - f48 4
-tuck - f46 4
-tuck - f44 4
-tuck - f42 4
-tuck - f40 4
-tuck - f38 4
-tuck - f36 4
-tuck - f34 4
-tuck - f32 4
-tuck - f30 4
-tuck - f28 4
-tuck - f26 4
-tuck - f24 4
-tuck - f22 4
-tuck - f20 4
-tuck - f18 4
-tuck - f16 4
-tuck - f14 4
-tuck - f12 4
-tuck - f10 4
-tuck - f8 4
-tuck - f6 4
-tuck - f4 4
-tuck - f2 4
-tuck + f3 4
-tuck + f5 4
-tuck + f7 4
-tuck + f9 4
-tuck + f11 4
-tuck + f13 4
-tuck + f15 4
-tuck + f17 4
-tuck + f19 4
-tuck + f21 4
-tuck + f23 4
-tuck + f25 4
-tuck + f27 4
-tuck + f29 4
-tuck + f31 4
-tuck + f33 4
-tuck + f35 4
-tuck + f37 4
-tuck + f39 4
-tuck + f41 4
-tuck + f43 4
-tuck + f45 4
-tuck + f47 4
-tuck + f49 4
-tuck + f51 4
+tuck - f51 4
+tuck - f49 4
+tuck - f47 4
+tuck - f45 4
+tuck - f43 4
+tuck - f41 4
+tuck - f39 4
+tuck - f37 4
+tuck - f35 4
+tuck - f33 4
+tuck - f31 4
+tuck - f29 4
+tuck - f27 4
+tuck - f25 4
+tuck - f23 4
+tuck - f21 4
+tuck - f19 4
+tuck - f17 4
+tuck - f15 4
+tuck - f13 4
+tuck - f11 4
+tuck - f9 4
+tuck - f7 4
+tuck - f5 4
+tuck - f3 4
+tuck + f2 4
+tuck + f4 4
+tuck + f6 4
+tuck + f8 4
+tuck + f10 4
+tuck + f12 4
+tuck + f14 4
+tuck + f16 4
+tuck + f18 4
+tuck + f20 4
+tuck + f22 4
+tuck + f24 4
+tuck + f26 4
+tuck + f28 4
+tuck + f30 4
+tuck + f32 4
+tuck + f34 4
+tuck + f36 4
+tuck + f38 4
+tuck + f40 4
+tuck + f42 4
+tuck + f44 4
+tuck + f46 4
+tuck + f48 4
+tuck + f50 4
 knit - f51 4
 knit - f50 4
 knit - f49 4
@@ -132,6 +132,7 @@ knit - f5 4
 knit - f4 4
 knit - f3 4
 knit - f2 4
+;knitting castOn done
 ;dropping fixation of carrier 4 needles 53 -> 59
 drop f53
 drop f54
