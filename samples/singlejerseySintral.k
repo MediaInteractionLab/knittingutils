@@ -5,6 +5,7 @@
 ;;Gauge: 15
 ;;Position: Keep
 ;description: single jersey fabric
+;generated 12/10/2021 @ 15:14:23 by iko79 on Troubadix
 ;yarn 'Cotton' is mapped to carrier L3
 ;basic single jersey
 ;bringing in carrier with name "L3"
@@ -171,6 +172,7 @@ xfer b97 f97
 xfer b98 f98
 xfer b99 f99
 xfer b100 f100
+;knitting castOn done
 ;dropping fixation of carrier L3 needles 1 -> 50
 drop b1
 drop b6
@@ -232,6 +234,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -282,6 +285,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -332,6 +336,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -382,6 +387,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -432,6 +438,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -482,6 +489,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -532,6 +540,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -582,6 +591,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -632,6 +642,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -682,6 +693,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -732,6 +744,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -782,6 +795,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -832,6 +846,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -882,6 +897,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -932,6 +948,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -982,6 +999,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1032,6 +1050,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1082,6 +1101,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1132,6 +1152,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1182,6 +1203,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1232,6 +1254,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1282,6 +1305,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1332,6 +1356,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1382,6 +1407,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1432,6 +1458,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1482,6 +1509,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1532,6 +1560,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1582,6 +1611,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1632,6 +1662,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1682,6 +1713,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1732,6 +1764,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1782,6 +1815,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1832,6 +1866,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1882,6 +1917,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1932,6 +1968,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1982,6 +2019,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2032,6 +2070,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2082,6 +2121,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2132,6 +2172,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2182,6 +2223,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 ;cast off
 xfer b51 f51
 xfer b52 f52

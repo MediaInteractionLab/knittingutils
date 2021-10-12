@@ -57,7 +57,7 @@ function generateKnit(){
     ks.mapYarn(yarnCotton, 3);
 
     //create knitout and write file
-    ks.generate(outFileName, "single jersey fabric", "Keep", undefined, true, false, ku.SINTRAL);
+    ks.generate(outFileName, "single jersey fabric", "Keep", undefined, true, false, true, ku.SINTRAL);
 }
 
 generateKnit();
