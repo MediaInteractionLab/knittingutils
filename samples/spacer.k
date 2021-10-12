@@ -7,7 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: spacer fabric
-;generated 17/09/2021 @ 10:33:38 by iko79 on Troubadix
+;generated 12/10/2021 @ 14:21:33 by iko79 on Troubadix
 ;yarn 'Poly0' is mapped to carrier 3
 ;yarn 'Poly1' is mapped to carrier 4
 ;yarn 'Nylon' is mapped to carrier 8
@@ -34,46 +34,46 @@ releasehook 3
 ;bringin done
 ;knitting cast on with carrier 3
 x-stitch-number 2
-tuck - f40 3
-tuck - f38 3
-tuck - f36 3
-tuck - f34 3
-tuck - f32 3
-tuck - f30 3
-tuck - f28 3
-tuck - f26 3
-tuck - f24 3
-tuck - f22 3
-tuck - f20 3
-tuck - f18 3
-tuck - f16 3
-tuck - f14 3
-tuck - f12 3
-tuck - f10 3
-tuck - f8 3
-tuck - f6 3
-tuck - f4 3
-tuck - f2 3
-tuck + f3 3
-tuck + f5 3
-tuck + f7 3
-tuck + f9 3
-tuck + f11 3
-tuck + f13 3
-tuck + f15 3
-tuck + f17 3
-tuck + f19 3
-tuck + f21 3
-tuck + f23 3
-tuck + f25 3
-tuck + f27 3
-tuck + f29 3
-tuck + f31 3
-tuck + f33 3
-tuck + f35 3
-tuck + f37 3
-tuck + f39 3
-tuck + f41 3
+tuck - f41 3
+tuck - f39 3
+tuck - f37 3
+tuck - f35 3
+tuck - f33 3
+tuck - f31 3
+tuck - f29 3
+tuck - f27 3
+tuck - f25 3
+tuck - f23 3
+tuck - f21 3
+tuck - f19 3
+tuck - f17 3
+tuck - f15 3
+tuck - f13 3
+tuck - f11 3
+tuck - f9 3
+tuck - f7 3
+tuck - f5 3
+tuck - f3 3
+tuck + f2 3
+tuck + f4 3
+tuck + f6 3
+tuck + f8 3
+tuck + f10 3
+tuck + f12 3
+tuck + f14 3
+tuck + f16 3
+tuck + f18 3
+tuck + f20 3
+tuck + f22 3
+tuck + f24 3
+tuck + f26 3
+tuck + f28 3
+tuck + f30 3
+tuck + f32 3
+tuck + f34 3
+tuck + f36 3
+tuck + f38 3
+tuck + f40 3
 knit - f41 3
 knit - f40 3
 knit - f39 3
@@ -114,6 +114,7 @@ knit - f5 3
 knit - f4 3
 knit - f3 3
 knit - f2 3
+;knitting castOn done
 ;dropping fixation of carrier 3 needles 43 -> 49
 drop f43
 drop f44

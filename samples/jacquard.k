@@ -7,7 +7,7 @@
 x-presser-mode auto
 x-stitch-number 1
 ;description: QR code via birds eye jacquard
-;generated 17/09/2021 @ 11:11:41 by iko79 on Troubadix
+;generated 12/10/2021 @ 14:21:18 by iko79 on Troubadix
 ;yarn 'Polyester white' is mapped to carrier 3
 ;yarn 'Polyester black' is mapped to carrier 5
 rack 0.25
@@ -171,6 +171,7 @@ knit - f5 3
 knit - f4 3
 knit - f3 3
 knit - f2 3
+;knitting castOn done
 ;dropping fixation of carrier 3 needles 72 -> 78
 drop f72
 drop f73
