@@ -35,13 +35,15 @@ function generateKnit(){
         ks.newCourse(yarnCotton0);
         //fill course with operations 'k' and 'K' for front knit ('k') + back knit ('K')
         // fill _wales_ needles with repeat pattern "kK"
-        ks.insert(yarnCotton0, "kK", wales);
+        // shift pattern by 1 every other course
+        ks.insert(yarnCotton0, "kK", wales, j % 2);
 
         //create new cotton1 course
         ks.newCourse(yarnCotton1);
         //fill course with operations 'K' and 'k' for back knit ('K') + front knit ('k')
         // fill _wales_ needles with repeat pattern "Kk"
-        ks.insert(yarnCotton1, "Kk", wales);
+        // shift pattern by 1 every other course
+        ks.insert(yarnCotton1, "Kk", wales, j % 2);
     }
 
     //shift entire pattern one needle to the right, otherwise castOff 
