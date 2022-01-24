@@ -1,6 +1,9 @@
 var ks = require('./lib/knitSequence.js');
 module.exports.KnitSequence = ks.KnitSequence;
 
+module.exports.FRONT = ks.FRONT;
+module.exports.BACK = ks.BACK;
+
 var kw = require('./lib/knitoutWrapper.js');
 module.exports.KnitoutWrapper = kw.KnitoutWrapper;
 
