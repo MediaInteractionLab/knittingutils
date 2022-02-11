@@ -5,6 +5,7 @@
 ;;Gauge: 15
 ;;Position: Keep
 ;description: intarsia in single jersey
+;generated 11/02/2022 @ 08:00:08 by P40479 on HAGNB138
 ;yarn 'Polyester0' is mapped to carrier L3
 ;yarn 'Polyester1' is mapped to carrier L4
 ;lower margin area
@@ -172,6 +173,7 @@ xfer b97 f97
 xfer b98 f98
 xfer b99 f99
 xfer b100 f100
+;knitting castOn done
 ;dropping fixation of carrier L3 needles 1 -> 50
 drop b1
 drop b6
@@ -233,6 +235,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -283,6 +286,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -333,6 +337,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -383,6 +388,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -433,6 +439,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -483,6 +490,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -533,6 +541,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -583,6 +592,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -633,6 +643,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -683,6 +694,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -733,6 +745,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -783,6 +796,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -833,6 +847,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -883,6 +898,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -933,6 +949,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -983,6 +1000,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1033,6 +1051,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1083,6 +1102,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1133,6 +1153,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1183,6 +1204,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1233,6 +1255,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1283,6 +1306,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1333,6 +1357,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1383,6 +1408,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1433,6 +1459,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 ;knitting intarsia area
 ;bringing in carrier with name "L4"
 in L4
@@ -1447,6 +1474,90 @@ tuck + b36 L4
 tuck + b41 L4
 tuck + b46 L4
 ;bringin done
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
+knit - f100 L3
+knit - f99 L3
+knit - f98 L3
+knit - f97 L3
+knit - f96 L3
+knit - f95 L3
+knit - f94 L3
+knit - f93 L3
+knit - f92 L3
+knit - f91 L3
+miss - f90 L3
+miss - f89 L3
+tuck - f88 L3
+miss - f87 L3
+miss - f86 L3
+miss - f85 L3
+tuck - f84 L3
+miss - f83 L3
+miss - f82 L3
+miss - f81 L3
+tuck - f80 L3
+miss - f79 L3
+miss - f78 L3
+miss - f77 L3
+tuck - f76 L3
+miss - f75 L3
+miss - f74 L3
+miss - f73 L3
+tuck - f72 L3
+miss - f71 L3
+miss - f70 L3
+miss - f69 L3
+tuck - f68 L3
+miss - f67 L3
+miss - f66 L3
+miss - f65 L3
+tuck - f64 L3
+miss - f63 L3
+miss - f62 L3
+miss - f61 L3
+knit - f60 L3
+knit - f59 L3
+knit - f58 L3
+knit - f57 L3
+knit - f56 L3
+knit - f55 L3
+knit - f54 L3
+knit - f53 L3
+knit - f52 L3
+knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 tuck + f60 L4
 knit + f61 L4
 knit + f62 L4
@@ -1479,6 +1590,7 @@ knit + f88 L4
 knit + f89 L4
 knit + f90 L4
 tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 ;dropping fixation of carrier L4 needles 1 -> 50
 drop b1
 drop b6
@@ -1490,88 +1602,6 @@ drop b31
 drop b36
 drop b41
 drop b46
-knit - f100 L3
-knit - f99 L3
-knit - f98 L3
-knit - f97 L3
-knit - f96 L3
-knit - f95 L3
-knit - f94 L3
-knit - f93 L3
-knit - f92 L3
-knit - f91 L3
-miss - f90 L3
-miss - f89 L3
-tuck - f88 L3
-miss - f87 L3
-miss - f86 L3
-miss - f85 L3
-tuck - f84 L3
-miss - f83 L3
-miss - f82 L3
-miss - f81 L3
-tuck - f80 L3
-miss - f79 L3
-miss - f78 L3
-miss - f77 L3
-tuck - f76 L3
-miss - f75 L3
-miss - f74 L3
-miss - f73 L3
-tuck - f72 L3
-miss - f71 L3
-miss - f70 L3
-miss - f69 L3
-tuck - f68 L3
-miss - f67 L3
-miss - f66 L3
-miss - f65 L3
-tuck - f64 L3
-miss - f63 L3
-miss - f62 L3
-miss - f61 L3
-knit - f60 L3
-knit - f59 L3
-knit - f58 L3
-knit - f57 L3
-knit - f56 L3
-knit - f55 L3
-knit - f54 L3
-knit - f53 L3
-knit - f52 L3
-knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1622,38 +1652,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1704,38 +1736,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1786,38 +1820,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -1868,38 +1904,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -1950,38 +1988,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2032,38 +2072,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2114,38 +2156,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2196,38 +2240,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2278,38 +2324,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2360,38 +2408,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2442,38 +2492,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2524,38 +2576,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2606,38 +2660,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2688,38 +2744,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2770,38 +2828,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -2852,38 +2912,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -2934,38 +2996,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3016,38 +3080,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3098,38 +3164,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3180,38 +3248,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3262,38 +3332,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3344,38 +3416,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3426,38 +3500,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3508,38 +3584,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3590,38 +3668,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3672,38 +3752,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3754,38 +3836,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -3836,38 +3920,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -3918,38 +4004,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4000,38 +4088,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4082,38 +4172,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4164,38 +4256,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4246,38 +4340,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4328,38 +4424,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4410,38 +4508,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4492,38 +4592,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4574,38 +4676,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4656,38 +4760,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4738,38 +4844,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4820,38 +4928,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -4902,38 +5012,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -4984,38 +5096,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5066,38 +5180,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5148,38 +5264,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5230,38 +5348,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5312,38 +5432,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5394,38 +5516,40 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
-tuck + f60 L4
-knit + f61 L4
-knit + f62 L4
-knit + f63 L4
-knit + f64 L4
-knit + f65 L4
-knit + f66 L4
-knit + f67 L4
-knit + f68 L4
-knit + f69 L4
-knit + f70 L4
-knit + f71 L4
-knit + f72 L4
-knit + f73 L4
-knit + f74 L4
-knit + f75 L4
-knit + f76 L4
-knit + f77 L4
-knit + f78 L4
-knit + f79 L4
-knit + f80 L4
-knit + f81 L4
-knit + f82 L4
-knit + f83 L4
-knit + f84 L4
-knit + f85 L4
-knit + f86 L4
-knit + f87 L4
-knit + f88 L4
-knit + f89 L4
-knit + f90 L4
-tuck + f91 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck - f91 L4
+knit - f90 L4
+knit - f89 L4
+knit - f88 L4
+knit - f87 L4
+knit - f86 L4
+knit - f85 L4
+knit - f84 L4
+knit - f83 L4
+knit - f82 L4
+knit - f81 L4
+knit - f80 L4
+knit - f79 L4
+knit - f78 L4
+knit - f77 L4
+knit - f76 L4
+knit - f75 L4
+knit - f74 L4
+knit - f73 L4
+knit - f72 L4
+knit - f71 L4
+knit - f70 L4
+knit - f69 L4
+knit - f68 L4
+knit - f67 L4
+knit - f66 L4
+knit - f65 L4
+knit - f64 L4
+knit - f63 L4
+knit - f62 L4
+knit - f61 L4
+tuck - f60 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5476,38 +5600,40 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
-tuck - f91 L4
-knit - f90 L4
-knit - f89 L4
-knit - f88 L4
-knit - f87 L4
-knit - f86 L4
-knit - f85 L4
-knit - f84 L4
-knit - f83 L4
-knit - f82 L4
-knit - f81 L4
-knit - f80 L4
-knit - f79 L4
-knit - f78 L4
-knit - f77 L4
-knit - f76 L4
-knit - f75 L4
-knit - f74 L4
-knit - f73 L4
-knit - f72 L4
-knit - f71 L4
-knit - f70 L4
-knit - f69 L4
-knit - f68 L4
-knit - f67 L4
-knit - f66 L4
-knit - f65 L4
-knit - f64 L4
-knit - f63 L4
-knit - f62 L4
-knit - f61 L4
-tuck - f60 L4
+;fixation was skipped for carrier L3, releasing hook after first course
+tuck + f60 L4
+knit + f61 L4
+knit + f62 L4
+knit + f63 L4
+knit + f64 L4
+knit + f65 L4
+knit + f66 L4
+knit + f67 L4
+knit + f68 L4
+knit + f69 L4
+knit + f70 L4
+knit + f71 L4
+knit + f72 L4
+knit + f73 L4
+knit + f74 L4
+knit + f75 L4
+knit + f76 L4
+knit + f77 L4
+knit + f78 L4
+knit + f79 L4
+knit + f80 L4
+knit + f81 L4
+knit + f82 L4
+knit + f83 L4
+knit + f84 L4
+knit + f85 L4
+knit + f86 L4
+knit + f87 L4
+knit + f88 L4
+knit + f89 L4
+knit + f90 L4
+tuck + f91 L4
+;fixation was skipped for carrier L4, releasing hook after first course
 out L4
 knit + f51 L3
 knit + f52 L3
@@ -5559,6 +5685,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 ;upper margin area
 knit - f100 L3
 knit - f99 L3
@@ -5610,6 +5737,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5660,6 +5788,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5710,6 +5839,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5760,6 +5890,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5810,6 +5941,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5860,6 +5992,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -5910,6 +6043,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -5960,6 +6094,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6010,6 +6145,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6060,6 +6196,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6110,6 +6247,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6160,6 +6298,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6210,6 +6349,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6260,6 +6400,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6310,6 +6451,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6360,6 +6502,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6410,6 +6553,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6460,6 +6604,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6510,6 +6655,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6560,6 +6706,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6610,6 +6757,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6660,6 +6808,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6710,6 +6859,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit + f51 L3
 knit + f52 L3
 knit + f53 L3
@@ -6760,6 +6910,7 @@ knit + f97 L3
 knit + f98 L3
 knit + f99 L3
 knit + f100 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 knit - f100 L3
 knit - f99 L3
 knit - f98 L3
@@ -6810,6 +6961,7 @@ knit - f54 L3
 knit - f53 L3
 knit - f52 L3
 knit - f51 L3
+;fixation was skipped for carrier L3, releasing hook after first course
 ;cast off
 xfer b51 f51
 xfer b52 f52
@@ -6912,6 +7064,7 @@ knit + f98 L3
 knit + f99 L3
 knit + f100 L3
 knit - f100 L3
+knit + f100 L3
 knit - f100 L3
 miss - f99 L3
 xfer f100 b100
@@ -6919,10 +7072,14 @@ rack -1
 xfer b100 f99
 rack 0
 knit + f99 L3
+knit - f99 L3
+knit + f99 L3
 xfer f99 b99
 rack -1
 xfer b99 f98
 rack 0
+knit - f98 L3
+knit + f98 L3
 knit - f98 L3
 miss - f97 L3
 xfer f98 b98
@@ -6930,10 +7087,14 @@ rack -1
 xfer b98 f97
 rack 0
 knit + f97 L3
+knit - f97 L3
+knit + f97 L3
 xfer f97 b97
 rack -1
 xfer b97 f96
 rack 0
+knit - f96 L3
+knit + f96 L3
 knit - f96 L3
 miss - f95 L3
 xfer f96 b96
@@ -6941,10 +7102,14 @@ rack -1
 xfer b96 f95
 rack 0
 knit + f95 L3
+knit - f95 L3
+knit + f95 L3
 xfer f95 b95
 rack -1
 xfer b95 f94
 rack 0
+knit - f94 L3
+knit + f94 L3
 knit - f94 L3
 miss - f93 L3
 xfer f94 b94
@@ -6952,10 +7117,14 @@ rack -1
 xfer b94 f93
 rack 0
 knit + f93 L3
+knit - f93 L3
+knit + f93 L3
 xfer f93 b93
 rack -1
 xfer b93 f92
 rack 0
+knit - f92 L3
+knit + f92 L3
 knit - f92 L3
 miss - f91 L3
 xfer f92 b92
@@ -6963,10 +7132,14 @@ rack -1
 xfer b92 f91
 rack 0
 knit + f91 L3
+knit - f91 L3
+knit + f91 L3
 xfer f91 b91
 rack -1
 xfer b91 f90
 rack 0
+knit - f90 L3
+knit + f90 L3
 knit - f90 L3
 miss - f89 L3
 xfer f90 b90
@@ -6974,10 +7147,14 @@ rack -1
 xfer b90 f89
 rack 0
 knit + f89 L3
+knit - f89 L3
+knit + f89 L3
 xfer f89 b89
 rack -1
 xfer b89 f88
 rack 0
+knit - f88 L3
+knit + f88 L3
 knit - f88 L3
 miss - f87 L3
 xfer f88 b88
@@ -6985,10 +7162,14 @@ rack -1
 xfer b88 f87
 rack 0
 knit + f87 L3
+knit - f87 L3
+knit + f87 L3
 xfer f87 b87
 rack -1
 xfer b87 f86
 rack 0
+knit - f86 L3
+knit + f86 L3
 knit - f86 L3
 miss - f85 L3
 xfer f86 b86
@@ -6996,10 +7177,14 @@ rack -1
 xfer b86 f85
 rack 0
 knit + f85 L3
+knit - f85 L3
+knit + f85 L3
 xfer f85 b85
 rack -1
 xfer b85 f84
 rack 0
+knit - f84 L3
+knit + f84 L3
 knit - f84 L3
 miss - f83 L3
 xfer f84 b84
@@ -7007,10 +7192,14 @@ rack -1
 xfer b84 f83
 rack 0
 knit + f83 L3
+knit - f83 L3
+knit + f83 L3
 xfer f83 b83
 rack -1
 xfer b83 f82
 rack 0
+knit - f82 L3
+knit + f82 L3
 knit - f82 L3
 miss - f81 L3
 xfer f82 b82
@@ -7018,10 +7207,14 @@ rack -1
 xfer b82 f81
 rack 0
 knit + f81 L3
+knit - f81 L3
+knit + f81 L3
 xfer f81 b81
 rack -1
 xfer b81 f80
 rack 0
+knit - f80 L3
+knit + f80 L3
 knit - f80 L3
 miss - f79 L3
 xfer f80 b80
@@ -7029,10 +7222,14 @@ rack -1
 xfer b80 f79
 rack 0
 knit + f79 L3
+knit - f79 L3
+knit + f79 L3
 xfer f79 b79
 rack -1
 xfer b79 f78
 rack 0
+knit - f78 L3
+knit + f78 L3
 knit - f78 L3
 miss - f77 L3
 xfer f78 b78
@@ -7040,10 +7237,14 @@ rack -1
 xfer b78 f77
 rack 0
 knit + f77 L3
+knit - f77 L3
+knit + f77 L3
 xfer f77 b77
 rack -1
 xfer b77 f76
 rack 0
+knit - f76 L3
+knit + f76 L3
 knit - f76 L3
 miss - f75 L3
 xfer f76 b76
@@ -7051,10 +7252,14 @@ rack -1
 xfer b76 f75
 rack 0
 knit + f75 L3
+knit - f75 L3
+knit + f75 L3
 xfer f75 b75
 rack -1
 xfer b75 f74
 rack 0
+knit - f74 L3
+knit + f74 L3
 knit - f74 L3
 miss - f73 L3
 xfer f74 b74
@@ -7062,10 +7267,14 @@ rack -1
 xfer b74 f73
 rack 0
 knit + f73 L3
+knit - f73 L3
+knit + f73 L3
 xfer f73 b73
 rack -1
 xfer b73 f72
 rack 0
+knit - f72 L3
+knit + f72 L3
 knit - f72 L3
 miss - f71 L3
 xfer f72 b72
@@ -7073,10 +7282,14 @@ rack -1
 xfer b72 f71
 rack 0
 knit + f71 L3
+knit - f71 L3
+knit + f71 L3
 xfer f71 b71
 rack -1
 xfer b71 f70
 rack 0
+knit - f70 L3
+knit + f70 L3
 knit - f70 L3
 miss - f69 L3
 xfer f70 b70
@@ -7084,10 +7297,14 @@ rack -1
 xfer b70 f69
 rack 0
 knit + f69 L3
+knit - f69 L3
+knit + f69 L3
 xfer f69 b69
 rack -1
 xfer b69 f68
 rack 0
+knit - f68 L3
+knit + f68 L3
 knit - f68 L3
 miss - f67 L3
 xfer f68 b68
@@ -7095,10 +7312,14 @@ rack -1
 xfer b68 f67
 rack 0
 knit + f67 L3
+knit - f67 L3
+knit + f67 L3
 xfer f67 b67
 rack -1
 xfer b67 f66
 rack 0
+knit - f66 L3
+knit + f66 L3
 knit - f66 L3
 miss - f65 L3
 xfer f66 b66
@@ -7106,10 +7327,14 @@ rack -1
 xfer b66 f65
 rack 0
 knit + f65 L3
+knit - f65 L3
+knit + f65 L3
 xfer f65 b65
 rack -1
 xfer b65 f64
 rack 0
+knit - f64 L3
+knit + f64 L3
 knit - f64 L3
 miss - f63 L3
 xfer f64 b64
@@ -7117,10 +7342,14 @@ rack -1
 xfer b64 f63
 rack 0
 knit + f63 L3
+knit - f63 L3
+knit + f63 L3
 xfer f63 b63
 rack -1
 xfer b63 f62
 rack 0
+knit - f62 L3
+knit + f62 L3
 knit - f62 L3
 miss - f61 L3
 xfer f62 b62
@@ -7128,10 +7357,14 @@ rack -1
 xfer b62 f61
 rack 0
 knit + f61 L3
+knit - f61 L3
+knit + f61 L3
 xfer f61 b61
 rack -1
 xfer b61 f60
 rack 0
+knit - f60 L3
+knit + f60 L3
 knit - f60 L3
 miss - f59 L3
 xfer f60 b60
@@ -7139,10 +7372,14 @@ rack -1
 xfer b60 f59
 rack 0
 knit + f59 L3
+knit - f59 L3
+knit + f59 L3
 xfer f59 b59
 rack -1
 xfer b59 f58
 rack 0
+knit - f58 L3
+knit + f58 L3
 knit - f58 L3
 miss - f57 L3
 xfer f58 b58
@@ -7150,10 +7387,14 @@ rack -1
 xfer b58 f57
 rack 0
 knit + f57 L3
+knit - f57 L3
+knit + f57 L3
 xfer f57 b57
 rack -1
 xfer b57 f56
 rack 0
+knit - f56 L3
+knit + f56 L3
 knit - f56 L3
 miss - f55 L3
 xfer f56 b56
@@ -7161,10 +7402,14 @@ rack -1
 xfer b56 f55
 rack 0
 knit + f55 L3
+knit - f55 L3
+knit + f55 L3
 xfer f55 b55
 rack -1
 xfer b55 f54
 rack 0
+knit - f54 L3
+knit + f54 L3
 knit - f54 L3
 miss - f53 L3
 xfer f54 b54
@@ -7172,10 +7417,14 @@ rack -1
 xfer b54 f53
 rack 0
 knit + f53 L3
+knit - f53 L3
+knit + f53 L3
 xfer f53 b53
 rack -1
 xfer b53 f52
 rack 0
+knit - f52 L3
+knit + f52 L3
 knit - f52 L3
 miss - f51 L3
 xfer f52 b52
@@ -7183,21 +7432,19 @@ rack -1
 xfer b52 f51
 rack 0
 knit + f51 L3
+knit - f51 L3
+knit + f51 L3
 xfer f51 b51
 rack -1
 xfer b51 f50
+rack 0
 knit - f50 L3
-knit + f50 L3
-knit + f50 L3
-knit + f50 L3
-knit + f50 L3
-knit + f50 L3
-;racking to 0 for outhook
-rack 0
+knit - f50 L3
+knit - f50 L3
+knit - f50 L3
+knit - f50 L3
 out L3
-rack -1
 drop f50
-rack 0
 rack 0.25
 ;6 empty carrier movements
 knit - b100 

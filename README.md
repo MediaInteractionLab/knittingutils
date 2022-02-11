@@ -181,6 +181,26 @@ ks.drop("ddDDaa");      //drop at needles f1, f2, b3, b4, as well as both front 
 ks.dropAt(10, "d", 6);  //starting with an offset of 10 needles, drop at 6 front needles (i.e. f10 thru f16)
 ```
 
+Supported commands for transfer:
+
+| specifier | operation                 |
+| --------- | --------------------------|
+| ```x```   | front hook to back hook   |
+| ```X```   | back hook to front hook   |
+| ```s```   | front hook to back slider |
+| ```S```   | back hook to front slider |
+| ```r```   | front slider to back hook |
+| ```R```   | back slider to front hook |
+
+Supported commands for drop:
+
+| specifier | operation                        |
+| --------- | ---------------------------------|
+| ```.```   | no operation                     |
+| ```d```   | drop front needle                |
+| ```D```   | drop back needle                 |
+| ```a```   | drop both front and back needles |
+
 ***Notes for Knitting on the Machine***
 
 Lacking access to other machines, the library is created with Shima Seiki SWG in mind, and is therefore using the related [knitout extensions for SWG](https://textiles-lab.github.io/knitout/extensions.html). 

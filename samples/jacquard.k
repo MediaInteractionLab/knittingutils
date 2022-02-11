@@ -6,8 +6,9 @@
 ;;Position: Keep
 x-presser-mode auto
 x-stitch-number 1
+x-speed-number 0
 ;description: QR code via birds eye jacquard
-;generated 12/10/2021 @ 14:21:18 by iko79 on Troubadix
+;generated 11/02/2022 @ 08:00:12 by P40479 on HAGNB138
 ;yarn 'Polyester white' is mapped to carrier 3
 ;yarn 'Polyester black' is mapped to carrier 5
 rack 0.25
@@ -20617,7 +20618,6 @@ knit - b4 5
 miss - f3 5
 knit - b2 5
 ;cast off
-x-stitch-number 3
 rack 0
 xfer b2 f2
 xfer b3 f3
@@ -20757,7 +20757,9 @@ knit + f67 5
 knit + f68 5
 knit + f69 5
 knit + f70 5
+x-stitch-number 3
 knit - f70 5
+knit + f70 5
 knit - f70 5
 miss - f69 5
 xfer f70 b70
@@ -20765,10 +20767,14 @@ rack -1
 xfer b70 f69
 rack 0
 knit + f69 5
+knit - f69 5
+knit + f69 5
 xfer f69 b69
 rack -1
 xfer b69 f68
 rack 0
+knit - f68 5
+knit + f68 5
 knit - f68 5
 miss - f67 5
 xfer f68 b68
@@ -20776,10 +20782,14 @@ rack -1
 xfer b68 f67
 rack 0
 knit + f67 5
+knit - f67 5
+knit + f67 5
 xfer f67 b67
 rack -1
 xfer b67 f66
 rack 0
+knit - f66 5
+knit + f66 5
 knit - f66 5
 miss - f65 5
 xfer f66 b66
@@ -20787,10 +20797,14 @@ rack -1
 xfer b66 f65
 rack 0
 knit + f65 5
+knit - f65 5
+knit + f65 5
 xfer f65 b65
 rack -1
 xfer b65 f64
 rack 0
+knit - f64 5
+knit + f64 5
 knit - f64 5
 miss - f63 5
 xfer f64 b64
@@ -20798,10 +20812,14 @@ rack -1
 xfer b64 f63
 rack 0
 knit + f63 5
+knit - f63 5
+knit + f63 5
 xfer f63 b63
 rack -1
 xfer b63 f62
 rack 0
+knit - f62 5
+knit + f62 5
 knit - f62 5
 miss - f61 5
 xfer f62 b62
@@ -20809,10 +20827,14 @@ rack -1
 xfer b62 f61
 rack 0
 knit + f61 5
+knit - f61 5
+knit + f61 5
 xfer f61 b61
 rack -1
 xfer b61 f60
 rack 0
+knit - f60 5
+knit + f60 5
 knit - f60 5
 miss - f59 5
 xfer f60 b60
@@ -20820,10 +20842,14 @@ rack -1
 xfer b60 f59
 rack 0
 knit + f59 5
+knit - f59 5
+knit + f59 5
 xfer f59 b59
 rack -1
 xfer b59 f58
 rack 0
+knit - f58 5
+knit + f58 5
 knit - f58 5
 miss - f57 5
 xfer f58 b58
@@ -20831,10 +20857,14 @@ rack -1
 xfer b58 f57
 rack 0
 knit + f57 5
+knit - f57 5
+knit + f57 5
 xfer f57 b57
 rack -1
 xfer b57 f56
 rack 0
+knit - f56 5
+knit + f56 5
 knit - f56 5
 miss - f55 5
 xfer f56 b56
@@ -20842,10 +20872,14 @@ rack -1
 xfer b56 f55
 rack 0
 knit + f55 5
+knit - f55 5
+knit + f55 5
 xfer f55 b55
 rack -1
 xfer b55 f54
 rack 0
+knit - f54 5
+knit + f54 5
 knit - f54 5
 miss - f53 5
 xfer f54 b54
@@ -20853,10 +20887,14 @@ rack -1
 xfer b54 f53
 rack 0
 knit + f53 5
+knit - f53 5
+knit + f53 5
 xfer f53 b53
 rack -1
 xfer b53 f52
 rack 0
+knit - f52 5
+knit + f52 5
 knit - f52 5
 miss - f51 5
 xfer f52 b52
@@ -20864,10 +20902,14 @@ rack -1
 xfer b52 f51
 rack 0
 knit + f51 5
+knit - f51 5
+knit + f51 5
 xfer f51 b51
 rack -1
 xfer b51 f50
 rack 0
+knit - f50 5
+knit + f50 5
 knit - f50 5
 miss - f49 5
 xfer f50 b50
@@ -20875,10 +20917,14 @@ rack -1
 xfer b50 f49
 rack 0
 knit + f49 5
+knit - f49 5
+knit + f49 5
 xfer f49 b49
 rack -1
 xfer b49 f48
 rack 0
+knit - f48 5
+knit + f48 5
 knit - f48 5
 miss - f47 5
 xfer f48 b48
@@ -20886,10 +20932,14 @@ rack -1
 xfer b48 f47
 rack 0
 knit + f47 5
+knit - f47 5
+knit + f47 5
 xfer f47 b47
 rack -1
 xfer b47 f46
 rack 0
+knit - f46 5
+knit + f46 5
 knit - f46 5
 miss - f45 5
 xfer f46 b46
@@ -20897,10 +20947,14 @@ rack -1
 xfer b46 f45
 rack 0
 knit + f45 5
+knit - f45 5
+knit + f45 5
 xfer f45 b45
 rack -1
 xfer b45 f44
 rack 0
+knit - f44 5
+knit + f44 5
 knit - f44 5
 miss - f43 5
 xfer f44 b44
@@ -20908,10 +20962,14 @@ rack -1
 xfer b44 f43
 rack 0
 knit + f43 5
+knit - f43 5
+knit + f43 5
 xfer f43 b43
 rack -1
 xfer b43 f42
 rack 0
+knit - f42 5
+knit + f42 5
 knit - f42 5
 miss - f41 5
 xfer f42 b42
@@ -20919,10 +20977,14 @@ rack -1
 xfer b42 f41
 rack 0
 knit + f41 5
+knit - f41 5
+knit + f41 5
 xfer f41 b41
 rack -1
 xfer b41 f40
 rack 0
+knit - f40 5
+knit + f40 5
 knit - f40 5
 miss - f39 5
 xfer f40 b40
@@ -20930,10 +20992,14 @@ rack -1
 xfer b40 f39
 rack 0
 knit + f39 5
+knit - f39 5
+knit + f39 5
 xfer f39 b39
 rack -1
 xfer b39 f38
 rack 0
+knit - f38 5
+knit + f38 5
 knit - f38 5
 miss - f37 5
 xfer f38 b38
@@ -20941,10 +21007,14 @@ rack -1
 xfer b38 f37
 rack 0
 knit + f37 5
+knit - f37 5
+knit + f37 5
 xfer f37 b37
 rack -1
 xfer b37 f36
 rack 0
+knit - f36 5
+knit + f36 5
 knit - f36 5
 miss - f35 5
 xfer f36 b36
@@ -20952,10 +21022,14 @@ rack -1
 xfer b36 f35
 rack 0
 knit + f35 5
+knit - f35 5
+knit + f35 5
 xfer f35 b35
 rack -1
 xfer b35 f34
 rack 0
+knit - f34 5
+knit + f34 5
 knit - f34 5
 miss - f33 5
 xfer f34 b34
@@ -20963,10 +21037,14 @@ rack -1
 xfer b34 f33
 rack 0
 knit + f33 5
+knit - f33 5
+knit + f33 5
 xfer f33 b33
 rack -1
 xfer b33 f32
 rack 0
+knit - f32 5
+knit + f32 5
 knit - f32 5
 miss - f31 5
 xfer f32 b32
@@ -20974,10 +21052,14 @@ rack -1
 xfer b32 f31
 rack 0
 knit + f31 5
+knit - f31 5
+knit + f31 5
 xfer f31 b31
 rack -1
 xfer b31 f30
 rack 0
+knit - f30 5
+knit + f30 5
 knit - f30 5
 miss - f29 5
 xfer f30 b30
@@ -20985,10 +21067,14 @@ rack -1
 xfer b30 f29
 rack 0
 knit + f29 5
+knit - f29 5
+knit + f29 5
 xfer f29 b29
 rack -1
 xfer b29 f28
 rack 0
+knit - f28 5
+knit + f28 5
 knit - f28 5
 miss - f27 5
 xfer f28 b28
@@ -20996,10 +21082,14 @@ rack -1
 xfer b28 f27
 rack 0
 knit + f27 5
+knit - f27 5
+knit + f27 5
 xfer f27 b27
 rack -1
 xfer b27 f26
 rack 0
+knit - f26 5
+knit + f26 5
 knit - f26 5
 miss - f25 5
 xfer f26 b26
@@ -21007,10 +21097,14 @@ rack -1
 xfer b26 f25
 rack 0
 knit + f25 5
+knit - f25 5
+knit + f25 5
 xfer f25 b25
 rack -1
 xfer b25 f24
 rack 0
+knit - f24 5
+knit + f24 5
 knit - f24 5
 miss - f23 5
 xfer f24 b24
@@ -21018,10 +21112,14 @@ rack -1
 xfer b24 f23
 rack 0
 knit + f23 5
+knit - f23 5
+knit + f23 5
 xfer f23 b23
 rack -1
 xfer b23 f22
 rack 0
+knit - f22 5
+knit + f22 5
 knit - f22 5
 miss - f21 5
 xfer f22 b22
@@ -21029,10 +21127,14 @@ rack -1
 xfer b22 f21
 rack 0
 knit + f21 5
+knit - f21 5
+knit + f21 5
 xfer f21 b21
 rack -1
 xfer b21 f20
 rack 0
+knit - f20 5
+knit + f20 5
 knit - f20 5
 miss - f19 5
 xfer f20 b20
@@ -21040,10 +21142,14 @@ rack -1
 xfer b20 f19
 rack 0
 knit + f19 5
+knit - f19 5
+knit + f19 5
 xfer f19 b19
 rack -1
 xfer b19 f18
 rack 0
+knit - f18 5
+knit + f18 5
 knit - f18 5
 miss - f17 5
 xfer f18 b18
@@ -21051,10 +21157,14 @@ rack -1
 xfer b18 f17
 rack 0
 knit + f17 5
+knit - f17 5
+knit + f17 5
 xfer f17 b17
 rack -1
 xfer b17 f16
 rack 0
+knit - f16 5
+knit + f16 5
 knit - f16 5
 miss - f15 5
 xfer f16 b16
@@ -21062,10 +21172,14 @@ rack -1
 xfer b16 f15
 rack 0
 knit + f15 5
+knit - f15 5
+knit + f15 5
 xfer f15 b15
 rack -1
 xfer b15 f14
 rack 0
+knit - f14 5
+knit + f14 5
 knit - f14 5
 miss - f13 5
 xfer f14 b14
@@ -21073,10 +21187,14 @@ rack -1
 xfer b14 f13
 rack 0
 knit + f13 5
+knit - f13 5
+knit + f13 5
 xfer f13 b13
 rack -1
 xfer b13 f12
 rack 0
+knit - f12 5
+knit + f12 5
 knit - f12 5
 miss - f11 5
 xfer f12 b12
@@ -21084,10 +21202,14 @@ rack -1
 xfer b12 f11
 rack 0
 knit + f11 5
+knit - f11 5
+knit + f11 5
 xfer f11 b11
 rack -1
 xfer b11 f10
 rack 0
+knit - f10 5
+knit + f10 5
 knit - f10 5
 miss - f9 5
 xfer f10 b10
@@ -21095,10 +21217,14 @@ rack -1
 xfer b10 f9
 rack 0
 knit + f9 5
+knit - f9 5
+knit + f9 5
 xfer f9 b9
 rack -1
 xfer b9 f8
 rack 0
+knit - f8 5
+knit + f8 5
 knit - f8 5
 miss - f7 5
 xfer f8 b8
@@ -21106,10 +21232,14 @@ rack -1
 xfer b8 f7
 rack 0
 knit + f7 5
+knit - f7 5
+knit + f7 5
 xfer f7 b7
 rack -1
 xfer b7 f6
 rack 0
+knit - f6 5
+knit + f6 5
 knit - f6 5
 miss - f5 5
 xfer f6 b6
@@ -21117,10 +21247,14 @@ rack -1
 xfer b6 f5
 rack 0
 knit + f5 5
+knit - f5 5
+knit + f5 5
 xfer f5 b5
 rack -1
 xfer b5 f4
 rack 0
+knit - f4 5
+knit + f4 5
 knit - f4 5
 miss - f3 5
 xfer f4 b4
@@ -21128,27 +21262,27 @@ rack -1
 xfer b4 f3
 rack 0
 knit + f3 5
+knit - f3 5
+knit + f3 5
 xfer f3 b3
 rack -1
 xfer b3 f2
 rack 0
 knit - f2 5
+knit + f2 5
+knit - f2 5
 miss - f1 5
 xfer f2 b2
 rack -1
 xfer b2 f1
-knit + f1 5
-knit - f1 5
-knit - f1 5
-knit - f1 5
-knit - f1 5
-knit - f1 5
-;racking to 0 for outhook
 rack 0
+knit - f1 5
+knit - f1 5
+knit - f1 5
+knit - f1 5
+knit - f1 5
 outhook 5
-rack -1
 drop f1
-rack 0
 rack 0.25
 ;6 empty carrier movements
 knit - b78 
