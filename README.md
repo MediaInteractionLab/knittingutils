@@ -221,6 +221,23 @@ The code is being developed in [Visual Studio Code](https://code.visualstudio.co
 - run all sample scripts: runs the shell script [buildAll.cmd](./samples/buildAll.cmd), which re-builds knitout files for all provided [sample scripts](./samples/).
 
 
+## Step-by-step getting started using VS Code
+
+This section contains a step-by-step guide for using knittingutils with VS Code scripts, and making use of ```tasks.json```, aka. the recommended workflow (on Windows, at least), since it handy to use the task configurations file also for your own workflow. 
+1) locate your ```knitout-to-dat.js``` and add an environment variable, that points to the containing folder, e.g., ```C:\knitout-backend-swg```
+    - check if it already exists by entering ```set KNITOUT``` into a command prompt.
+    - if no, add it with, e.g., ```setx KNITOUT_BACKEND_SWG C:\knitout-backend-swg``` (be sure to use ```setx```, not ```set```!) or use [Rapid Environment Editor](https://www.rapidee.com/en/about).
+    - To set up Sintral conversion, do the same with the variable name ```KNITOUT_BACKEND_SINTRAL``` and the location of your ```knitout-to-sintral.js``` script.
+1) clone this repository to your disk using Git and switch to the branch you require, e.g., using [TortoiseGit](https://tortoisegit.org/), or by opening a Git Bash and entering
+    > git clone https://github.com/MediaInteractionLab/knittingutils.git \
+    > git checkout dev
+1) in a command prompt (Win+R > "cmd"), change into the directory containing your knittingutils clone and enter ```npm link```.
+1) change into your VS Code workspace directory and enter ```npm link knittingutils``` (see above, section _Usage_).<br> _NOTE:_ due to a [bug in npm](https://github.com/npm/cli/issues/2380), linking packages clears all installed packages in your current workspace, meaning you have to re-install all previously added packages. So it is recommended to first link knittingutils, then install all required dependencies afterwards.
+1) in the VS Code workspace directory, enter ```code .``` to run VS Code here (mind the "```.```", otherwise the directories are not set up right).
+1) copy [tasks.json](./.vscode/tasks.json) into the ```.vscode``` folder of your workspace (or copy the contained tasks if you already have one). Note that the directory may not be created yet, in that case it is safe to just do this manually.
+1) the ```run``` task in ```tasks.json``` is set up so the file currently opened in VS Code is run with ```node <thefile> <cwd>```, with the VS Code workspace folder specified as current working directory ("cwd"). It is furthermore set up as default "build task", so you can also use the shortcut Ctrl+Shift+B. If your script requires further arguments, you may add them to the ```args``` array in the ```run``` task. You can also use the VS Code command palette (F1 or Ctrl+Shift+P), then type/select ```Tasks: Run Task``` (or use shortcut the Ctrl+Alt+T) to list all available tasks, then select the task "run".
+1) to convert knitout to DAT or Sintral, select "convert to DAT" or "convert to SIN" from the tasks list (Ctrl+Alt+T). The tasks expand to ```node <env-variable-path-to-converter>/<converterscript> <knitoutIn> <convertedOut>```. <br> Note that both tasks are set up to look for a knitout file _corresponding to the name of the currently opend file_ (without extension!) _in the directory of the currently opened file_ as an input. The resulting converted files will be placed next to this input file. This is because general practice here was that scripts generate knitout files with equal name, and the point was to not having manually switch to the knitout output first, for performing the conversion. E.g., if the open file is the knitout "interlock.k", it will use exactly this as input and try to convert it to "interlock.dat" (or "interlock.sin", for Sintral). If the script is called "interlock.js", and the task is run with the script file opened, it will also try to convert "interlock.k", which is the point of all this. However if you've corrently working on a script called "generate.js" in the editor, it will try to convert a file of name "generate.k" to "generate.dat" (or "generate.sin", for Sintral). 
+
 ## Links
 
 Further information about knitout format and extensions can be found here:
@@ -232,6 +249,8 @@ A (slightly modified) copy of the CMU Textiles Lab's [knitout live visualizer](h
 ## Notes
 
 When used with knitout npm package 1.0.2 and below, for the speed-number feature to work, the code requires a slight modification of the file ```knitout.js```: the safety check in line 348 (function ```speedNumber```), i.e. the check for ```value > 0``` needs to be changed to ```value >= 0```, to allow the default value ```0```.
+
+Kniterate-specifics are not yet supported. Als be informed that Kniterate conversion was never tested and the Sintral converter is at an early stage.
 
 ## Todo
 
