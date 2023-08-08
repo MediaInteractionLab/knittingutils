@@ -260,3 +260,4 @@ Kniterate-specifics are not yet supported. Als be informed that Kniterate conver
 - ```knitSequence.js```: maybe think of a more intelligent way of deciding which way a carrier will have to travel
 - ```knitSequence.js```: find way to specify 2nd stitch (make extension for knitout and converter?)
 - ```knitSequence.js```: cast-on is skipped if first course is (usually by accident?) empty
+- provide a way to entirely skip caston
